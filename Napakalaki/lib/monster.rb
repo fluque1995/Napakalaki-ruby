@@ -17,9 +17,8 @@ class Monster
   attr_reader :prize
   attr_reader :badConsequence
   
-  def toString()
-    return "Name = " + self.name + ", combat level = " + self.combatLevel.to_s + 
-    ", prize: " + self.prize.toString() + ", bad consequence: " + 
-    self.badConsequence.toString()
+  def to_s()
+    return "Nombre: #{@name}, nivel de combate: #{@combatLevel}, premio: #{@prize}," +
+           " mal rollo: #{@badConsequence.to_s}"
   end
 end

@@ -11,7 +11,7 @@ class Prize
   attr_reader :treasures
   attr_reader :levels
   
-  def toString()
-    return "Treasures = " + self.treasures.to_s + ", levels = " + self.levels.to_s
+  def to_s()
+    return "Tesoros: #{@treasures}, niveles: #{@levels}"
   end
 end
