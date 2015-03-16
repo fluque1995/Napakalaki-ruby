@@ -1,7 +1,7 @@
+# encoding: UTF-8
 # To change this license header, choose License Headers in Project Properties.
 # To change this template file, choose Tools | Templates
 # and open the template in the editor.
-# encoding: UTF-8
 
 class BadConsequence
   
@@ -39,8 +39,24 @@ class BadConsequence
   end
     
   def to_s()
-    return "Texto: #{@text}, niveles: #{@levels}, tesoros visibles: #{@visibleTreasures}," +
+    printable_text = "Texto: #{@text}\n\t\tNiveles: #{@levels}, tesoros visibles: #{@visibleTreasures}," +
            " tesoros ocultos: #{@hiddenTreasures}"
+    
+    if (specificVisibleTreasures.empty? == false)
+      printable_text += "\n\t\tTesoros visibles específicos: "
+      for treasure in specificVisibleTreasures
+        printable_text += treasure.to_s + ", "
+      end
+    end
+    
+    if (specificHiddenTreasures.empty? == false)
+      printable_text += "\n\t\tTesoros ocultos específicos: "
+      for treasure in specificHiddenTreasures
+        printable_text += treasure.to_s + ", "  
+      end
+    end
+    
+    return printable_text
   end
 
 end

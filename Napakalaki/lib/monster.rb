@@ -16,7 +16,7 @@ class Monster
   attr_reader :name, :combatLevel, :prize, :badConsequence
   
   def to_s()
-    return "Nombre: #{@name}, nivel de combate: #{@combatLevel}, premio: #{@prize}," +
-           " mal rollo: #{@badConsequence.to_s}"
+    return "Nombre: #{@name}, nivel de combate: #{@combatLevel}\n\tPremio: #{@prize}\n" +
+           "\tMal rollo: #{@badConsequence.to_s}"
   end
 end
