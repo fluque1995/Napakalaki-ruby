@@ -18,7 +18,6 @@ class BadConsequence
   
   attr_reader :text, :levels, :visibleTreasures, :hiddenTreasures
   attr_reader :specificVisibleTreasures, :specificHiddenTreasures
-  attr_reader :death
   
   private_class_method :new
   
@@ -58,5 +57,24 @@ class BadConsequence
     
     return printable_text
   end
+  
+  def isEmpty()
+  end
+  
+  def kills()
+    return @death
+  end
 
+  def substractVisibleTreasure(t)
+    
+  end
+  
+  def substractHiddenTreasure(t)
+    
+  end
+  
+  def adjustToFitTreasureLists(v, h)
+    
+  end
+  
 end
