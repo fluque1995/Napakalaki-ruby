@@ -5,6 +5,7 @@
 
 class BadConsequence
   
+  public
   def initialize(aText, someLevels, someVisibleTreasures, someHiddenTreasures, 
                  someSpecificVisibleTreasures, someSpecificHiddenTreasures, death)
     @text = aText
@@ -36,7 +37,30 @@ class BadConsequence
   def self.newDeath(aText)
     return new(aText, 0, 0, 0, [], [], true)
   end
+  
+  def isEmpty()
+    return (@text == nil and @levels == 0 and @visibleTreasures == 0 and 
+            @hiddenTreasures == 0 and @specificVisibleTreasures == nil and 
+            @specificHiddenTreasures == nil and @death == false)
+           
+  end
+  
+  def kills()
+    return @death
+  end
+
+  def substractVisibleTreasure(treasure)
     
+  end
+  
+  def substractHiddenTreasure(treasure)
+    
+  end
+  
+  def adjustToFitTreasureLists(visibleTreasures, hiddenTreasures)
+    
+  end
+  
   def to_s()
     printable_text = "Texto: #{@text}\n\t\tNiveles: #{@levels}, tesoros visibles: #{@visibleTreasures}," +
            " tesoros ocultos: #{@hiddenTreasures}"
@@ -56,26 +80,6 @@ class BadConsequence
     end
     
     return printable_text
-  end
-  
-  def isEmpty()
-    
-  end
-  
-  def kills()
-    return @death
-  end
-
-  def substractVisibleTreasure(t)
-    
-  end
-  
-  def substractHiddenTreasure(t)
-    
-  end
-  
-  def adjustToFitTreasureLists(v, h)
-    
   end
   
 end
