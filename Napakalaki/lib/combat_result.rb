@@ -2,10 +2,13 @@
 # To change this template file, choose Tools | Templates
 # and open the template in the editor.
 
-module CombatResult
-    WINANDWINGAME= :WINANDWINGAME
-    WIN= :WIN
-    LOSE= :LOSE
-    LOSEANDESCAPE= :LOSEANDESCAPE
-    LOSEANDDIE= :LOSEANDDIE
+module Model
+
+  module CombatResult
+      WINANDWINGAME= :WINANDWINGAME
+      WIN= :WIN
+      LOSE= :LOSE
+      LOSEANDESCAPE= :LOSEANDESCAPE
+      LOSEANDDIE= :LOSEANDDIE
+  end
 end

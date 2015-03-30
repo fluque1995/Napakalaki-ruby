@@ -2,17 +2,21 @@
 # To change this template file, choose Tools | Templates
 # and open the template in the editor.
 
-class Treasure
-  def initialize(n, g, min, max, t)
-    @name = n
-    @goldCoins = g
-    @minBonus = min
-    @maxBonus = max
-    @type = t
+
+module Model
+
+  class Treasure
+    def initialize(n, g, min, max, t)
+      @name = n
+      @goldCoins = g
+      @minBonus = min
+      @maxBonus = max
+      @type = t
+    end
+
+    attr_reader :name
+    attr_reader :goldCoins, :minBonus, :maxBonus
+    attr_reader :type
+
   end
-  
-  attr_reader :name
-  attr_reader :goldCoins, :minBonus, :maxBonus
-  attr_reader :type
-  
 end
