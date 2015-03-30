@@ -59,6 +59,7 @@ class BadConsequence
   end
   
   def isEmpty()
+    
   end
   
   def kills()
