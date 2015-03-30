@@ -41,8 +41,7 @@ class BadConsequence
   def isEmpty()
     return (@text == nil and @levels == 0 and @visibleTreasures == 0 and 
             @hiddenTreasures == 0 and @specificVisibleTreasures == nil and 
-            @specificHiddenTreasures == nil and @death == false)
-           
+            @specificHiddenTreasures == nil and @death == false)    
   end
   
   def kills()
