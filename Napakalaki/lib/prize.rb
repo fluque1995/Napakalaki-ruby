@@ -3,15 +3,19 @@
 # and open the template in the editor.
 # encoding: UTF-8
 
-class Prize
-  def initialize(treasures, levels)
-    @treasures = treasures
-    @levels = levels
-  end
-  
-  attr_reader :treasures, :levels
-  
-  def to_s()
-    return "Tesoros: #{@treasures}, niveles: #{@levels}"
+
+module Model
+
+  class Prize
+    def initialize(treasures, levels)
+      @treasures = treasures
+      @levels = levels
+    end
+
+    attr_reader :treasures, :levels
+
+    def to_s()
+      return "Tesoros: #{@treasures}, niveles: #{@levels}"
+    end
   end
 end
