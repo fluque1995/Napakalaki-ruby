@@ -1,0 +1,723 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+
+  <title>Class: Model::CardDealer</title>
+
+  <link rel="stylesheet" href="../rdoc.css" type="text/css" media="screen" />
+
+  <script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/thickbox-compressed.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/darkfish.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+<body id="top" class="class">
+
+  <div id="metadata">
+    <div id="home-metadata">
+      <div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="../index.html">Home</a>
+          <a href="../index.html#classes">Classes</a>
+          <a href="../index.html#methods">Methods</a>
+        </h3>
+      </div>
+    </div>
+
+    <div id="file-metadata">
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul>
+          
+            <li><a href="../lib/card_dealer_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/card_dealer.rb">lib/card_dealer.rb</a></li>
+          
+          </ul>
+        </div>
+      </div>
+
+      
+    </div>
+
+    <div id="class-metadata">
+      
+      <!-- Parent Class -->
+      <div id="parent-class-section" class="section">
+        <h3 class="section-header">Parent</h3>
+        
+        <p class="link">Object</p>
+        
+      </div>
+      
+
+      
+
+      
+
+      
+      <!-- Method Quickref -->
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+          <li><a href="#method-c-new">::new</a></li>
+          
+          <li><a href="#method-i-giveMonsterBack">#giveMonsterBack</a></li>
+          
+          <li><a href="#method-i-giveTreasureBack">#giveTreasureBack</a></li>
+          
+          <li><a href="#method-i-initCards">#initCards</a></li>
+          
+          <li><a href="#method-i-initMonsterCardDeck">#initMonsterCardDeck</a></li>
+          
+          <li><a href="#method-i-initTreasuresCardDeck">#initTreasuresCardDeck</a></li>
+          
+          <li><a href="#method-i-nextMonster">#nextMonster</a></li>
+          
+          <li><a href="#method-i-nextTreasure">#nextTreasure</a></li>
+          
+          <li><a href="#method-i-shuffleMonsters">#shuffleMonsters</a></li>
+          
+          <li><a href="#method-i-shuffleTreasures">#shuffleTreasures</a></li>
+          
+        </ul>
+      </div>
+      
+
+      
+      <!-- Included Modules -->
+      <div id="includes-section" class="section">
+        <h3 class="section-header">Included Modules</h3>
+        <ul class="link-list">
+        
+        
+          <li><span class="include">Singleton</span></li>
+        
+        
+        </ul>
+      </div>
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+      <div id="fileindex-section" class="section project-section">
+        <h3 class="section-header">Files</h3>
+        <ul>
+        
+          <li class="file"><a href="../LICENSE.html">LICENSE</a></li>
+        
+          <li class="file"><a href="../README.html">README</a></li>
+        
+          <li class="file"><a href="../Rakefile.html">Rakefile</a></li>
+        
+          <li class="file"><a href="../nbproject/private/rake-d_txt.html">rake-d.txt</a></li>
+        
+        </ul>
+      </div>
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class/Module Index
+          <span class="search-toggle"><img src="../images/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <ul class="link-list">
+        
+          <li><a href="../Model.html">Model</a></li>
+        
+          <li><a href="../Model/BadConsequence.html">Model::BadConsequence</a></li>
+        
+          <li><a href="../Model/CardDealer.html">Model::CardDealer</a></li>
+        
+          <li><a href="../Model/CombatResult.html">Model::CombatResult</a></li>
+        
+          <li><a href="../Model/Dice.html">Model::Dice</a></li>
+        
+          <li><a href="../Model/Monster.html">Model::Monster</a></li>
+        
+          <li><a href="../Model/Napakalaki.html">Model::Napakalaki</a></li>
+        
+          <li><a href="../Model/Player.html">Model::Player</a></li>
+        
+          <li><a href="../Model/Prize.html">Model::Prize</a></li>
+        
+          <li><a href="../Model/Treasure.html">Model::Treasure</a></li>
+        
+          <li><a href="../Model/TreasureKind.html">Model::TreasureKind</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+
+      
+    </div>
+  </div>
+
+  <div id="documentation">
+    <h1 class="class">Model::CardDealer</h1>
+
+    <div id="description" class="description">
+      
+<p>Clase que permite mantener los dos tipos de mazos de cartas que hay en el
+juego.</p>
+
+<p>Estos dos mazos son:</p>
+<ul><li>
+<p>Mazo con las cartas de monstruos. Se compone de objetos de la clase <a
+href="Monster.html">Monster</a>.</p>
+</li><li>
+<p>Mazo con las cartas de tesoros. Se compone de objetos de la clase <a
+href="Treasure.html">Treasure</a>.</p>
+</li></ul>
+
+<p>Esta clase se encarga de la gestión completa de ambos mazos de cartas,
+inicializarlos, barajarlos y repartir las cartas a los jugadores.</p>
+
+<p>Es una clase de tipo singleton, ya que no interesa tener más de una
+instancia  de dicha clase en cada juego.</p>
+
+    </div><!-- description -->
+
+    
+    
+    
+    <div id="5Buntitled-5D" class="documentation-section">
+      
+
+      
+
+      
+
+      
+
+      <!-- Methods -->
+      
+      <div id="public-class-method-details" class="method-section section">
+        <h3 class="section-header">Public Class Methods</h3>
+
+      
+        <div id="new-method" class="method-detail ">
+          <a name="method-c-new"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">new</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Inicializa la instancia de la clase, inicializando los mazos de cartas que
+se manejan.</p>
+            
+
+            
+            <div class="method-source-code" id="new-source">
+<pre>
+<span class="ruby-comment"># File lib/card_dealer.rb, line 25</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>()
+  <span class="ruby-ivar">@unusedMonsters</span> = <span class="ruby-keyword">nil</span>
+  <span class="ruby-ivar">@usedMonsters</span> = <span class="ruby-keyword">nil</span>
+  <span class="ruby-ivar">@unusedTreasures</span> = <span class="ruby-keyword">nil</span>
+  <span class="ruby-ivar">@usedTreasures</span> = <span class="ruby-keyword">nil</span> 
+
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- new-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- new-method -->
+
+      
+      </div><!-- public-class-method-details -->
+    
+      <div id="public-instance-method-details" class="method-section section">
+        <h3 class="section-header">Public Instance Methods</h3>
+
+      
+        <div id="giveMonsterBack-method" class="method-detail ">
+          <a name="method-i-giveMonsterBack"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">giveMonsterBack</span><span
+              class="method-args">(monster)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Devuelve el monstruo en juego al mazo de descartes de monstruos.</p>
+            
+
+            
+            <div class="method-source-code" id="giveMonsterBack-source">
+<pre>
+<span class="ruby-comment"># File lib/card_dealer.rb, line 241</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">giveMonsterBack</span>(<span class="ruby-identifier">monster</span>)
+  <span class="ruby-ivar">@usedMonsters</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">monster</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- giveMonsterBack-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- giveMonsterBack-method -->
+
+      
+        <div id="giveTreasureBack-method" class="method-detail ">
+          <a name="method-i-giveTreasureBack"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">giveTreasureBack</span><span
+              class="method-args">(treasure)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Devuelve el tesoro que estaba en juego al mazo de descartes de tesoros.</p>
+            
+
+            
+            <div class="method-source-code" id="giveTreasureBack-source">
+<pre>
+<span class="ruby-comment"># File lib/card_dealer.rb, line 234</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">giveTreasureBack</span>(<span class="ruby-identifier">treasure</span>)
+  <span class="ruby-ivar">@usedTreasures</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">treasure</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- giveTreasureBack-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- giveTreasureBack-method -->
+
+      
+        <div id="initCards-method" class="method-detail ">
+          <a name="method-i-initCards"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">initCards</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Inicializa los mazos de cartas.</p>
+            
+
+            
+            <div class="method-source-code" id="initCards-source">
+<pre>
+<span class="ruby-comment"># File lib/card_dealer.rb, line 248</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initCards</span>()
+
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- initCards-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- initCards-method -->
+
+      
+        <div id="initMonsterCardDeck-method" class="method-detail ">
+          <a name="method-i-initMonsterCardDeck"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">initMonsterCardDeck</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Inicializa el mazo de cartas de monstruos</p>
+            
+
+            
+            <div class="method-source-code" id="initMonsterCardDeck-source">
+<pre>
+<span class="ruby-comment"># File lib/card_dealer.rb, line 79</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initMonsterCardDeck</span>()
+
+  <span class="ruby-ivar">@unusedMonsters</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>();
+  <span class="ruby-identifier">prize</span> = <span class="ruby-constant">Prize</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">2</span>,<span class="ruby-value">1</span>)
+  <span class="ruby-identifier">badConsequence</span> = <span class="ruby-constant">BadConsequence</span>.<span class="ruby-identifier">newSpecificTreasures</span>(<span class="ruby-string">&quot;Pierdes tu armadura visible y otra oculta&quot;</span>,
+                   <span class="ruby-value">0</span>, [<span class="ruby-constant">TreasureKind</span><span class="ruby-operator">::</span><span class="ruby-constant">ARMOR</span>], [<span class="ruby-constant">TreasureKind</span><span class="ruby-operator">::</span><span class="ruby-constant">ARMOR</span>])
+  <span class="ruby-ivar">@unusedMonsters</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Monster</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;3 Byakhees de bonanza&quot;</span>, <span class="ruby-value">8</span>, <span class="ruby-identifier">prize</span>, <span class="ruby-identifier">badConsequence</span>)
+
+  <span class="ruby-identifier">prize</span> = <span class="ruby-constant">Prize</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">4</span>,<span class="ruby-value">1</span>)
+  <span class="ruby-identifier">badConsequence</span> = <span class="ruby-constant">BadConsequence</span>.<span class="ruby-identifier">newSpecificTreasures</span>(<span class="ruby-string">&quot;Te atrapan para llevarte de fiesta y te dejan &quot;</span> <span class="ruby-operator">+</span>
+                    <span class="ruby-string">&quot;caer en mitad del vuelo. Descarta una mano visible y otra oculta&quot;</span>,
+                    <span class="ruby-value">0</span>, [<span class="ruby-constant">TreasureKind</span><span class="ruby-operator">::</span><span class="ruby-constant">ONEHAND</span>], [<span class="ruby-constant">TreasureKind</span><span class="ruby-operator">::</span><span class="ruby-constant">ONEHAND</span>])
+  <span class="ruby-ivar">@unusedMonsters</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Monster</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Ángeles de la noche ibicenca&quot;</span>, <span class="ruby-value">14</span>, <span class="ruby-identifier">prize</span>, <span class="ruby-identifier">badConsequence</span>)
+
+  <span class="ruby-identifier">prize</span> = <span class="ruby-constant">Prize</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">3</span>,<span class="ruby-value">1</span>)
+  <span class="ruby-identifier">badConsequence</span> = <span class="ruby-constant">BadConsequence</span>.<span class="ruby-identifier">newNumberOfTreasures</span>(<span class="ruby-string">&quot;Pierdes todos tus tesoros visibles&quot;</span>, <span class="ruby-value">0</span>, <span class="ruby-value">5</span>, <span class="ruby-value">0</span>)
+  <span class="ruby-ivar">@unusedMonsters</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Monster</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;El gorrón en el umbral&quot;</span>, <span class="ruby-value">10</span>, <span class="ruby-identifier">prize</span>, <span class="ruby-identifier">badConsequence</span>)
+
+  <span class="ruby-ivar">@unusedMonsters</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-identifier">prize</span> = <span class="ruby-constant">Prize</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">2</span>,<span class="ruby-value">1</span>)
+  <span class="ruby-identifier">badConsequence</span> = <span class="ruby-constant">BadConsequence</span>.<span class="ruby-identifier">newSpecificTreasures</span>(<span class="ruby-string">&quot;Pierdes tu armadura visible y otra oculta&quot;</span>,
+                   <span class="ruby-value">0</span>, [<span class="ruby-constant">TreasureKind</span><span class="ruby-operator">::</span><span class="ruby-constant">ARMOR</span>], [<span class="ruby-constant">TreasureKind</span><span class="ruby-operator">::</span><span class="ruby-constant">ARMOR</span>])
+  <span class="ruby-ivar">@unusedMonsters</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Monster</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;3 Byakhees de bonanza&quot;</span>, <span class="ruby-value">8</span>, <span class="ruby-identifier">prize</span>, <span class="ruby-identifier">badConsequence</span>)
+
+  <span class="ruby-identifier">prize</span> = <span class="ruby-constant">Prize</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">1</span>,<span class="ruby-value">1</span>)
+  <span class="ruby-identifier">badConsequence</span> = <span class="ruby-constant">BadConsequence</span>.<span class="ruby-identifier">newSpecificTreasures</span>(<span class="ruby-string">&quot;Embobados con el lindo primigenio, te descartas&quot;</span> <span class="ruby-operator">+</span>
+                   <span class="ruby-string">&quot; de tu casco visible&quot;</span>, <span class="ruby-value">0</span>, [<span class="ruby-constant">TreasureKind</span><span class="ruby-operator">::</span><span class="ruby-constant">HELMET</span>], [])
+  <span class="ruby-ivar">@unusedMonsters</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Monster</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Chibithulhu&quot;</span>, <span class="ruby-value">2</span>, <span class="ruby-identifier">prize</span>, <span class="ruby-identifier">badConsequence</span>)
+
+  <span class="ruby-identifier">prize</span> = <span class="ruby-constant">Prize</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">1</span>,<span class="ruby-value">1</span>)
+  <span class="ruby-identifier">badConsequence</span> = <span class="ruby-constant">BadConsequence</span>.<span class="ruby-identifier">newSpecificTreasures</span>(<span class="ruby-string">&quot;El primordial bostezo contagioso. &quot;</span> <span class="ruby-operator">+</span>
+                   <span class="ruby-string">&quot;Pierdes el calzado visible&quot;</span>, <span class="ruby-value">0</span>, [<span class="ruby-constant">TreasureKind</span><span class="ruby-operator">::</span><span class="ruby-constant">SHOE</span>], [])
+  <span class="ruby-ivar">@unusedMonsters</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Monster</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;El sopor de Dunwich&quot;</span>, <span class="ruby-value">2</span>, <span class="ruby-identifier">prize</span>, <span class="ruby-identifier">badConsequence</span>)
+
+  <span class="ruby-identifier">prize</span> = <span class="ruby-constant">Prize</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">4</span>,<span class="ruby-value">1</span>)
+  <span class="ruby-identifier">badConsequence</span> = <span class="ruby-constant">BadConsequence</span>.<span class="ruby-identifier">newSpecificTreasures</span>(<span class="ruby-string">&quot;Te atrapan para llevarte de fiesta y te dejan &quot;</span> <span class="ruby-operator">+</span>
+                    <span class="ruby-string">&quot;caer en mitad del vuelo. Descarta una mano visible y otra oculta&quot;</span>,
+                    <span class="ruby-value">0</span>, [<span class="ruby-constant">TreasureKind</span><span class="ruby-operator">::</span><span class="ruby-constant">ONEHAND</span>], [<span class="ruby-constant">TreasureKind</span><span class="ruby-operator">::</span><span class="ruby-constant">ONEHAND</span>])
+  <span class="ruby-ivar">@unusedMonsters</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Monster</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Ángeles de la noche ibicenca&quot;</span>, <span class="ruby-value">14</span>, <span class="ruby-identifier">prize</span>, <span class="ruby-identifier">badConsequence</span>)
+
+  <span class="ruby-identifier">prize</span> = <span class="ruby-constant">Prize</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">3</span>,<span class="ruby-value">1</span>)
+  <span class="ruby-identifier">badConsequence</span> = <span class="ruby-constant">BadConsequence</span>.<span class="ruby-identifier">newNumberOfTreasures</span>(<span class="ruby-string">&quot;Pierdes todos tus tesoros visibles&quot;</span>, <span class="ruby-value">0</span>, <span class="ruby-value">5</span>, <span class="ruby-value">0</span>)
+  <span class="ruby-ivar">@unusedMonsters</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Monster</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;El gorrón en el umbral&quot;</span>, <span class="ruby-value">10</span>, <span class="ruby-identifier">prize</span>, <span class="ruby-identifier">badConsequence</span>)
+
+  <span class="ruby-identifier">prize</span> = <span class="ruby-constant">Prize</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">2</span>,<span class="ruby-value">1</span>)
+  <span class="ruby-identifier">badConsequence</span> = <span class="ruby-constant">BadConsequence</span>.<span class="ruby-identifier">newSpecificTreasures</span>(<span class="ruby-string">&quot;Pierdes la armadura visible&quot;</span>,
+                    <span class="ruby-value">0</span>, [<span class="ruby-constant">TreasureKind</span><span class="ruby-operator">::</span><span class="ruby-constant">ARMOR</span>], [])
+  <span class="ruby-ivar">@unusedMonsters</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Monster</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;H.P. Munchcraft&quot;</span>, <span class="ruby-value">6</span>, <span class="ruby-identifier">prize</span>, <span class="ruby-identifier">badConsequence</span>)
+
+  <span class="ruby-identifier">prize</span> = <span class="ruby-constant">Prize</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">1</span>,<span class="ruby-value">1</span>)
+  <span class="ruby-identifier">badConsequence</span> = <span class="ruby-constant">BadConsequence</span>.<span class="ruby-identifier">newSpecificTreasures</span>(<span class="ruby-string">&quot;Sientes bichos bajo la ropa,&quot;</span> <span class="ruby-operator">+</span>
+                    <span class="ruby-string">&quot; descarta tu armadura visible&quot;</span>, <span class="ruby-value">0</span>, [<span class="ruby-constant">TreasureKind</span><span class="ruby-operator">::</span><span class="ruby-constant">ARMOR</span>], [])
+  <span class="ruby-ivar">@unusedMonsters</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Monster</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Bichgooth&quot;</span>, <span class="ruby-value">2</span>, <span class="ruby-identifier">prize</span>, <span class="ruby-identifier">badConsequence</span>)
+
+  <span class="ruby-identifier">prize</span> = <span class="ruby-constant">Prize</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">4</span>,<span class="ruby-value">2</span>)
+  <span class="ruby-identifier">badConsequence</span> = <span class="ruby-constant">BadConsequence</span>.<span class="ruby-identifier">newNumberOfTreasures</span>(<span class="ruby-string">&quot;Pierdes 5 niveles y 3 tesoros visibles&quot;</span>,
+                    <span class="ruby-value">5</span>, <span class="ruby-value">3</span>, <span class="ruby-value">0</span>)
+  <span class="ruby-ivar">@unusedMonsters</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Monster</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;El rey de rosa&quot;</span>, <span class="ruby-value">13</span>, <span class="ruby-identifier">prize</span>, <span class="ruby-identifier">badConsequence</span>)
+
+  <span class="ruby-identifier">prize</span> = <span class="ruby-constant">Prize</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">1</span>,<span class="ruby-value">1</span>)
+  <span class="ruby-identifier">badConsequence</span> = <span class="ruby-constant">BadConsequence</span>.<span class="ruby-identifier">newNumberOfTreasures</span>(<span class="ruby-string">&quot;Toses los pulmones y pierdes 2 niveles&quot;</span>,
+                    <span class="ruby-value">2</span>, <span class="ruby-value">0</span>, <span class="ruby-value">0</span>)
+  <span class="ruby-ivar">@unusedMonsters</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Monster</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;La que redacta en las tinieblas&quot;</span>, <span class="ruby-value">2</span>, <span class="ruby-identifier">prize</span>, <span class="ruby-identifier">badConsequence</span>)
+
+  <span class="ruby-identifier">prize</span> = <span class="ruby-constant">Prize</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">2</span>,<span class="ruby-value">1</span>)
+  <span class="ruby-identifier">badConsequence</span> = <span class="ruby-constant">BadConsequence</span>.<span class="ruby-identifier">newDeath</span>(<span class="ruby-string">&quot;Estos monstruos resultan bastante &quot;</span> <span class="ruby-operator">+</span>
+                    <span class="ruby-string">&quot;superficiales y te aburren mortalmente. Estás muerto&quot;</span>)
+  <span class="ruby-ivar">@unusedMonsters</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Monster</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Los hondos&quot;</span>, <span class="ruby-value">8</span>, <span class="ruby-identifier">prize</span>, <span class="ruby-identifier">badConsequence</span>)
+
+  <span class="ruby-identifier">prize</span> = <span class="ruby-constant">Prize</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">2</span>,<span class="ruby-value">1</span>)
+  <span class="ruby-identifier">badConsequence</span> = <span class="ruby-constant">BadConsequence</span>.<span class="ruby-identifier">newNumberOfTreasures</span>(<span class="ruby-string">&quot;Pierdes dos niveles y dos tesoros ocultos&quot;</span>,
+                    <span class="ruby-value">2</span>, <span class="ruby-value">0</span>, <span class="ruby-value">2</span>)
+  <span class="ruby-ivar">@unusedMonsters</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Monster</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Semillas Cthulhu&quot;</span>, <span class="ruby-value">4</span>, <span class="ruby-identifier">prize</span>, <span class="ruby-identifier">badConsequence</span>)
+
+  <span class="ruby-identifier">prize</span> = <span class="ruby-constant">Prize</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">2</span>,<span class="ruby-value">1</span>)
+  <span class="ruby-identifier">badConsequence</span> = <span class="ruby-constant">BadConsequence</span>.<span class="ruby-identifier">newSpecificTreasures</span>(<span class="ruby-string">&quot;Te intentas escaquear. Pierdes una mano visible&quot;</span>,
+                    <span class="ruby-value">0</span>, [<span class="ruby-constant">TreasureKind</span><span class="ruby-operator">::</span><span class="ruby-constant">ONEHAND</span>], [])
+  <span class="ruby-ivar">@unusedMonsters</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Monster</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Dameargo&quot;</span>, <span class="ruby-value">1</span>, <span class="ruby-identifier">prize</span>, <span class="ruby-identifier">badConsequence</span>)
+
+  <span class="ruby-identifier">prize</span> = <span class="ruby-constant">Prize</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">1</span>,<span class="ruby-value">1</span>)
+  <span class="ruby-identifier">badConsequence</span> = <span class="ruby-constant">BadConsequence</span>.<span class="ruby-identifier">newNumberOfTreasures</span>(<span class="ruby-string">&quot;Da mucho asquito. Pierdes 3 niveles&quot;</span>,
+                    <span class="ruby-value">3</span>, <span class="ruby-value">0</span>, <span class="ruby-value">0</span>)
+  <span class="ruby-ivar">@unusedMonsters</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Monster</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Pollipólipo volante&quot;</span>, <span class="ruby-value">3</span>, <span class="ruby-identifier">prize</span>, <span class="ruby-identifier">badConsequence</span>)
+
+  <span class="ruby-identifier">prize</span> = <span class="ruby-constant">Prize</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">3</span>,<span class="ruby-value">1</span>)
+  <span class="ruby-identifier">badConsequence</span> = <span class="ruby-constant">BadConsequence</span>.<span class="ruby-identifier">newDeath</span>(<span class="ruby-string">&quot;No le hace gracia que pronucien mal su&quot;</span> <span class="ruby-operator">+</span>
+                    <span class="ruby-string">&quot; nombre, estás muerto&quot;</span>)
+  <span class="ruby-ivar">@unusedMonsters</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Monster</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Yskhtihyssg-Goth&quot;</span>, <span class="ruby-value">12</span>, <span class="ruby-identifier">prize</span>, <span class="ruby-identifier">badConsequence</span>)
+
+  <span class="ruby-identifier">prize</span> = <span class="ruby-constant">Prize</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">4</span>,<span class="ruby-value">1</span>)
+  <span class="ruby-identifier">badConsequence</span> = <span class="ruby-constant">BadConsequence</span>.<span class="ruby-identifier">newDeath</span>(<span class="ruby-string">&quot;La familia te atrapa. Estás muerto&quot;</span>)
+  <span class="ruby-ivar">@unusedMonsters</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Monster</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Familia feliz&quot;</span>, <span class="ruby-value">1</span>, <span class="ruby-identifier">prize</span>, <span class="ruby-identifier">badConsequence</span>)
+
+  <span class="ruby-identifier">prize</span> = <span class="ruby-constant">Prize</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">2</span>,<span class="ruby-value">1</span>)
+  <span class="ruby-identifier">badConsequence</span> = <span class="ruby-constant">BadConsequence</span>.<span class="ruby-identifier">newSpecificTreasures</span>(<span class="ruby-string">&quot;La quinta directiva primaria &quot;</span> <span class="ruby-operator">+</span>
+                   <span class="ruby-string">&quot;te obliga a perder dos niveles y un tesoro de dos manos visible&quot;</span>, <span class="ruby-value">2</span>,
+                    [<span class="ruby-constant">TreasureKind</span><span class="ruby-operator">::</span><span class="ruby-constant">BOTHHANDS</span>], [])
+  <span class="ruby-ivar">@unusedMonsters</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Monster</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Roboggoth&quot;</span>, <span class="ruby-value">8</span>, <span class="ruby-identifier">prize</span>, <span class="ruby-identifier">badConsequence</span>)
+
+  <span class="ruby-identifier">prize</span> = <span class="ruby-constant">Prize</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">1</span>,<span class="ruby-value">1</span>)
+  <span class="ruby-identifier">badConsequence</span> = <span class="ruby-constant">BadConsequence</span>.<span class="ruby-identifier">newSpecificTreasures</span>(<span class="ruby-string">&quot;Te asusta en la noche. Pierdes&quot;</span> <span class="ruby-operator">+</span>
+                    <span class="ruby-string">&quot; un casco visible&quot;</span>, <span class="ruby-value">0</span>, [<span class="ruby-constant">TreasureKind</span><span class="ruby-operator">::</span><span class="ruby-constant">HELMET</span>],[])
+  <span class="ruby-ivar">@unusedMonsters</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Monster</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;El espia&quot;</span>, <span class="ruby-value">5</span>, <span class="ruby-identifier">prize</span>, <span class="ruby-identifier">badConsequence</span>)
+
+  <span class="ruby-identifier">prize</span> = <span class="ruby-constant">Prize</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">1</span>,<span class="ruby-value">1</span>)
+  <span class="ruby-identifier">badConsequence</span> = <span class="ruby-constant">BadConsequence</span>.<span class="ruby-identifier">newNumberOfTreasures</span>(<span class="ruby-string">&quot;Menudo susto te llevas. Pierdes&quot;</span> <span class="ruby-operator">+</span>
+                    <span class="ruby-string">&quot; 2 niveles y 5 tesoros visibles&quot;</span>, <span class="ruby-value">2</span>, <span class="ruby-value">5</span>, <span class="ruby-value">0</span>)
+  <span class="ruby-ivar">@unusedMonsters</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Monster</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;El lenguas&quot;</span>, <span class="ruby-value">20</span>, <span class="ruby-identifier">prize</span>, <span class="ruby-identifier">badConsequence</span>)
+
+  <span class="ruby-identifier">prize</span> = <span class="ruby-constant">Prize</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">1</span>,<span class="ruby-value">1</span>)
+  <span class="ruby-identifier">badConsequence</span> = <span class="ruby-constant">BadConsequence</span>.<span class="ruby-identifier">newSpecificTreasures</span>(<span class="ruby-string">&quot;Te faltan manos para tanta&quot;</span> <span class="ruby-operator">+</span>
+                    <span class="ruby-string">&quot; cabeza. Pierdes 3 niveles y tus tesoros visibles de las manos&quot;</span>,
+                    <span class="ruby-value">3</span>, [<span class="ruby-constant">TreasureKind</span><span class="ruby-operator">::</span><span class="ruby-constant">ONEHAND</span>, <span class="ruby-constant">TreasureKind</span><span class="ruby-operator">::</span><span class="ruby-constant">BOTHHANDS</span>],[])
+  <span class="ruby-ivar">@unusedMonsters</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Monster</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Bicéfalo&quot;</span>, <span class="ruby-value">20</span>, <span class="ruby-identifier">prize</span>, <span class="ruby-identifier">badConsequence</span>)
+
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- initMonsterCardDeck-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- initMonsterCardDeck-method -->
+
+      
+        <div id="initTreasuresCardDeck-method" class="method-detail ">
+          <a name="method-i-initTreasuresCardDeck"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">initTreasuresCardDeck</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Inicializa el mazo de cartas de tesoros.</p>
+            
+
+            
+            <div class="method-source-code" id="initTreasuresCardDeck-source">
+<pre>
+<span class="ruby-comment"># File lib/card_dealer.rb, line 36</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initTreasuresCardDeck</span>()
+
+
+  <span class="ruby-ivar">@unusedTreasures</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
+
+  <span class="ruby-ivar">@unusedTreasures</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Treasure</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;¡Sí mi amo!&quot;</span>, <span class="ruby-value">0</span>, <span class="ruby-value">4</span>, <span class="ruby-value">7</span>, <span class="ruby-constant">TreasureKind</span><span class="ruby-operator">::</span><span class="ruby-constant">HELMET</span>)
+  <span class="ruby-ivar">@unusedTreasures</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Treasure</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Botas de investigación&quot;</span>, <span class="ruby-value">600</span>, <span class="ruby-value">3</span>, <span class="ruby-value">4</span>, <span class="ruby-constant">TreasureKind</span><span class="ruby-operator">::</span><span class="ruby-constant">SHOE</span>)
+  <span class="ruby-ivar">@unusedTreasures</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Treasure</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Capucha de Cthulhu&quot;</span>, <span class="ruby-value">500</span>, <span class="ruby-value">3</span>, <span class="ruby-value">5</span>, <span class="ruby-constant">TreasureKind</span><span class="ruby-operator">::</span><span class="ruby-constant">HELMET</span>)   
+  <span class="ruby-ivar">@unusedTreasures</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Treasure</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;A prueba de babas&quot;</span>, <span class="ruby-value">400</span>, <span class="ruby-value">2</span>, <span class="ruby-value">5</span>, <span class="ruby-constant">TreasureKind</span><span class="ruby-operator">::</span><span class="ruby-constant">ARMOR</span>)   
+  <span class="ruby-ivar">@unusedTreasures</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Treasure</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Botas de lluvia ácida&quot;</span>, <span class="ruby-value">800</span>, <span class="ruby-value">1</span>, <span class="ruby-value">1</span>, <span class="ruby-constant">TreasureKind</span><span class="ruby-operator">::</span><span class="ruby-constant">SHOE</span>)   
+  <span class="ruby-ivar">@unusedTreasures</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Treasure</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Casco minero&quot;</span>, <span class="ruby-value">400</span>, <span class="ruby-value">2</span>, <span class="ruby-value">4</span>, <span class="ruby-constant">TreasureKind</span><span class="ruby-operator">::</span><span class="ruby-constant">HELMET</span>)   
+  <span class="ruby-ivar">@unusedTreasures</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Treasure</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Ametralladora Thompson&quot;</span>, <span class="ruby-value">600</span>, <span class="ruby-value">4</span>, <span class="ruby-value">8</span>, <span class="ruby-constant">TreasureKind</span><span class="ruby-operator">::</span><span class="ruby-constant">BOTHHANDS</span>)   
+  <span class="ruby-ivar">@unusedTreasures</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Treasure</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Camiseta de la UGR&quot;</span>, <span class="ruby-value">100</span>, <span class="ruby-value">1</span>, <span class="ruby-value">7</span>, <span class="ruby-constant">TreasureKind</span><span class="ruby-operator">::</span><span class="ruby-constant">ARMOR</span>)   
+  <span class="ruby-ivar">@unusedTreasures</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Treasure</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Clavo de rail ferroviario&quot;</span>, <span class="ruby-value">400</span>, <span class="ruby-value">3</span>, <span class="ruby-value">6</span>, <span class="ruby-constant">TreasureKind</span><span class="ruby-operator">::</span><span class="ruby-constant">ONEHAND</span>)   
+  <span class="ruby-ivar">@unusedTreasures</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Treasure</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Cuchillo de sushi arcano&quot;</span>, <span class="ruby-value">300</span>, <span class="ruby-value">2</span>, <span class="ruby-value">3</span>, <span class="ruby-constant">TreasureKind</span><span class="ruby-operator">::</span><span class="ruby-constant">ONEHAND</span>)   
+  <span class="ruby-ivar">@unusedTreasures</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Treasure</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Fez alópodo&quot;</span>, <span class="ruby-value">700</span>, <span class="ruby-value">3</span>, <span class="ruby-value">5</span>, <span class="ruby-constant">TreasureKind</span><span class="ruby-operator">::</span><span class="ruby-constant">HELMET</span>)   
+  <span class="ruby-ivar">@unusedTreasures</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Treasure</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Hacha prehistórica&quot;</span>, <span class="ruby-value">500</span>, <span class="ruby-value">2</span>, <span class="ruby-value">5</span>, <span class="ruby-constant">TreasureKind</span><span class="ruby-operator">::</span><span class="ruby-constant">ONEHAND</span>)   
+  <span class="ruby-ivar">@unusedTreasures</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Treasure</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;El aparato del Pr. Tesla&quot;</span>, <span class="ruby-value">900</span>, <span class="ruby-value">4</span>, <span class="ruby-value">8</span>, <span class="ruby-constant">TreasureKind</span><span class="ruby-operator">::</span><span class="ruby-constant">ARMOR</span>)
+  <span class="ruby-ivar">@unusedTreasures</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Treasure</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Gaita&quot;</span>, <span class="ruby-value">500</span>, <span class="ruby-value">4</span>, <span class="ruby-value">5</span>, <span class="ruby-constant">TreasureKind</span><span class="ruby-operator">::</span><span class="ruby-constant">BOTHHANDS</span>)
+  <span class="ruby-ivar">@unusedTreasures</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Treasure</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Insecticida&quot;</span>, <span class="ruby-value">300</span>, <span class="ruby-value">2</span>, <span class="ruby-value">3</span>, <span class="ruby-constant">TreasureKind</span><span class="ruby-operator">::</span><span class="ruby-constant">ONEHAND</span>)
+  <span class="ruby-ivar">@unusedTreasures</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Treasure</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Escopeta de tres cañones&quot;</span>, <span class="ruby-value">700</span>, <span class="ruby-value">4</span>, <span class="ruby-value">6</span>, <span class="ruby-constant">TreasureKind</span><span class="ruby-operator">::</span><span class="ruby-constant">BOTHHANDS</span>)
+  <span class="ruby-ivar">@unusedTreasures</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Treasure</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Garabato místico&quot;</span>, <span class="ruby-value">300</span>, <span class="ruby-value">2</span>, <span class="ruby-value">2</span>, <span class="ruby-constant">TreasureKind</span><span class="ruby-operator">::</span><span class="ruby-constant">ONEHAND</span>)
+  <span class="ruby-ivar">@unusedTreasures</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Treasure</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;La fuerza de Mr. T&quot;</span>, <span class="ruby-value">1000</span>, <span class="ruby-value">0</span>, <span class="ruby-value">0</span>, <span class="ruby-constant">TreasureKind</span><span class="ruby-operator">::</span><span class="ruby-constant">NECKLACE</span>)
+  <span class="ruby-ivar">@unusedTreasures</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Treasure</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;La rebeca metálica&quot;</span>, <span class="ruby-value">400</span>, <span class="ruby-value">2</span>, <span class="ruby-value">3</span>, <span class="ruby-constant">TreasureKind</span><span class="ruby-operator">::</span><span class="ruby-constant">ARMOR</span>)
+  <span class="ruby-ivar">@unusedTreasures</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Treasure</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Mazo de los antiguos&quot;</span>, <span class="ruby-value">200</span>, <span class="ruby-value">3</span>, <span class="ruby-value">4</span>, <span class="ruby-constant">TreasureKind</span><span class="ruby-operator">::</span><span class="ruby-constant">ONEHAND</span>)
+  <span class="ruby-ivar">@unusedTreasures</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Treasure</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Necroplayboycon&quot;</span>, <span class="ruby-value">300</span>, <span class="ruby-value">3</span>, <span class="ruby-value">5</span>, <span class="ruby-constant">TreasureKind</span><span class="ruby-operator">::</span><span class="ruby-constant">ONEHAND</span>)
+  <span class="ruby-ivar">@unusedTreasures</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Treasure</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Lanzallamas&quot;</span>, <span class="ruby-value">800</span>, <span class="ruby-value">4</span>, <span class="ruby-value">8</span>, <span class="ruby-constant">TreasureKind</span><span class="ruby-operator">::</span><span class="ruby-constant">BOTHHANDS</span>)
+  <span class="ruby-ivar">@unusedTreasures</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Treasure</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Necrocomicón&quot;</span>, <span class="ruby-value">100</span>, <span class="ruby-value">1</span>, <span class="ruby-value">1</span>, <span class="ruby-constant">TreasureKind</span><span class="ruby-operator">::</span><span class="ruby-constant">ONEHAND</span>)
+  <span class="ruby-ivar">@unusedTreasures</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Treasure</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Necronomicón&quot;</span>, <span class="ruby-value">800</span>, <span class="ruby-value">5</span>, <span class="ruby-value">7</span>, <span class="ruby-constant">TreasureKind</span><span class="ruby-operator">::</span><span class="ruby-constant">BOTHHANDS</span>)
+  <span class="ruby-ivar">@unusedTreasures</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Treasure</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Linterna a dos manos&quot;</span>, <span class="ruby-value">400</span>, <span class="ruby-value">3</span>, <span class="ruby-value">6</span>, <span class="ruby-constant">TreasureKind</span><span class="ruby-operator">::</span><span class="ruby-constant">BOTHHANDS</span>)
+  <span class="ruby-ivar">@unusedTreasures</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Treasure</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Necrognomicón&quot;</span>, <span class="ruby-value">200</span>, <span class="ruby-value">2</span>, <span class="ruby-value">4</span>, <span class="ruby-constant">TreasureKind</span><span class="ruby-operator">::</span><span class="ruby-constant">ONEHAND</span>)
+  <span class="ruby-ivar">@unusedTreasures</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Treasure</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Necrotelecom&quot;</span>, <span class="ruby-value">300</span>, <span class="ruby-value">2</span>, <span class="ruby-value">3</span>, <span class="ruby-constant">TreasureKind</span><span class="ruby-operator">::</span><span class="ruby-constant">HELMET</span>)
+  <span class="ruby-ivar">@unusedTreasures</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Treasure</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Porra preternatural&quot;</span>, <span class="ruby-value">200</span>, <span class="ruby-value">2</span>, <span class="ruby-value">3</span>, <span class="ruby-constant">TreasureKind</span><span class="ruby-operator">::</span><span class="ruby-constant">ONEHAND</span>)
+  <span class="ruby-ivar">@unusedTreasures</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Treasure</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Tentáculo de pega&quot;</span>, <span class="ruby-value">200</span>, <span class="ruby-value">0</span>, <span class="ruby-value">1</span>, <span class="ruby-constant">TreasureKind</span><span class="ruby-operator">::</span><span class="ruby-constant">HELMET</span>)
+  <span class="ruby-ivar">@unusedTreasures</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Treasure</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Zapato deja-amigos&quot;</span>, <span class="ruby-value">500</span>, <span class="ruby-value">0</span>, <span class="ruby-value">1</span>, <span class="ruby-constant">TreasureKind</span><span class="ruby-operator">::</span><span class="ruby-constant">SHOE</span>)
+  <span class="ruby-ivar">@unusedTreasures</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Treasure</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Shogulador&quot;</span>, <span class="ruby-value">600</span>, <span class="ruby-value">1</span>, <span class="ruby-value">1</span>, <span class="ruby-constant">TreasureKind</span><span class="ruby-operator">::</span><span class="ruby-constant">BOTHHANDS</span>)
+  <span class="ruby-ivar">@unusedTreasures</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Treasure</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Varita de atizamiento&quot;</span>, <span class="ruby-value">400</span>, <span class="ruby-value">3</span>, <span class="ruby-value">4</span>, <span class="ruby-constant">TreasureKind</span><span class="ruby-operator">::</span><span class="ruby-constant">ONEHAND</span>)
+
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- initTreasuresCardDeck-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- initTreasuresCardDeck-method -->
+
+      
+        <div id="nextMonster-method" class="method-detail ">
+          <a name="method-i-nextMonster"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">nextMonster</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Devuelve el siguiente monstruo del mazo de cartas de monstruos. Si tras la 
+extracción de dicho monstruo el mazo queda vacío, se coge el mazo de
+descartes de monstruos, se devuelve al mazo de monstruos y se baraja.</p>
+            
+
+            
+            <div class="method-source-code" id="nextMonster-source">
+<pre>
+<span class="ruby-comment"># File lib/card_dealer.rb, line 227</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">nextMonster</span>()
+
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- nextMonster-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- nextMonster-method -->
+
+      
+        <div id="nextTreasure-method" class="method-detail ">
+          <a name="method-i-nextTreasure"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">nextTreasure</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Devuelve el siguiente tesoro del mazo de cartas de tesoros. Si tras la 
+extracción de dicho tesoro el mazo de tesoros queda vacío, se coge el mazo
+de descartes de tesoros, se devuelve al mazo de tesoros y se baraja.</p>
+            
+
+            
+            <div class="method-source-code" id="nextTreasure-source">
+<pre>
+<span class="ruby-comment"># File lib/card_dealer.rb, line 218</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">nextTreasure</span>()
+
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- nextTreasure-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- nextTreasure-method -->
+
+      
+        <div id="shuffleMonsters-method" class="method-detail ">
+          <a name="method-i-shuffleMonsters"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">shuffleMonsters</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Baraja el mazo de cartas de monstruos</p>
+            
+
+            
+            <div class="method-source-code" id="shuffleMonsters-source">
+<pre>
+<span class="ruby-comment"># File lib/card_dealer.rb, line 206</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">shuffleMonsters</span>()
+  <span class="ruby-ivar">@unusedMonsters</span>.<span class="ruby-identifier">shuffle!</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- shuffleMonsters-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- shuffleMonsters-method -->
+
+      
+        <div id="shuffleTreasures-method" class="method-detail ">
+          <a name="method-i-shuffleTreasures"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">shuffleTreasures</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Baraja el mazo de cartas de tesoros</p>
+            
+
+            
+            <div class="method-source-code" id="shuffleTreasures-source">
+<pre>
+<span class="ruby-comment"># File lib/card_dealer.rb, line 199</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">shuffleTreasures</span>()
+  <span class="ruby-ivar">@unusedTreasures</span>.<span class="ruby-identifier">shuffle!</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- shuffleTreasures-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- shuffleTreasures-method -->
+
+      
+      </div><!-- public-instance-method-details -->
+    
+    </div><!-- 5Buntitled-5D -->
+  
+
+  </div><!-- documentation -->
+
+  <div id="validator-badges">
+    <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+    <p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+      Rdoc Generator</a> 2</small>.</p>
+  </div>
+
+</body>
+</html>
+

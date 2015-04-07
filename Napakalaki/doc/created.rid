@@ -1,10 +1,16 @@
-Thu, 19 Mar 2015 10:42:43 +0100
-./Rakefile	Wed, 11 Mar 2015 17:00:01 +0100
-./nbproject/private/rake-d.txt	Thu, 19 Mar 2015 09:39:42 +0100
-./README	Wed, 11 Mar 2015 17:00:01 +0100
+Tue, 07 Apr 2015 19:52:44 +0200
 ./LICENSE	Wed, 11 Mar 2015 17:00:01 +0100
-./lib/main.rb	Thu, 12 Mar 2015 12:56:26 +0100
-./lib/bad_consequence.rb	Fri, 13 Mar 2015 12:37:08 +0100
-./lib/monster.rb	Thu, 12 Mar 2015 13:25:16 +0100
-./lib/prize.rb	Thu, 12 Mar 2015 11:10:27 +0100
-./lib/treasure_kind.rb	Thu, 12 Mar 2015 11:10:37 +0100
+./Rakefile	Wed, 11 Mar 2015 17:00:01 +0100
+./nbproject/private/rake-d.txt	Tue, 07 Apr 2015 17:30:45 +0200
+./lib/prize.rb	Mon, 30 Mar 2015 12:48:52 +0200
+./lib/player.rb	Mon, 30 Mar 2015 12:48:52 +0200
+./lib/treasure.rb	Mon, 30 Mar 2015 12:48:52 +0200
+./lib/dice.rb	Mon, 30 Mar 2015 12:48:52 +0200
+./lib/main.rb	Mon, 30 Mar 2015 12:48:52 +0200
+./lib/napakalaki.rb	Mon, 30 Mar 2015 12:48:52 +0200
+./lib/card_dealer.rb	Tue, 07 Apr 2015 19:52:35 +0200
+./lib/combat_result.rb	Tue, 07 Apr 2015 19:44:35 +0200
+./lib/monster.rb	Mon, 30 Mar 2015 12:48:52 +0200
+./lib/bad_consequence.rb	Tue, 07 Apr 2015 19:12:20 +0200
+./lib/treasure_kind.rb	Mon, 30 Mar 2015 12:48:52 +0200
+./README	Wed, 11 Mar 2015 17:00:01 +0100

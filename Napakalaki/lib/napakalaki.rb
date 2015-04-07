@@ -1,12 +1,21 @@
-# To change this license header, choose License Headers in Project Properties.
-# To change this template file, choose Tools | Templates
-# and open the template in the editor.
+# encoding: UTF-8
+# Main module of the Napakalaki project
 
 module Model
 
+  ##
+  # Clase principal del juego Napakalaki. Controla toda la información relativa
+  # al desarrollo de una partida. Controla la información de los jugadores, el 
+  # jugador que lleva el turno, los resultados de los combates y los mazos de 
+  # cartas. Es una clase de tipo singleton, ya que no interesa tener más de una
+  # instancia del juego en el programa al mismo tiempo.
+  #
   class Napakalaki
     include Singleton
 
+    ##
+    # Inicializa el juego
+    #
     def initialize()
       @currentPlayer = 0
       @players = Array.new
@@ -14,18 +23,32 @@ module Model
 
     end
 
-    attr_reader :currentPlayer, :currentMonster
+    # Jugador que posee el turno
+    attr_reader :currentPlayer
+    
+    # Monstruo actual, que pelea contra el jugador que posee el turno
+    attr_reader :currentMonster
 
+    ##
+    # Inicializa el vector de jugadores.
+    #
     def initPlayer(names)
 
     end
 
+    ##
+    # Pasa el turno al siguiente jugador.
+    #
     def nextPlayer()
 
     end
 
     private_class_method :initPlayer, :nextPlayer
 
+    ##
+    # Simula un combate entre el jugador actual (currentPlayer) y el monstruo
+    # actual (currentMonster), devolviendo el resultado de dicho combate
+    #
     def combat()
 
     end

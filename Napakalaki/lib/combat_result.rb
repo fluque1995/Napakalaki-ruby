@@ -1,14 +1,25 @@
-# To change this license header, choose License Headers in Project Properties.
-# To change this template file, choose Tools | Templates
-# and open the template in the editor.
+# encoding: UTF-8
+# Main module of the Napakalaki project
 
 module Model
 
+  ##
+  # Módulo que controla los distintos resultados posibles dentro de un combate
+  # entre un jugador (Objeto de la clase Player) y un monstruo (Objeto de la clase
+  # Monster). Dependiendo del resultado del combate, se han de ajustar distintos
+  # parámetros posteriormente.
+  #
   module CombatResult
-      WINANDWINGAME= :WINANDWINGAME
-      WIN= :WIN
-      LOSE= :LOSE
-      LOSEANDESCAPE= :LOSEANDESCAPE
-      LOSEANDDIE= :LOSEANDDIE
+    
+    # El jugador gana el combate y la partida
+    WINANDWINGAME= :WINANDWINGAME
+    # El jugador gana el combate
+    WIN= :WIN
+    # El jugador pierde el combate y no consigue escapar
+    LOSE= :LOSE
+    # El jugador pierde el combate pero escapa
+    LOSEANDESCAPE= :LOSEANDESCAPE
+    # El jugador pierde el combate y el monstruo lo mata
+    LOSEANDDIE= :LOSEANDDIE
   end
 end

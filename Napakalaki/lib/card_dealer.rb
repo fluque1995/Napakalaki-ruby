@@ -1,12 +1,28 @@
-# To change this license header, choose License Headers in Project Properties.
-# To change this template file, choose Tools | Templates
-# and open the template in the editor.
+# encoding: UTF-8
+# Main module of the Napakalaki project
 
 module Model
 
+  ##
+  # Clase que permite mantener los dos tipos de mazos de cartas que hay en el juego.
+  # 
+  # Estos dos mazos son:
+  # - Mazo con las cartas de monstruos. Se compone de objetos de la clase Monster.
+  # - Mazo con las cartas de tesoros. Se compone de objetos de la clase Treasure.
+  # 
+  # Esta clase se encarga de la gestión completa de ambos mazos de cartas, inicializarlos,
+  # barajarlos y repartir las cartas a los jugadores.
+  # 
+  # Es una clase de tipo singleton, ya que no interesa tener más de una instancia 
+  # de dicha clase en cada juego.
+  #
   class CardDealer
     include Singleton
 
+    ##
+    # Inicializa la instancia de la clase, inicializando los mazos de cartas que se
+    # manejan.
+    #
     def initialize()
       @unusedMonsters = nil
       @usedMonsters = nil
@@ -14,6 +30,10 @@ module Model
       @usedTreasures = nil 
 
     end
+    
+    ##
+    # Inicializa el mazo de cartas de tesoros.
+    #
     def initTreasuresCardDeck()
 
 
@@ -54,6 +74,9 @@ module Model
 
     end
 
+    ##
+    # Inicializa el mazo de cartas de monstruos
+    #
     def initMonsterCardDeck()
 
       @unusedMonsters = Array.new();
@@ -171,10 +194,16 @@ module Model
 
     end
 
+    ##
+    # Baraja el mazo de cartas de tesoros
+    #
     def shuffleTreasures()
       @unusedTreasures.shuffle!
     end
 
+    ##
+    # Baraja el mazo de cartas de monstruos
+    #
     def shuffleMonsters()
       @unusedMonsters.shuffle!
     end
@@ -182,22 +211,41 @@ module Model
     private_class_method :initTreasuresCardDeck, :initMonstersCardDeck
     pricate_class_method :shuffleTreasures, :shuffleMonsters
 
+    ##
+    # Devuelve el siguiente tesoro del mazo de cartas de tesoros. Si tras la 
+    # extracción de dicho tesoro el mazo de tesoros queda vacío, se coge el mazo
+    # de descartes de tesoros, se devuelve al mazo de tesoros y se baraja.
+    #
     def nextTreasure()
 
     end
 
+    ##
+    # Devuelve el siguiente monstruo del mazo de cartas de monstruos. Si tras la 
+    # extracción de dicho monstruo el mazo queda vacío, se coge el mazo
+    # de descartes de monstruos, se devuelve al mazo de monstruos y se baraja.
+    #
     def nextMonster()
 
     end
 
+    ##
+    # Devuelve el tesoro que estaba en juego al mazo de descartes de tesoros.
+    #
     def giveTreasureBack(treasure)
       @usedTreasures << treasure
     end
 
+    ##
+    # Devuelve el monstruo en juego al mazo de descartes de monstruos.
+    #
     def giveMonsterBack(monster)
       @usedMonsters << monster
     end
 
+    ##
+    # Inicializa los mazos de cartas.
+    #
     def initCards()
 
     end

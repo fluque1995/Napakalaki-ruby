@@ -1,11 +1,19 @@
-# To change this license header, choose License Headers in Project Properties.
-# To change this template file, choose Tools | Templates
-# and open the template in the editor.
-
+# encoding: UTF-8
+# Main module of the Napakalaki project
 
 module Model
 
+  ##
+  # Clase que representa a los jugadores. Cada objeto de esta clase representa
+  # un jugador dentro del juego, y mantiene la información relativa a las cartas
+  # de tesoro que le pertenecen (Treasures), así como el nivel del mismo.
+  #
   class Player
+    
+    ##
+    # Inicializa un nuevo jugador. Atributos:
+    # - name: Nombre del jugador.
+    #
     def initialize(name)
       @name = name
       @dead = true
@@ -15,10 +23,14 @@ module Model
       @pendingBadConsequence = nil
     end
 
-    attr_reader :level, :dead
-    attr_reader :visibleTreasures, :hiddenTreasures
+    # Nivel del jugador
+    attr_reader :level
+    # 
+    attr_reader :dead
+    attr_reader :visibleTreasures
+    attr_reader :hiddenTreasures
 
-   @@MAXHIDDENTREASURES = 4
+    @@MAXHIDDENTREASURES = 4
 
     def bringToLive()
       @dead = false
