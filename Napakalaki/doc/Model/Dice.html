@@ -157,6 +157,12 @@
 
     <div id="description" class="description">
       
+<p>Clase que representa el dado que se usa en la partida. Es una clase de tipo
+singleton, ya que no interesa tener más de un dado en el juego. Básicamente
+se utiliza para decidir el orden de juego al principio de la partida y para
+decidir el resultado de un combate cuando el jugador pierde (dependiendo de
+la tirada, el jugador podrá escapar del monstruo o no).</p>
+
     </div><!-- description -->
 
     
@@ -190,13 +196,13 @@
 
           <div class="method-description">
             
-            
+            <p>Inicializa la instancia del dado.</p>
             
 
             
             <div class="method-source-code" id="new-source">
 <pre>
-<span class="ruby-comment"># File lib/dice.rb, line 12</span>
+<span class="ruby-comment"># File lib/dice.rb, line 20</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>
   <span class="ruby-ivar">@dice</span> = <span class="ruby-constant">Random</span>.<span class="ruby-identifier">new</span>
 <span class="ruby-keyword">end</span></pre>
@@ -229,13 +235,13 @@
 
           <div class="method-description">
             
-            
+            <p>Genera una nueva tirada del dado. Genera un número aleatorio entre 1 y 6.</p>
             
 
             
             <div class="method-source-code" id="nextNumber-source">
 <pre>
-<span class="ruby-comment"># File lib/dice.rb, line 16</span>
+<span class="ruby-comment"># File lib/dice.rb, line 27</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">nextNumber</span>()
   <span class="ruby-keyword">return</span> <span class="ruby-value">1</span><span class="ruby-operator">+</span><span class="ruby-ivar">@dice</span>.<span class="ruby-identifier">rand</span>(<span class="ruby-value">6</span>)
 <span class="ruby-keyword">end</span></pre>

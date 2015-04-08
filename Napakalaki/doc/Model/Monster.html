@@ -145,6 +145,10 @@
 
     <div id="description" class="description">
       
+<p>Clase que representa las cartas de monstruos que hay en la partida. Cada 
+objeto de esta clase representa a una carta de monstruo de la baraja del 
+juego.</p>
+
     </div><!-- description -->
 
     
@@ -173,7 +177,7 @@
 
           <div class="method-description">
           
-          
+          <p>Mal rollo que se aplica si se pierde el combate contra él</p>
           
           </div>
         </div>
@@ -188,7 +192,7 @@
 
           <div class="method-description">
           
-          
+          <p>Nivel de combate</p>
           
           </div>
         </div>
@@ -203,7 +207,7 @@
 
           <div class="method-description">
           
-          
+          <p>Nombre del monstruo</p>
           
           </div>
         </div>
@@ -218,7 +222,7 @@
 
           <div class="method-description">
           
-          
+          <p>Premio por derrotarlo en combate</p>
           
           </div>
         </div>
@@ -245,13 +249,24 @@
 
           <div class="method-description">
             
-            
+            <p>Inicializa a un nuevo monstruo. Atributos:</p>
+<ul><li>
+<p>name: Nombre del monstruo</p>
+</li><li>
+<p>combatLevel: Nivel de combate</p>
+</li><li>
+<p>prize: Premio que se gana si se derrota al monstruo en combate</p>
+</li><li>
+<p>badConsequence: Mal rollo que se aplica al jugador si es derrotado por</p>
+</li></ul>
+
+<p>el monstruo</p>
             
 
             
             <div class="method-source-code" id="new-source">
 <pre>
-<span class="ruby-comment"># File lib/monster.rb, line 10</span>
+<span class="ruby-comment"># File lib/monster.rb, line 20</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span> (<span class="ruby-identifier">name</span>, <span class="ruby-identifier">combatLevel</span>, <span class="ruby-identifier">prize</span>, <span class="ruby-identifier">badConsequence</span>)
 
   <span class="ruby-ivar">@name</span> = <span class="ruby-identifier">name</span>
@@ -289,13 +304,14 @@
 
           <div class="method-description">
             
-            
+            <p>Método que devuelve el estado completo del monstruo en un string. Sirve
+para detectar fallos.</p>
             
 
             
             <div class="method-source-code" id="to_s-source">
 <pre>
-<span class="ruby-comment"># File lib/monster.rb, line 21</span>
+<span class="ruby-comment"># File lib/monster.rb, line 42</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">to_s</span>()
   <span class="ruby-keyword">return</span> <span class="ruby-node">&quot;Nombre: #{@name}, nivel de combate: #{@combatLevel}\n\tPremio: #{@prize}\n&quot;</span> <span class="ruby-operator">+</span>
          <span class="ruby-node">&quot;\tMal rollo: #{@badConsequence.to_s}&quot;</span>
