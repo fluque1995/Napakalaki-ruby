@@ -175,6 +175,32 @@ module Model
     end
 
     ##
+    # Método que calcula el nivel de combate del jugador, usando para esto el nivel
+    # propio sumado al bonus que le otorguen los distintos tesoros visibles que posea
+    #
+    def getCombatLevel()
+      combatLevel = @level
+      hasNecklace = false;
+      
+      for treasure in @visibleTreasures
+        if treasure.getType == TreasureKind::NECKLACE
+          hasNecklace = true;
+        end
+      end
+      
+      if hasNecklace
+        for treasure in @visibleTreasures
+          combatLevel += treasure.maxBonus
+        end
+      else
+        for treasure in @visibleTreasures
+          combatLevel += treasure.minBonus
+        end
+      end
+      
+      return combatLevel
+    end
+    ##
     # Método que comprueba si el jugador se encuentra en un estado válido, es
     # decir, si tiene un número de tesoros ocultos menor que 
     #
