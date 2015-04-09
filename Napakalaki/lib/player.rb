@@ -1,11 +1,19 @@
-# To change this license header, choose License Headers in Project Properties.
-# To change this template file, choose Tools | Templates
-# and open the template in the editor.
-
+# encoding: UTF-8
+# Main module of the Napakalaki project
 
 module Model
 
+  ##
+  # Clase que representa a los jugadores. Cada objeto de esta clase representa
+  # un jugador dentro del juego, y mantiene la información relativa a las cartas
+  # de tesoro que le pertenecen (Treasures), así como el nivel del mismo.
+  #
   class Player
+
+    ##
+    # Inicializa un nuevo jugador. Atributos:
+    # - name: Nombre del jugador.
+    #
     def initialize(name)
       @name = name
       @dead = true
@@ -15,43 +23,38 @@ module Model
       @pendingBadConsequence = nil
     end
 
-    attr_reader :level, :dead
-    attr_reader :visibleTreasures, :hiddenTreasures
+    # Nivel del jugador
+    attr_reader :level
+    # Atributo que indica si el jugador está muerto
+    attr_reader :dead
+    # Array de tesoros visibles del jugador
+    attr_reader :visibleTreasures
+    # Array de tesoros ocultos del jugador
+    attr_reader :hiddenTreasures
 
-   @@MAXHIDDENTREASURES = 4
+    # Número máximo de tesoros ocultos que puede poseer un jugador
+    @@MAXHIDDENTREASURES = 4
 
+    # Método que devuelve la vida al jugador
     def bringToLive()
       @dead = false
     end
     
-    def getCombatLevel()
-      tiene_collar = false
-      
-      for treasure in visibleTreasures && tiene_collar == false
-        if(treasure.type == TreasureKind::NECKLACE)
-          tiene_collar = true
-        end
-      end
-      
-      if(tiene_collar == true)
-        for t in visibleTreasures
-          level += t.maxBonus
-        end
-      else
-        for t in visibleTreasures
-          level += t.minBonus
-        end
-      end
-      
-    end
-        
+    ##
+    # Método que incrementa el nivel del jugador, sumándole a su nivel (level),
+    # un cierto número de niveles (levels)
+    #
     def incrementLevels(levels)
       @level += levels
       if(@level > 10)
         @level = 10
       end
     end
-
+    
+    ##
+    # Método que decrementa el nivel del jugador, restándole a su nivel (level),
+    # un cierto número de niveles (levels)
+    #
     def decrementLevels(levels)
       @level -= levels
       if(@level < 1)
@@ -59,67 +62,150 @@ module Model
       end
     end
 
-    def setPendingBadConsequence(bc)
+    ##
+    # Método que asigna al jugador el mal rollo especificado como argumento
+    #
+    def setPendingBadConsquence(bc)
       @pendingBadConsequence = bc
 
     end
 
+    ##
+    # Método que mata al jugador, actualizando los parámetros necesarios.
+    #
     def die()
 
     end
 
+    ##
+    # Método que descarta una armadura de tipo collar si el jugador lo tiene equipado.
+    # Dado que no se puede tener más de un turno consecutivo el mismo objeto de 
+    # collar equipado, se llamará a este método después de cada ataque.
+    #
     def discardNecklaceIfVisible()
 
     end
 
+    ##
+    # Método que mata al jugador si éste no tiene ningún tesoro.
+    #
     def dieIfNoTreasures()
       if(@hiddenTreasures.empty? and @visibleTreasures.empty?)
         @dead = true
       end
     end
 
+    ##
+    # Comprueba si el jugador tiene permitido comprar un número determinado de 
+    # niveles. El jugador no puede ganar el juego comprando niveles (no puede 
+    # comprar el nivel 10).
+    #
     def canIBuyLevels(levels)
       return (@level + levels < 10) 
     end
 
-    def computeGoldCoinsValue(t)
+    ##
+    # Contabiliza el dinero que se obtiene al vender una serie de tesoros. Este 
+    # dinero se utiliza a posteriori para comprar un determinado número de niveles.
+    #
+    def computeGoldCoinsValue(treasures)
 
     end
 
-    def applyPrize(p)
+    ##
+    # Método que aplica un determinado premio al jugador.
+    #
+    def applyPrize(prize)
 
     end
 
-    def combat(m)
+    ##
+    # Método que simula un combate contra un monstruo.
+    #
+    def combat(monster)
 
     end
 
-    def applyBadConsequence(bad)
+    ##
+    # Método que aplica un mal rollo al jugador, actualizando su estado a un 
+    # estado consistente
+    #
+    def applyBadConsequence(badConsequence)
 
     end
 
-    def makeTreasureVisible(t)
+    ##
+    # Método que convierte un tesoro oculto del jugador en tesoro visible, actualizando
+    # su mano
+    #
+    def makeTreasureVisible(treasure)
 
     end
 
-    def canMakeTreasureVisible(t)
+    ##
+    # Método que comprueba si un determinado tesoro puede convertirse en tesoro
+    # visible
+    #
+    def canMakeTreasureVisible(treasure)
+
+    end
+    
+    ##
+    # Método que descarta un determinado tesoro visible
+    #
+    def discardVisibleTreasure(treasure)
+
+    end
+    
+    ##
+    # Método que descarta un determinado tesoro oculto
+    #
+    def discardHiddenTreasure(treasure)
 
     end
 
-    def discardVisibleTreasure(t)
+    ##
+    # Método que compra una serie de niveles a partir de un conjunto de tesoros
+    # visibles y un conjunto de tesoros ocultos. Tras la compra, el jugador habrá
+    # aumentado un determinado número de niveles, y habrá perdido los tesoros 
+    # que haya utilizado para la compra
+    #
+    def buyLevels(visibleTreasures, hiddenTreasures)
 
     end
 
-    def discardHiddenTreasure(t)
-
+    ##
+    # Método que calcula el nivel de combate del jugador, usando para esto el nivel
+    # propio sumado al bonus que le otorguen los distintos tesoros visibles que posea
+    #
+    def getCombatLevel()
+      combatLevel = @level
+      hasNecklace = false;
+      
+      for treasure in @visibleTreasures
+        if treasure.getType == TreasureKind::NECKLACE
+          hasNecklace = true;
+        end
+      end
+      
+      if hasNecklace
+        for treasure in @visibleTreasures
+          combatLevel += treasure.maxBonus
+        end
+      else
+        for treasure in @visibleTreasures
+          combatLevel += treasure.minBonus
+        end
+      end
+      
+      return combatLevel
     end
-
-    def buyLevels(visible, hidden)
-
-    end
-
+    ##
+    # Método que comprueba si el jugador se encuentra en un estado válido, es
+    # decir, si tiene un número de tesoros ocultos menor que 
+    #
     def validState()
-      return (@hiddenTreasures.size < 4 and @pendingBadConsequence.isEmpty)
+      return (@hiddenTreasures.size < @@MAXHIDDENTREASURES and @pendingBadConsequence.isEmpty)
     end
 
     def initTreasures()

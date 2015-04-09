@@ -1,21 +1,41 @@
-# To change this license header, choose License Headers in Project Properties.
-# To change this template file, choose Tools | Templates
-# and open the template in the editor.
-
+# encoding: UTF-8
+# Main module of the Napakalaki project
 
 module Model
 
+  ##
+  # Clase que representa una carta de tesoro del juego. Estas cartas se obtienen
+  # robando cartas del mazo de tesoros al principio de la partida, o al vencer en 
+  # combate contra un monstruo.
+  #
   class Treasure
-    def initialize(n, g, min, max, t)
-      @name = n
-      @goldCoins = g
-      @minBonus = min
-      @maxBonus = max
-      @type = t
+    
+    ##
+    # Inicializa una carta de tesoros, especificando los siguientes atributos:
+    # - name: Nombre del tesoro
+    # - goldCoins: Monedas de oro que cuesta
+    # - minBonus: Bonus mínimo de niveles que otorga
+    # - maxBonux: Bonus máximo de niveles que otorga 
+    # - type: Tipo de tesoro. Los tipos de tesoro posibles vienen especificados 
+    # en el módulo TreasureKind
+    #
+    def initialize(name, goldCoins, minBonus, maxBonus, type)
+      @name = name
+      @goldCoins = goldCoins
+      @minBonus = minBonus
+      @maxBonus = maxBonus
+      @type = type
     end
 
+    # Nombre del tesoro
     attr_reader :name
-    attr_reader :goldCoins, :minBonus, :maxBonus
+    # Precio en monedas de oro
+    attr_reader :goldCoins
+    # Bonus mínimo que otorga
+    attr_reader :minBonus
+    # Bonus máximo que otorga
+    attr_reader :maxBonus
+    # Tipo de tesoro
     attr_reader :type
 
   end

@@ -1,0 +1,1011 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+
+  <title>Class: Model::Player</title>
+
+  <link rel="stylesheet" href="../rdoc.css" type="text/css" media="screen" />
+
+  <script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/thickbox-compressed.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/darkfish.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+<body id="top" class="class">
+
+  <div id="metadata">
+    <div id="home-metadata">
+      <div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="../index.html">Home</a>
+          <a href="../index.html#classes">Classes</a>
+          <a href="../index.html#methods">Methods</a>
+        </h3>
+      </div>
+    </div>
+
+    <div id="file-metadata">
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul>
+          
+            <li><a href="../lib/player_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/player.rb">lib/player.rb</a></li>
+          
+          </ul>
+        </div>
+      </div>
+
+      
+    </div>
+
+    <div id="class-metadata">
+      
+      <!-- Parent Class -->
+      <div id="parent-class-section" class="section">
+        <h3 class="section-header">Parent</h3>
+        
+        <p class="link">Object</p>
+        
+      </div>
+      
+
+      
+
+      
+
+      
+      <!-- Method Quickref -->
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+          <li><a href="#method-c-new">::new</a></li>
+          
+          <li><a href="#method-i-applyBadConsequence">#applyBadConsequence</a></li>
+          
+          <li><a href="#method-i-applyPrize">#applyPrize</a></li>
+          
+          <li><a href="#method-i-bringToLive">#bringToLive</a></li>
+          
+          <li><a href="#method-i-buyLevels">#buyLevels</a></li>
+          
+          <li><a href="#method-i-canIBuyLevels">#canIBuyLevels</a></li>
+          
+          <li><a href="#method-i-canMakeTreasureVisible">#canMakeTreasureVisible</a></li>
+          
+          <li><a href="#method-i-combat">#combat</a></li>
+          
+          <li><a href="#method-i-computeGoldCoinsValue">#computeGoldCoinsValue</a></li>
+          
+          <li><a href="#method-i-decrementLevels">#decrementLevels</a></li>
+          
+          <li><a href="#method-i-die">#die</a></li>
+          
+          <li><a href="#method-i-dieIfNoTreasures">#dieIfNoTreasures</a></li>
+          
+          <li><a href="#method-i-discardHiddenTreasure">#discardHiddenTreasure</a></li>
+          
+          <li><a href="#method-i-discardNecklaceIfVisible">#discardNecklaceIfVisible</a></li>
+          
+          <li><a href="#method-i-discardVisibleTreasure">#discardVisibleTreasure</a></li>
+          
+          <li><a href="#method-i-hasVisibleTreasures">#hasVisibleTreasures</a></li>
+          
+          <li><a href="#method-i-incrementLevels">#incrementLevels</a></li>
+          
+          <li><a href="#method-i-initTreasures">#initTreasures</a></li>
+          
+          <li><a href="#method-i-makeTreasureVisible">#makeTreasureVisible</a></li>
+          
+          <li><a href="#method-i-setPendingBadConsquence">#setPendingBadConsquence</a></li>
+          
+          <li><a href="#method-i-validState">#validState</a></li>
+          
+        </ul>
+      </div>
+      
+
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+      <div id="fileindex-section" class="section project-section">
+        <h3 class="section-header">Files</h3>
+        <ul>
+        
+          <li class="file"><a href="../LICENSE.html">LICENSE</a></li>
+        
+          <li class="file"><a href="../README.html">README</a></li>
+        
+          <li class="file"><a href="../Rakefile.html">Rakefile</a></li>
+        
+          <li class="file"><a href="../nbproject/private/rake-d_txt.html">rake-d.txt</a></li>
+        
+        </ul>
+      </div>
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class/Module Index
+          <span class="search-toggle"><img src="../images/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <ul class="link-list">
+        
+          <li><a href="../Model.html">Model</a></li>
+        
+          <li><a href="../Model/BadConsequence.html">Model::BadConsequence</a></li>
+        
+          <li><a href="../Model/CardDealer.html">Model::CardDealer</a></li>
+        
+          <li><a href="../Model/CombatResult.html">Model::CombatResult</a></li>
+        
+          <li><a href="../Model/Dice.html">Model::Dice</a></li>
+        
+          <li><a href="../Model/Monster.html">Model::Monster</a></li>
+        
+          <li><a href="../Model/Napakalaki.html">Model::Napakalaki</a></li>
+        
+          <li><a href="../Model/Player.html">Model::Player</a></li>
+        
+          <li><a href="../Model/Prize.html">Model::Prize</a></li>
+        
+          <li><a href="../Model/Treasure.html">Model::Treasure</a></li>
+        
+          <li><a href="../Model/TreasureKind.html">Model::TreasureKind</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+
+      
+    </div>
+  </div>
+
+  <div id="documentation">
+    <h1 class="class">Model::Player</h1>
+
+    <div id="description" class="description">
+      
+<p>Clase que representa a los jugadores. Cada objeto de esta clase representa
+un jugador dentro del juego, y mantiene la información relativa a las
+cartas de tesoro que le pertenecen (Treasures), así como el nivel del
+mismo.</p>
+
+    </div><!-- description -->
+
+    
+    
+    
+    <div id="5Buntitled-5D" class="documentation-section">
+      
+
+      
+
+      
+
+      
+      <!-- Attributes -->
+      <div id="attribute-method-details" class="method-section section">
+        <h3 class="section-header">Attributes</h3>
+
+        
+        <div id="dead-attribute-method" class="method-detail">
+          <a name="dead"></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">dead</span><span
+              class="attribute-access-type">[R]</span>
+          </div>
+
+          <div class="method-description">
+          
+          <p>Atributo que indica si el jugador está muerto</p>
+          
+          </div>
+        </div>
+        
+        <div id="hiddenTreasures-attribute-method" class="method-detail">
+          <a name="hiddenTreasures"></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">hiddenTreasures</span><span
+              class="attribute-access-type">[R]</span>
+          </div>
+
+          <div class="method-description">
+          
+          <p>Array de tesoros ocultos del jugador</p>
+          
+          </div>
+        </div>
+        
+        <div id="level-attribute-method" class="method-detail">
+          <a name="level"></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">level</span><span
+              class="attribute-access-type">[R]</span>
+          </div>
+
+          <div class="method-description">
+          
+          <p>Nivel del jugador</p>
+          
+          </div>
+        </div>
+        
+        <div id="visibleTreasures-attribute-method" class="method-detail">
+          <a name="visibleTreasures"></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">visibleTreasures</span><span
+              class="attribute-access-type">[R]</span>
+          </div>
+
+          <div class="method-description">
+          
+          <p>Array de tesoros visibles del jugador</p>
+          
+          </div>
+        </div>
+        
+      </div><!-- attribute-method-details -->
+      
+
+      <!-- Methods -->
+      
+      <div id="public-class-method-details" class="method-section section">
+        <h3 class="section-header">Public Class Methods</h3>
+
+      
+        <div id="new-method" class="method-detail ">
+          <a name="method-c-new"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">new</span><span
+              class="method-args">(name)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Inicializa un nuevo jugador. Atributos:</p>
+<ul><li>
+<p>name: Nombre del jugador.</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="new-source">
+<pre>
+<span class="ruby-comment"># File lib/player.rb, line 16</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">name</span>)
+  <span class="ruby-ivar">@name</span> = <span class="ruby-identifier">name</span>
+  <span class="ruby-ivar">@dead</span> = <span class="ruby-keyword">true</span>
+  <span class="ruby-ivar">@level</span> = <span class="ruby-value">1</span>
+  <span class="ruby-ivar">@hiddenTreasures</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-ivar">@visibleTreasures</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-ivar">@pendingBadConsequence</span> = <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- new-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- new-method -->
+
+      
+      </div><!-- public-class-method-details -->
+    
+      <div id="public-instance-method-details" class="method-section section">
+        <h3 class="section-header">Public Instance Methods</h3>
+
+      
+        <div id="applyBadConsequence-method" class="method-detail ">
+          <a name="method-i-applyBadConsequence"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">applyBadConsequence</span><span
+              class="method-args">(bad)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="applyBadConsequence-source">
+<pre>
+<span class="ruby-comment"># File lib/player.rb, line 105</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">applyBadConsequence</span>(<span class="ruby-identifier">bad</span>)
+
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- applyBadConsequence-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- applyBadConsequence-method -->
+
+      
+        <div id="applyPrize-method" class="method-detail ">
+          <a name="method-i-applyPrize"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">applyPrize</span><span
+              class="method-args">(p)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="applyPrize-source">
+<pre>
+<span class="ruby-comment"># File lib/player.rb, line 97</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">applyPrize</span>(<span class="ruby-identifier">p</span>)
+
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- applyPrize-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- applyPrize-method -->
+
+      
+        <div id="bringToLive-method" class="method-detail ">
+          <a name="method-i-bringToLive"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">bringToLive</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Método que devuelve la vida al jugador</p>
+            
+
+            
+            <div class="method-source-code" id="bringToLive-source">
+<pre>
+<span class="ruby-comment"># File lib/player.rb, line 38</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">bringToLive</span>()
+  <span class="ruby-ivar">@dead</span> = <span class="ruby-keyword">false</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- bringToLive-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- bringToLive-method -->
+
+      
+        <div id="buyLevels-method" class="method-detail ">
+          <a name="method-i-buyLevels"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">buyLevels</span><span
+              class="method-args">(visible, hidden)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="buyLevels-source">
+<pre>
+<span class="ruby-comment"># File lib/player.rb, line 125</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">buyLevels</span>(<span class="ruby-identifier">visible</span>, <span class="ruby-identifier">hidden</span>)
+
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- buyLevels-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- buyLevels-method -->
+
+      
+        <div id="canIBuyLevels-method" class="method-detail ">
+          <a name="method-i-canIBuyLevels"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">canIBuyLevels</span><span
+              class="method-args">(levels)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="canIBuyLevels-source">
+<pre>
+<span class="ruby-comment"># File lib/player.rb, line 89</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">canIBuyLevels</span>(<span class="ruby-identifier">levels</span>)
+  <span class="ruby-keyword">return</span> (<span class="ruby-ivar">@level</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">levels</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">10</span>) 
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- canIBuyLevels-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- canIBuyLevels-method -->
+
+      
+        <div id="canMakeTreasureVisible-method" class="method-detail ">
+          <a name="method-i-canMakeTreasureVisible"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">canMakeTreasureVisible</span><span
+              class="method-args">(t)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="canMakeTreasureVisible-source">
+<pre>
+<span class="ruby-comment"># File lib/player.rb, line 113</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">canMakeTreasureVisible</span>(<span class="ruby-identifier">t</span>)
+
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- canMakeTreasureVisible-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- canMakeTreasureVisible-method -->
+
+      
+        <div id="combat-method" class="method-detail ">
+          <a name="method-i-combat"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">combat</span><span
+              class="method-args">(m)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="combat-source">
+<pre>
+<span class="ruby-comment"># File lib/player.rb, line 101</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">combat</span>(<span class="ruby-identifier">m</span>)
+
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- combat-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- combat-method -->
+
+      
+        <div id="computeGoldCoinsValue-method" class="method-detail ">
+          <a name="method-i-computeGoldCoinsValue"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">computeGoldCoinsValue</span><span
+              class="method-args">(t)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="computeGoldCoinsValue-source">
+<pre>
+<span class="ruby-comment"># File lib/player.rb, line 93</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">computeGoldCoinsValue</span>(<span class="ruby-identifier">t</span>)
+
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- computeGoldCoinsValue-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- computeGoldCoinsValue-method -->
+
+      
+        <div id="decrementLevels-method" class="method-detail ">
+          <a name="method-i-decrementLevels"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">decrementLevels</span><span
+              class="method-args">(levels)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Método que decrementa el nivel del jugador, restándole a su nivel (level),
+un cierto número de niveles (levels)</p>
+            
+
+            
+            <div class="method-source-code" id="decrementLevels-source">
+<pre>
+<span class="ruby-comment"># File lib/player.rb, line 57</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">decrementLevels</span>(<span class="ruby-identifier">levels</span>)
+  <span class="ruby-ivar">@level</span> <span class="ruby-operator">-=</span> <span class="ruby-identifier">levels</span>
+  <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@level</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">1</span>)
+    <span class="ruby-ivar">@level</span> = <span class="ruby-value">1</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- decrementLevels-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- decrementLevels-method -->
+
+      
+        <div id="die-method" class="method-detail ">
+          <a name="method-i-die"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">die</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Método que mata al jugador, especificando</p>
+            
+
+            
+            <div class="method-source-code" id="die-source">
+<pre>
+<span class="ruby-comment"># File lib/player.rb, line 75</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">die</span>()
+
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- die-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- die-method -->
+
+      
+        <div id="dieIfNoTreasures-method" class="method-detail ">
+          <a name="method-i-dieIfNoTreasures"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">dieIfNoTreasures</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="dieIfNoTreasures-source">
+<pre>
+<span class="ruby-comment"># File lib/player.rb, line 83</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">dieIfNoTreasures</span>()
+  <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@hiddenTreasures</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-keyword">and</span> <span class="ruby-ivar">@visibleTreasures</span>.<span class="ruby-identifier">empty?</span>)
+    <span class="ruby-ivar">@dead</span> = <span class="ruby-keyword">true</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- dieIfNoTreasures-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- dieIfNoTreasures-method -->
+
+      
+        <div id="discardHiddenTreasure-method" class="method-detail ">
+          <a name="method-i-discardHiddenTreasure"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">discardHiddenTreasure</span><span
+              class="method-args">(t)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="discardHiddenTreasure-source">
+<pre>
+<span class="ruby-comment"># File lib/player.rb, line 121</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">discardHiddenTreasure</span>(<span class="ruby-identifier">t</span>)
+
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- discardHiddenTreasure-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- discardHiddenTreasure-method -->
+
+      
+        <div id="discardNecklaceIfVisible-method" class="method-detail ">
+          <a name="method-i-discardNecklaceIfVisible"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">discardNecklaceIfVisible</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="discardNecklaceIfVisible-source">
+<pre>
+<span class="ruby-comment"># File lib/player.rb, line 79</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">discardNecklaceIfVisible</span>()
+
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- discardNecklaceIfVisible-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- discardNecklaceIfVisible-method -->
+
+      
+        <div id="discardVisibleTreasure-method" class="method-detail ">
+          <a name="method-i-discardVisibleTreasure"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">discardVisibleTreasure</span><span
+              class="method-args">(t)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="discardVisibleTreasure-source">
+<pre>
+<span class="ruby-comment"># File lib/player.rb, line 117</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">discardVisibleTreasure</span>(<span class="ruby-identifier">t</span>)
+
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- discardVisibleTreasure-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- discardVisibleTreasure-method -->
+
+      
+        <div id="hasVisibleTreasures-method" class="method-detail ">
+          <a name="method-i-hasVisibleTreasures"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">hasVisibleTreasures</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="hasVisibleTreasures-source">
+<pre>
+<span class="ruby-comment"># File lib/player.rb, line 137</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">hasVisibleTreasures</span>()
+  <span class="ruby-keyword">return</span> (<span class="ruby-ivar">@visibleTreasures</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span>)
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- hasVisibleTreasures-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- hasVisibleTreasures-method -->
+
+      
+        <div id="incrementLevels-method" class="method-detail ">
+          <a name="method-i-incrementLevels"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">incrementLevels</span><span
+              class="method-args">(levels)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Método que incrementa el nivel del jugador, sumándole a su nivel (level),
+un cierto número de niveles (levels)</p>
+            
+
+            
+            <div class="method-source-code" id="incrementLevels-source">
+<pre>
+<span class="ruby-comment"># File lib/player.rb, line 46</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">incrementLevels</span>(<span class="ruby-identifier">levels</span>)
+  <span class="ruby-ivar">@level</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">levels</span>
+  <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@level</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">10</span>)
+    <span class="ruby-ivar">@level</span> = <span class="ruby-value">10</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- incrementLevels-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- incrementLevels-method -->
+
+      
+        <div id="initTreasures-method" class="method-detail ">
+          <a name="method-i-initTreasures"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">initTreasures</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="initTreasures-source">
+<pre>
+<span class="ruby-comment"># File lib/player.rb, line 133</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initTreasures</span>()
+
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- initTreasures-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- initTreasures-method -->
+
+      
+        <div id="makeTreasureVisible-method" class="method-detail ">
+          <a name="method-i-makeTreasureVisible"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">makeTreasureVisible</span><span
+              class="method-args">(t)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="makeTreasureVisible-source">
+<pre>
+<span class="ruby-comment"># File lib/player.rb, line 109</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">makeTreasureVisible</span>(<span class="ruby-identifier">t</span>)
+
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- makeTreasureVisible-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- makeTreasureVisible-method -->
+
+      
+        <div id="setPendingBadConsquence-method" class="method-detail ">
+          <a name="method-i-setPendingBadConsquence"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">setPendingBadConsquence</span><span
+              class="method-args">(bc)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Método que asigna al jugador el mal rollo especificado como argumento</p>
+            
+
+            
+            <div class="method-source-code" id="setPendingBadConsquence-source">
+<pre>
+<span class="ruby-comment"># File lib/player.rb, line 67</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">setPendingBadConsquence</span>(<span class="ruby-identifier">bc</span>)
+  <span class="ruby-ivar">@pendingBadConsequence</span> = <span class="ruby-identifier">bc</span>
+
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- setPendingBadConsquence-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- setPendingBadConsquence-method -->
+
+      
+        <div id="validState-method" class="method-detail ">
+          <a name="method-i-validState"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">validState</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="validState-source">
+<pre>
+<span class="ruby-comment"># File lib/player.rb, line 129</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">validState</span>()
+  <span class="ruby-keyword">return</span> (<span class="ruby-ivar">@hiddenTreasures</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">4</span> <span class="ruby-keyword">and</span> <span class="ruby-ivar">@pendingBadConsequence</span>.<span class="ruby-identifier">isEmpty</span>)
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- validState-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- validState-method -->
+
+      
+      </div><!-- public-instance-method-details -->
+    
+    </div><!-- 5Buntitled-5D -->
+  
+
+  </div><!-- documentation -->
+
+  <div id="validator-badges">
+    <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+    <p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+      Rdoc Generator</a> 2</small>.</p>
+  </div>
+
+</body>
+</html>
+
