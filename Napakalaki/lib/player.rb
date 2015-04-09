@@ -69,7 +69,7 @@ module Model
     ##
     # Método que asigna al jugador el mal rollo especificado como argumento
     #
-    def setPendingBadConsquence(bc)
+    def setPendingBadConsequence(bc)
       @pendingBadConsequence = bc
 
     end
@@ -224,6 +224,6 @@ module Model
     private :setPendingBadConsequence, :die, :discardNecklaceIfVisible
     private :dieIfNoTreasures, :canIBuyLevels
     protected :computeGoldCoinsValue
-
+    
   end
 end
