@@ -1,6 +1,10 @@
 # encoding: UTF-8
 # Main module of the Napakalaki project
 
+require_relative "treasure.rb"
+require_relative "treasure_kind.rb"
+require_relative "bad_consequence.rb"
+
 module Model
 
   ##
@@ -180,11 +184,11 @@ module Model
     #
     def getCombatLevel()
       combatLevel = @level
-      hasNecklace = false;
+      hasNecklace = false
       
       for treasure in @visibleTreasures
         if treasure.getType == TreasureKind::NECKLACE
-          hasNecklace = true;
+          hasNecklace = true
         end
       end
       

@@ -37,6 +37,11 @@ module Model
     attr_reader :maxBonus
     # Tipo de tesoro
     attr_reader :type
+    
+    def to_s()
+      return "Nombre: #{@name}, precio: #{@goldCoins}, bonus mínimo: #{@minBonus},
+              bonus máximo: #{@maxBonus}, tipo: #{@type.to_s}" 
+    end
 
   end
 end
