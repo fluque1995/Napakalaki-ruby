@@ -1,9 +1,12 @@
+# encoding: UTF-8
 # To change this license header, choose License Headers in Project Properties.
 # To change this template file, choose Tools | Templates
 # and open the template in the editor.
 
 module Model
 
+  require 'singleton'
+  
   class CardDealer
     include Singleton
 
@@ -14,8 +17,7 @@ module Model
       @usedTreasures = nil 
 
     end
-    def initTreasuresCardDeck()
-
+    def initTreasuresCardDeck
 
       @unusedTreasures = Array.new
 
@@ -54,7 +56,7 @@ module Model
 
     end
 
-    def initMonsterCardDeck()
+    def initMonsterCardDeck
 
       @unusedMonsters = Array.new();
       prize = Prize.new(2,1)
@@ -171,16 +173,16 @@ module Model
 
     end
 
-    def shuffleTreasures()
+    def shuffleTreasures
       @unusedTreasures.shuffle!
     end
 
-    def shuffleMonsters()
+    def shuffleMonsters
       @unusedMonsters.shuffle!
     end
 
-    private_class_method :initTreasuresCardDeck, :initMonstersCardDeck
-    pricate_class_method :shuffleTreasures, :shuffleMonsters
+    private :initTreasuresCardDeck, :initMonsterCardDeck
+    private :shuffleTreasures, :shuffleMonsters
 
     def nextTreasure()
 

@@ -3,7 +3,7 @@
 # and open the template in the editor.
 
 module Model
-
+  require 'singleton'
   class Napakalaki
     include Singleton
 
@@ -24,7 +24,7 @@ module Model
 
     end
 
-    private_class_method :initPlayer, :nextPlayer
+    private :initPlayer, :nextPlayer
 
     def combat()
 

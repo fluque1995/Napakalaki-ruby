@@ -2,19 +2,19 @@
 # To change this template file, choose Tools | Templates
 # and open the template in the editor.
 
-require 'Random'
+require 'singleton'
 
 module Model
 
   class Dice
     include Singleton
 
-    def initialize
-      @dice = Random.new
-    end
+    #def initialize
+     # @dice = Random.new
+    #end
 
     def nextNumber()
-      return 1+@dice.rand(6)
+      return 1+ rand(6)
     end
 
   end

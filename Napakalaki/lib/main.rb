@@ -121,14 +121,14 @@ module Model
     end
   end
 
-  puts "Monstruos cuyo mal rollo sólo supone pérdida de niveles"
-  for m in monsters
-    if (m.badConsequence.hiddenTreasures == 0 and m.badConsequence.visibleTreasures == 0 and
-        m.badConsequence.specificVisibleTreasures.empty? and m.badConsequence.specificHiddenTreasures.empty? and
-        m.badConsequence.death == false)
-      puts m.to_s
-    end
-  end
+  #puts "Monstruos cuyo mal rollo sólo supone pérdida de niveles"
+  #for m in monsters
+   # if (m.badConsequence.hiddenTreasures == 0 and m.badConsequence.visibleTreasures == 0 and
+    #    m.badConsequence.specificVisibleTreasures.empty? and m.badConsequence.specificHiddenTreasures.empty? and
+     #   m.badConsequence.death == false)
+      #puts m.to_s
+    #end
+  #end
 
   puts "Monstruos que te aumentan más de un nivel"
   for m in monsters

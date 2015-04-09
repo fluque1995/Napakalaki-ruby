@@ -42,9 +42,9 @@ module Model
     end
 
     def isEmpty()
-      return (@text == nil and @levels == 0 and @visibleTreasures == 0 and 
-              @hiddenTreasures == 0 and @specificVisibleTreasures == nil and 
-              @specificHiddenTreasures == nil and @death == false)
+      return (@text.empty? and @levels == 0 and @visibleTreasures == 0 and 
+              @hiddenTreasures == 0 and @specificVisibleTreasures.empty? and 
+              @specificHiddenTreasures.empty? and @death == false)
 
     end
 

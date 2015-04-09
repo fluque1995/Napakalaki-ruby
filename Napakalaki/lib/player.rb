@@ -23,7 +23,28 @@ module Model
     def bringToLive()
       @dead = false
     end
-
+    
+    def getCombatLevel()
+      tiene_collar = false
+      
+      for treasure in visibleTreasures && tiene_collar == false
+        if(treasure.type == TreasureKind::NECKLACE)
+          tiene_collar = true
+        end
+      end
+      
+      if(tiene_collar == true)
+        for t in visibleTreasures
+          level += t.maxBonus
+        end
+      else
+        for t in visibleTreasures
+          level += t.minBonus
+        end
+      end
+      
+    end
+        
     def incrementLevels(levels)
       @level += levels
       if(@level > 10)
@@ -38,7 +59,7 @@ module Model
       end
     end
 
-    def setPendingBadConsquence(bc)
+    def setPendingBadConsequence(bc)
       @pendingBadConsequence = bc
 
     end
@@ -109,10 +130,10 @@ module Model
       return (@visibleTreasures.empty? == false)
     end
 
-    private_class_method :bringToLive, :incrementLevels, :decrementLevels
-    private_class_method :setPendingBadConsequence, :die, :discardNecklaceIfVisible
-    private_class_method :dieIfNoTreasures, :canIBuyLevels
-    protected_class_method :computeGoldCoinsValue
+    private :bringToLive, :incrementLevels, :decrementLevels
+    private :setPendingBadConsequence, :die, :discardNecklaceIfVisible
+    private :dieIfNoTreasures, :canIBuyLevels
+    protected :computeGoldCoinsValue
 
   end
 end
