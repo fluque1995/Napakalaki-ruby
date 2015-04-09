@@ -80,6 +80,16 @@ module Model
     def die()
 
     end
+    
+    #Examen
+    def setVisibleTreasureList(treasures)
+      @visibleTreasures = treasures
+    end
+    
+    def setHiddenTreasureList(treasures)
+      @hiddenTreasures = treasures
+    end
+    #fin
 
     ##
     # Método que descarta una armadura de tipo collar si el jugador lo tiene equipado.
@@ -221,7 +231,7 @@ module Model
     end
 
     private :bringToLive, :incrementLevels, :decrementLevels
-    private :setPendingBadConsequence, :die, :discardNecklaceIfVisible
+    private :die, :discardNecklaceIfVisible
     private :dieIfNoTreasures, :canIBuyLevels
     protected :computeGoldCoinsValue
 
