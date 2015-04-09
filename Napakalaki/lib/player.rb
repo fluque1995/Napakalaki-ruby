@@ -81,16 +81,6 @@ module Model
 
     end
     
-    #Examen
-    def setVisibleTreasureList(treasures)
-      @visibleTreasures = treasures
-    end
-    
-    def setHiddenTreasureList(treasures)
-      @hiddenTreasures = treasures
-    end
-    #fin
-
     ##
     # Método que descarta una armadura de tipo collar si el jugador lo tiene equipado.
     # Dado que no se puede tener más de un turno consecutivo el mismo objeto de 
@@ -235,5 +225,15 @@ module Model
     private :dieIfNoTreasures, :canIBuyLevels
     protected :computeGoldCoinsValue
     
+    
+    #Examen
+    def setVisibleTreasureList(treasures)
+      @visibleTreasures = treasures
+    end
+    
+    def setHiddenTreasureList(treasures)
+      @hiddenTreasures = treasures
+    end
+    #fin
   end
 end
