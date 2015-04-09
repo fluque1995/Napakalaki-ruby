@@ -69,7 +69,7 @@ module Model
     ##
     # Método que asigna al jugador el mal rollo especificado como argumento
     #
-    def setPendingBadConsquence(bc)
+    def setPendingBadConsequence(bc)
       @pendingBadConsequence = bc
 
     end
