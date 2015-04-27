@@ -202,25 +202,5 @@ module Model
     end
 
   end
-  
-  badConsequence = BadConsequence.newSpecificTreasures("Moya perra mala",0,[],[TreasureKind::HELMET, 
-                                  TreasureKind::SHOE, TreasureKind::SHOE, TreasureKind::HELMET, TreasureKind::HELMET])
-  
-  visibleTreasures = Array.new
-  visibleTreasures << Treasure.new("¡Sí mi amo!", 0, 4, 7, TreasureKind::HELMET)
-  visibleTreasures << Treasure.new("Botas de investigación", 600, 3, 4, TreasureKind::SHOE)
-  visibleTreasures << Treasure.new("Capucha de Cthulhu", 500, 3, 5, TreasureKind::HELMET)   
-  visibleTreasures << Treasure.new("A prueba de babas", 400, 2, 5, TreasureKind::ARMOR)   
-  
-  hiddenTreasures = Array.new
-  hiddenTreasures  << Treasure.new("¡Sí mi amo!", 0, 4, 7, TreasureKind::HELMET)
-  hiddenTreasures << Treasure.new("Botas de investigación", 600, 3, 4, TreasureKind::SHOE)
-  hiddenTreasures << Treasure.new("Capucha de Cthulhu", 500, 3, 5, TreasureKind::HELMET)   
-  hiddenTreasures << Treasure.new("A prueba de babas", 400, 2, 5, TreasureKind::ARMOR)   
-  
-  badConsequence = badConsequence.adjustToFitTreasureLists(visibleTreasures, hiddenTreasures)
-  
-  puts badConsequence.to_s
-  
 end
 
