@@ -2,7 +2,8 @@
 # Main module of the Napakalaki project
 
 module Model
-
+  
+  require_relative "treasure_kind.rb"
   ##
   # Clase que representa una carta de tesoro del juego. Estas cartas se obtienen
   # robando cartas del mazo de tesoros al principio de la partida, o al vencer en 
@@ -44,4 +45,5 @@ module Model
     end
 
   end
+
 end

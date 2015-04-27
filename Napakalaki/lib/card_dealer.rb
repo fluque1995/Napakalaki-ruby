@@ -222,7 +222,13 @@ require 'singleton'
     # de descartes de tesoros, se devuelve al mazo de tesoros y se baraja.
     #
     def nextTreasure()
-
+      treasure = @unusedTreasures.pop
+      if @unusedTreasures.empty?
+        @unusedTreasures = @usedTreasures
+        @usedTreasures = Array.new
+        shuffleTreasures
+      end
+      return treasure
     end
 
     ##
@@ -231,7 +237,12 @@ require 'singleton'
     # de descartes de monstruos, se devuelve al mazo de monstruos y se baraja.
     #
     def nextMonster()
-
+      monster = @unusedMonsters.pop
+      if @unusedMonsters.empty?
+        @unusedMonsters = @usedMonsters
+        @usedMonsters = Array.new
+        shuffleMonsters
+      end
     end
 
     ##
@@ -273,17 +284,5 @@ require 'singleton'
     end
 
   end
-    
-  ##############################################################################
-  #                                                                            #
-  #                                    Test                                    #
-  #                                                                            #
-  ##############################################################################
-
-  cardDealer = CardDealer.instance
-  
-  cardDealer.printMonsters
-  
-  cardDealer.printTreasures
   
 end

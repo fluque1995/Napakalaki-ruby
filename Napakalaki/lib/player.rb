@@ -4,6 +4,7 @@
 require_relative "treasure.rb"
 require_relative "treasure_kind.rb"
 require_relative "bad_consequence.rb"
+require_relative "card_dealer.rb"
 
 module Model
 
@@ -78,7 +79,22 @@ module Model
     # Método que mata al jugador, actualizando los parámetros necesarios.
     #
     def die()
+      cardDealer = CardDealer.instance
+      while not @visibleTreasures.empty?
+        treasure = @visibleTreasures.pop
+        cardDealer.giveTreasureBack(treasure)
+      end
+      
+      @visibleTreasures.clear
+      
+      while not @hiddenTreasures.empty?
+        treasure = @hiddenTreasures.pop
+        cardDealer.giveTreasureBack(treasure)
+      end
 
+      @hiddenTreasures.clear
+      @levels = 1
+      @dead = true
     end
     
     ##
@@ -87,7 +103,13 @@ module Model
     # collar equipado, se llamará a este método después de cada ataque.
     #
     def discardNecklaceIfVisible()
-
+      for t in @visibleTreasures
+        if t.getType == TreasureKind::NECKLACE
+          @visibleTreasures.delete(t)
+          cardDealer = CardDealer.instance
+          cardDealer.giveTreasureBack(t)
+        end
+      end
     end
 
     ##
@@ -113,29 +135,86 @@ module Model
     # dinero se utiliza a posteriori para comprar un determinado número de niveles.
     #
     def computeGoldCoinsValue(treasures)
-
+      
+      value = 0.0
+      for t in treasures
+        value += t.goldCoins
+      end
+      return (value/1000.0)
+      
     end
 
     ##
     # Método que aplica un determinado premio al jugador.
     #
     def applyPrize(prize)
-
+      nLevels = prize.levels
+      incrementLevels(nLevels)
+      nPrize = prize.treasures
+      cardDealer = CardDealer.instance
+      for i in range(nPrize)
+        
+        treasure = cardDealer.nextTreasure
+        @hiddenTreasures << treasure
+      end
     end
 
     ##
     # Método que simula un combate contra un monstruo.
     #
     def combat(monster)
-
+      myLevel = getCombatLevel
+      monsterLevel = monster.getLevel
+    
+      if myLevel > monsterLevel
+    
+        myPrize = monster.prize
+        applyPrize(myPrize)
+        
+        if @level < 10
+          combatResult = CombatResult::WIN
+        else
+          combatResult = CombatResult::WINANDWINGAME
+        end
+      else
+        dice = Dice.instance
+        escape = dice.nextNumber
+        
+        if escape < 5
+          
+          bc = monster.badConsequence
+          amIDead = bc.kills
+          
+          if amIDead
+            die
+            combatResult = CombatResult::LOSEANDDIE
+          else
+            applyBadConsequence(bc)
+            combatResult = CombatResult::LOSE
+          end
+        else
+          combatResult = CombatResult::LOSEANDESCAPE
+        end
+      
+      end
+      
+      discardNecklaceIfVisible
+      return combatResult
     end
 
+    
+    
+    
+    
     ##
     # Método que aplica un mal rollo al jugador, actualizando su estado a un 
     # estado consistente
     #
     def applyBadConsequence(badConsequence)
-
+      nLevels = badConsequence.levels
+      decrementLevels(nLevels)
+      pendingBadConsequence = badConsequence.adjustToFitTreasureLists(@visibleTreasures, @hiddenTreasures)
+      setPendingBadConsequence(pendingBadConsequence)
     end
 
     ##
@@ -143,7 +222,9 @@ module Model
     # su mano
     #
     def makeTreasureVisible(treasure)
-
+      t = @hiddenTreasures.index(treasure)
+      @hiddenTreasures.delete_at(t)
+      @visibleTreasures << treasure
     end
 
     ##
@@ -151,21 +232,62 @@ module Model
     # visible
     #
     def canMakeTreasureVisible(treasure)
-
+      allowed = true
+      if treasure.getType == TreasureKind::ONEHAND
+        count = 0
+        
+        for t in @visibleTreasures
+        
+          if t.getType == TreasureKind::ONEHAND
+            count += 1
+          
+            if count > 1
+              allowed = false
+            end
+            
+          elsif t.getType == TreasureKind::BOTHHANDS
+            allowed == false
+          end
+        
+        end
+        
+      else
+        for t in @visibleTreasures
+          if treasure.getType == t.getType
+            allowed = false
+          end
+        end
+      end
+      
+      return allowed
     end
     
     ##
     # Método que descarta un determinado tesoro visible
     #
     def discardVisibleTreasure(treasure)
-
+      t = @visibleTreasures.find_index(treasure)
+      if t != nil
+        @visibleTreasures.delete_at(t)
+        @pendingBadConsequence.substractVisibleTreasure(treasure)
+      end
+      cardDealer = CardDealer.instance
+      cardDealer.giveTreasureBack(treasure)
+      dieIfNoTreasures
     end
     
     ##
     # Método que descarta un determinado tesoro oculto
     #
     def discardHiddenTreasure(treasure)
-
+      t = @hiddenTreasures.find_index(treasure)
+      if t != nil
+        @hiddenTreasures.delete_at(t)
+        @pendingBadConsequence.substractHiddenTreasure(treasure)
+      end
+      cardDealer = CardDealer.instance
+      cardDealer.giveTreasureBack(treasure)
+      dieIfNoTreasures
     end
 
     ##
@@ -175,7 +297,22 @@ module Model
     # que haya utilizado para la compra
     #
     def buyLevels(visibleTreasures, hiddenTreasures)
-
+      levels = computeGoldCoinsValue(visibleTreasures)
+      levels += computeGoldCoinsValue(hiddenTreasures)
+      canI = canIBuyLevels(levels.to_i)
+      
+      if canI
+        incrementLevels(levels.to_i)
+        for treasure in visibleTreasures
+          discardVisibleTreasure(treasure)
+        end
+        
+        for treasure in hiddenTreasures
+          discardHiddenTreasure(treasure)
+        end
+      end
+      
+      return canI
     end
 
     ##
@@ -204,9 +341,11 @@ module Model
       
       return combatLevel
     end
+    
     ##
     # Método que comprueba si el jugador se encuentra en un estado válido, es
-    # decir, si tiene un número de tesoros ocultos menor que 
+    # decir, si tiene un número de tesoros ocultos menor que el máximo permitido
+    # y si ha cumplido el mal rollo que tiene asignado
     #
     def validState()
       return (@hiddenTreasures.size < @@MAXHIDDENTREASURES and @pendingBadConsequence.isEmpty)

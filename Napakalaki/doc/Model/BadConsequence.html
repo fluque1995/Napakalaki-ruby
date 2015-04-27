@@ -437,7 +437,7 @@ específicos.</p>
             
             <div class="method-source-code" id="adjustToFitTreasureLists-source">
 <pre>
-<span class="ruby-comment"># File lib/bad_consequence.rb, line 114</span>
+<span class="ruby-comment"># File lib/bad_consequence.rb, line 115</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">adjustToFitTreasureLists</span>(<span class="ruby-identifier">visibleTreasures</span>, <span class="ruby-identifier">hiddenTreasures</span>)
 
 <span class="ruby-keyword">end</span></pre>
@@ -473,10 +473,11 @@ que aplicar</p>
 <pre>
 <span class="ruby-comment"># File lib/bad_consequence.rb, line 84</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">isEmpty</span>()
-  <span class="ruby-keyword">return</span> (<span class="ruby-ivar">@text</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">and</span> <span class="ruby-ivar">@levels</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span> <span class="ruby-keyword">and</span> <span class="ruby-ivar">@visibleTreasures</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span> <span class="ruby-keyword">and</span> 
-          <span class="ruby-ivar">@hiddenTreasures</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span> <span class="ruby-keyword">and</span> (<span class="ruby-ivar">@specificVisibleTreasures</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">or</span>
-          <span class="ruby-ivar">@specificVisibleTreasures</span>.<span class="ruby-identifier">empty?</span>) <span class="ruby-keyword">and</span> (<span class="ruby-ivar">@specificHiddenTreasures</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">or</span>
-          <span class="ruby-ivar">@specificHiddenTreasures</span>.<span class="ruby-identifier">empty?</span>) <span class="ruby-keyword">and</span> <span class="ruby-ivar">@death</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span>)
+
+  <span class="ruby-keyword">return</span> (<span class="ruby-ivar">@levels</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span> <span class="ruby-keyword">and</span> <span class="ruby-ivar">@visibleTreasures</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span> <span class="ruby-keyword">and</span> <span class="ruby-ivar">@hiddenTreasures</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span> <span class="ruby-keyword">and</span> 
+      (<span class="ruby-ivar">@specificVisibleTreasures</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">or</span> <span class="ruby-ivar">@specificVisibleTreasures</span>.<span class="ruby-identifier">empty?</span>) <span class="ruby-keyword">and</span> 
+      (<span class="ruby-ivar">@specificHiddenTreasures</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">or</span> <span class="ruby-ivar">@specificHiddenTreasures</span>.<span class="ruby-identifier">empty?</span>) <span class="ruby-keyword">and</span> 
+      <span class="ruby-ivar">@death</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span>)
 
 <span class="ruby-keyword">end</span></pre>
             </div><!-- isEmpty-source -->
@@ -509,7 +510,7 @@ Funciona como un getter del atributo death</p>
             
             <div class="method-source-code" id="kills-source">
 <pre>
-<span class="ruby-comment"># File lib/bad_consequence.rb, line 96</span>
+<span class="ruby-comment"># File lib/bad_consequence.rb, line 97</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">kills</span>()
   <span class="ruby-keyword">return</span> <span class="ruby-ivar">@death</span>
 <span class="ruby-keyword">end</span></pre>
@@ -542,7 +543,7 @@ Funciona como un getter del atributo death</p>
             
             <div class="method-source-code" id="substractHiddenTreasure-source">
 <pre>
-<span class="ruby-comment"># File lib/bad_consequence.rb, line 110</span>
+<span class="ruby-comment"># File lib/bad_consequence.rb, line 111</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">substractHiddenTreasure</span>(<span class="ruby-identifier">treasure</span>)
 
 <span class="ruby-keyword">end</span></pre>
@@ -575,7 +576,7 @@ Funciona como un getter del atributo death</p>
             
             <div class="method-source-code" id="substractVisibleTreasure-source">
 <pre>
-<span class="ruby-comment"># File lib/bad_consequence.rb, line 103</span>
+<span class="ruby-comment"># File lib/bad_consequence.rb, line 104</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">substractVisibleTreasure</span>(<span class="ruby-identifier">treasure</span>)
 
 <span class="ruby-keyword">end</span></pre>
@@ -609,7 +610,7 @@ Sirve para trazar errores.</p>
             
             <div class="method-source-code" id="to_s-source">
 <pre>
-<span class="ruby-comment"># File lib/bad_consequence.rb, line 122</span>
+<span class="ruby-comment"># File lib/bad_consequence.rb, line 123</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">to_s</span>()
   <span class="ruby-identifier">printable_text</span> = <span class="ruby-node">&quot;Texto: #{@text}\n\t\tNiveles: #{@levels}, tesoros visibles: #{@visibleTreasures},&quot;</span> <span class="ruby-operator">+</span>
          <span class="ruby-node">&quot; tesoros ocultos: #{@hiddenTreasures}&quot;</span>

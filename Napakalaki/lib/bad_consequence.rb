@@ -2,7 +2,9 @@
 # Main module of the Napakalaki project
 
 module Model
-
+  
+  require_relative "treasure_kind.rb"
+  require_relative "treasure.rb"
   ##
   # Clase que representa el mal rollo que te produce un monstruo cuando pierdes 
   # un combate contra él. Esta clase sirve de apoyo a la clase Monster.
@@ -103,18 +105,75 @@ module Model
     # Quita al jugador un determinado tesoro visible si éste lo posee
     #
     def substractVisibleTreasure(treasure)
-
+      if @visibleTreasures > 0
+        @visibleTreasures -= 1
+      else
+        t = @specificVisibleTreasures.find_index(treasure.type)
+        if t != nil
+          @specificVisibleTreasures.delete_at(t)
+        end
+      end
     end
 
     ##
     # Quita al jugador un determinado tesoro oculto si éste lo posee
     #
     def substractHiddenTreasure(treasure)
-
+      if @hiddenTreasures > 0
+        @hiddenTreasures -= 1
+      else
+        t = @specificHiddenTreasures.find_index(treasure.type)
+        if t != nil
+          @specificHiddenTreasures.delete_at(t)
+        end
+      end
     end
 
-    def adjustToFitTreasureLists(visibleTreasures, hiddenTreasures)
-
+    def adjustToFitTreasureLists(visibleTreasuresArray, hiddenTreasuresArray)
+      if not @death
+        
+        if @visibleTreasures > 0 or @hiddenTreasures > 0
+          
+          @visibleTreasures = @visibleTreasures < visibleTreasuresArray.size ? @visibleTreasures : visibleTreasuresArray.size
+          @hiddenTreasures = @hiddenTreasures < hiddenTreasuresArray.size ? @hiddenTreasures : hiddenTreasuresArray.size
+        
+        else
+          
+          supportVisibles = visibleTreasuresArray.dup
+          for t in @specificVisibleTreasures
+            found = false
+            for treasure in supportVisibles
+              if treasure.type == t and not found
+               found = true
+               index = supportVisibles.find_index(treasure)
+              end
+            end
+            if not found
+              index = @specificVisibleTreasures.find_index(t)
+              @specificVisibleTreasures.delete_at(index)
+            end
+            supportVisibles.delete_at(index)
+          end
+          
+          supportHiddens = hiddenTreasuresArray.dup
+          for t in @specificHiddenTreasures
+            found = false
+            for treasure in supportHiddens
+              if treasure.type == t
+                found = true
+                index = supportHiddens.find_index(treasure)
+              end
+            end
+            if not found
+              index = @specificHiddenTreasures.find_index(t)
+              @specificHiddenTreasures.delete_at(index)
+            end
+            supportHiddens.delete_at(index)
+          end  
+        end
+      end
+      
+      return self
     end
     
     ##
@@ -143,4 +202,25 @@ module Model
     end
 
   end
+  
+  badConsequence = BadConsequence.newSpecificTreasures("Moya perra mala",0,[],[TreasureKind::HELMET, 
+                                  TreasureKind::SHOE, TreasureKind::SHOE, TreasureKind::HELMET, TreasureKind::HELMET])
+  
+  visibleTreasures = Array.new
+  visibleTreasures << Treasure.new("¡Sí mi amo!", 0, 4, 7, TreasureKind::HELMET)
+  visibleTreasures << Treasure.new("Botas de investigación", 600, 3, 4, TreasureKind::SHOE)
+  visibleTreasures << Treasure.new("Capucha de Cthulhu", 500, 3, 5, TreasureKind::HELMET)   
+  visibleTreasures << Treasure.new("A prueba de babas", 400, 2, 5, TreasureKind::ARMOR)   
+  
+  hiddenTreasures = Array.new
+  hiddenTreasures  << Treasure.new("¡Sí mi amo!", 0, 4, 7, TreasureKind::HELMET)
+  hiddenTreasures << Treasure.new("Botas de investigación", 600, 3, 4, TreasureKind::SHOE)
+  hiddenTreasures << Treasure.new("Capucha de Cthulhu", 500, 3, 5, TreasureKind::HELMET)   
+  hiddenTreasures << Treasure.new("A prueba de babas", 400, 2, 5, TreasureKind::ARMOR)   
+  
+  badConsequence = badConsequence.adjustToFitTreasureLists(visibleTreasures, hiddenTreasures)
+  
+  puts badConsequence.to_s
+  
 end
+

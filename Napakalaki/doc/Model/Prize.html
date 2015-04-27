@@ -145,6 +145,12 @@
 
     <div id="description" class="description">
       
+<p>Clase que representa los premios que se obtienen en el juego. Cuando un
+jugador (<a href="Player.html">Player</a>) vence en combate a un monstruo
+(<a href="Monster.html">Monster</a>), recibe un premio, consistente en una
+determinada subida de niveles y un robo de cartas de tesoro. Esta clase
+sirve de apoyo a la clase <a href="Monster.html">Monster</a>.</p>
+
     </div><!-- description -->
 
     
@@ -173,7 +179,7 @@
 
           <div class="method-description">
           
-          
+          <p>Niveles aumentados</p>
           
           </div>
         </div>
@@ -188,7 +194,7 @@
 
           <div class="method-description">
           
-          
+          <p>Tesoros obtenidos</p>
           
           </div>
         </div>
@@ -215,13 +221,14 @@
 
           <div class="method-description">
             
-            
+            <p>Inicializa un premio, especificando el número de niveles que se aumentan y
+el número de tesoros que se obtienen.</p>
             
 
             
             <div class="method-source-code" id="new-source">
 <pre>
-<span class="ruby-comment"># File lib/prize.rb, line 10</span>
+<span class="ruby-comment"># File lib/prize.rb, line 17</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">treasures</span>, <span class="ruby-identifier">levels</span>)
   <span class="ruby-ivar">@treasures</span> = <span class="ruby-identifier">treasures</span>
   <span class="ruby-ivar">@levels</span> = <span class="ruby-identifier">levels</span>
@@ -255,13 +262,14 @@
 
           <div class="method-description">
             
-            
+            <p>Método que devuelve un string con toda la información relativa al premio.
+Sirve para trazar fallos.</p>
             
 
             
             <div class="method-source-code" id="to_s-source">
 <pre>
-<span class="ruby-comment"># File lib/prize.rb, line 17</span>
+<span class="ruby-comment"># File lib/prize.rb, line 31</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">to_s</span>()
   <span class="ruby-keyword">return</span> <span class="ruby-node">&quot;Tesoros: #{@treasures}, niveles: #{@levels}&quot;</span>
 <span class="ruby-keyword">end</span></pre>
