@@ -190,13 +190,13 @@ module Model
     def applyPrize(prize)
       nLevels = prize.levels
       incrementLevels(nLevels)
-      nPrize = prize.treasures
+      nTreasure = prize.treasures
       cardDealer = CardDealer.instance
       i = 0
-      while i < nPrize
+      while i < nTreasure
         treasure = cardDealer.nextTreasure
         @hiddenTreasures << treasure
-        ++i
+        i+=1
       end
     end
 
@@ -388,7 +388,8 @@ module Model
     # y si ha cumplido el mal rollo que tiene asignado
     #
     def validState()
-      return (@hiddenTreasures.size < @@MAXHIDDENTREASURES and @pendingBadConsequence.isEmpty)
+      return (@hiddenTreasures.size < @@MAXHIDDENTREASURES and (@pendingBadConsequence == nil or 
+                                                               @pendingBadConsequence.isEmpty))
     end
 
     def initTreasures()
