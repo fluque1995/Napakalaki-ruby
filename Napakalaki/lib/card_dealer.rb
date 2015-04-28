@@ -194,7 +194,7 @@ require 'singleton'
       prize = Prize.new(1,1)
       badConsequence = BadConsequence.newSpecificTreasures("Te faltan manos para tanta" +
                         " cabeza. Pierdes 3 niveles y tus tesoros visibles de las manos",
-                        3, [TreasureKind::ONEHAND, TreasureKind::BOTHHANDS],[])
+                        3, [TreasureKind::ONEHAND, TreasureKind::ONEHAND, TreasureKind::BOTHHANDS],[])
       @unusedMonsters << Monster.new("Bicéfalo", 20, prize, badConsequence)
 
     end

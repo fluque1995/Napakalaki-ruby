@@ -24,17 +24,17 @@ module Model
     end
 
     # Texto que representa al mal rollo
-    attr_reader :text
+    attr_accessor :text
     # Niveles que pierdes contra el monstruo
-    attr_reader :levels
+    attr_accessor :levels
     # Tesoros visibles que pierdes contra el monstruo
-    attr_reader :visibleTreasures
+    attr_accessor :visibleTreasures
     # Tesoros ocultos que pierdes contra el monstruo
-    attr_reader :hiddenTreasures
+    attr_accessor :hiddenTreasures
     # Array de tesoros visibles específicos que pierdes contra el monstruo
-    attr_reader :specificVisibleTreasures
+    attr_accessor :specificVisibleTreasures
     # Array de tesoros ocultos específicos que pierdes contra el monstruo
-    attr_reader :specificHiddenTreasures
+    attr_accessor :specificHiddenTreasures
 
     private_class_method :new
     
@@ -130,17 +130,22 @@ module Model
     end
 
     def adjustToFitTreasureLists(visibleTreasuresArray, hiddenTreasuresArray)
-      if not @death
+      
+      badConsequence = self.copy()
+      
+      if not badConsequence.kills
         
-        if @visibleTreasures > 0 or @hiddenTreasures > 0
+        if badConsequence.visibleTreasures > 0 or badConsequence.hiddenTreasures > 0
           
-          @visibleTreasures = @visibleTreasures < visibleTreasuresArray.size ? @visibleTreasures : visibleTreasuresArray.size
-          @hiddenTreasures = @hiddenTreasures < hiddenTreasuresArray.size ? @hiddenTreasures : hiddenTreasuresArray.size
+          badConsequence.visibleTreasures = badConsequence.visibleTreasures < visibleTreasuresArray.size ?
+                                            badConsequence.visibleTreasures : visibleTreasuresArray.size
+          badConsequence.hiddenTreasures = badConsequence.hiddenTreasures < hiddenTreasuresArray.size ?
+                                           badConsequence.hiddenTreasures : hiddenTreasuresArray.size
         
         else
           
           supportVisibles = visibleTreasuresArray.dup
-          for t in @specificVisibleTreasures
+          for t in badConsequence.specificVisibleTreasures
             found = false
             for treasure in supportVisibles
               if treasure.type == t and not found
@@ -149,14 +154,14 @@ module Model
               end
             end
             if not found
-              index = @specificVisibleTreasures.find_index(t)
-              @specificVisibleTreasures.delete_at(index)
+              index = badConsequence.specificVisibleTreasures.find_index(t)
+              badConsequence.specificVisibleTreasures.delete_at(index)
             end
             supportVisibles.delete_at(index)
           end
           
           supportHiddens = hiddenTreasuresArray.dup
-          for t in @specificHiddenTreasures
+          for t in badConsequence.specificHiddenTreasures
             found = false
             for treasure in supportHiddens
               if treasure.type == t
@@ -165,15 +170,15 @@ module Model
               end
             end
             if not found
-              index = @specificHiddenTreasures.find_index(t)
-              @specificHiddenTreasures.delete_at(index)
+              index = badConsequence.specificHiddenTreasures.find_index(t)
+              badConsequence.specificHiddenTreasures.delete_at(index)
             end
             supportHiddens.delete_at(index)
           end  
         end
       end
       
-      return self
+      return badConsequence
     end
     
     ##
@@ -200,7 +205,22 @@ module Model
 
       return printable_text
     end
-
+    
+    def copy()
+      if @death == true
+        badConsequence = BadConsequence.newDeath(@name)
+      elsif @visibleTreasures > 0 or @hiddenTreasures > 0
+        badConsequence = BadConsequence.newNumberOfTreasures(@name, @levels, @visibleTreasures,
+                                                             @hiddenTreasures)
+      else
+        badConsequence = BadConsequence.newSpecificTreasures(@name, @levels, @specificVisibleTreasures.dup,
+                                                             @specificHiddenTreasures.dup)
+      end
+      
+      return badConsequence
+    end
+    
+    protected :copy
   end
 end
 

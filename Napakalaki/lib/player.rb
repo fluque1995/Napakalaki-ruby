@@ -250,6 +250,7 @@ module Model
     def applyBadConsequence(badConsequence)
       nLevels = badConsequence.levels
       decrementLevels(nLevels)
+      
       pendingBadConsequence = badConsequence.adjustToFitTreasureLists(@visibleTreasures, @hiddenTreasures)
       setPendingBadConsequence(pendingBadConsequence)
     end
@@ -388,7 +389,7 @@ module Model
     # y si ha cumplido el mal rollo que tiene asignado
     #
     def validState()
-      return (@hiddenTreasures.size < @@MAXHIDDENTREASURES and (@pendingBadConsequence == nil or 
+      return (@hiddenTreasures.size <= @@MAXHIDDENTREASURES and (@pendingBadConsequence == nil or 
                                                                @pendingBadConsequence.isEmpty))
     end
 
