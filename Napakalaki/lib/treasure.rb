@@ -36,7 +36,13 @@ module Model
     attr_reader :minBonus
     # Bonus máximo que otorga
     attr_reader :maxBonus
+    
     # Tipo de tesoro
+    def getType()
+      return @type
+    end
+    
+    #Tipo de tesoro
     attr_reader :type
     
     def to_s()

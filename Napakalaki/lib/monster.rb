@@ -29,6 +29,12 @@ module Model
 
     # Nombre del monstruo
     attr_reader :name
+    
+    # Nivel de combate
+    def getLevel()
+      return @combatLevel
+    end
+    
     # Nivel de combate
     attr_reader :combatLevel 
     # Premio por derrotarlo en combate

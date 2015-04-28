@@ -5,6 +5,8 @@ require_relative "treasure.rb"
 require_relative "treasure_kind.rb"
 require_relative "bad_consequence.rb"
 require_relative "card_dealer.rb"
+require_relative "dice.rb"
+require_relative "combat_result.rb"
 
 module Model
 
@@ -27,21 +29,59 @@ module Model
       @visibleTreasures = Array.new
       @pendingBadConsequence = nil
     end
-
+    
+    ##
+    # Nivel del jugador
+    #
+    def getLevel
+      return @level
+    end
+    
     # Nivel del jugador
     attr_reader :level
+    
+    ##
+    # Indica si el jugador está muerto
+    #
+    def getDead
+      return @dead
+    end
+    
     # Atributo que indica si el jugador está muerto
     attr_reader :dead
+    
+    ##
+    # Array de tesoros visibles del jugador
+    #
+    def getVisibleTreasures
+      return @visibleTreasures
+    end
+    
     # Array de tesoros visibles del jugador
     attr_reader :visibleTreasures
+    
+    ##
+    # Array de tesoros ocultos del jugador    
+    #
+    def getHiddenTreasures
+      return @hiddenTreasures
+    end
+    
     # Array de tesoros ocultos del jugador
     attr_reader :hiddenTreasures
-
+    
+    ##
+    # Getter para el nombre del jugador
+    #
+    def getName()
+      return @name
+    end
+    
     # Número máximo de tesoros ocultos que puede poseer un jugador
     @@MAXHIDDENTREASURES = 4
 
     # Método que devuelve la vida al jugador
-    def bringToLive()
+    def bringToLife()
       @dead = false
     end
     
@@ -152,10 +192,11 @@ module Model
       incrementLevels(nLevels)
       nPrize = prize.treasures
       cardDealer = CardDealer.instance
-      for i in range(nPrize)
-        
+      i = 0
+      while i < nPrize
         treasure = cardDealer.nextTreasure
         @hiddenTreasures << treasure
+        ++i
       end
     end
 
@@ -201,10 +242,6 @@ module Model
       discardNecklaceIfVisible
       return combatResult
     end
-
-    
-    
-    
     
     ##
     # Método que aplica un mal rollo al jugador, actualizando su estado a un 
@@ -222,9 +259,11 @@ module Model
     # su mano
     #
     def makeTreasureVisible(treasure)
-      t = @hiddenTreasures.index(treasure)
-      @hiddenTreasures.delete_at(t)
-      @visibleTreasures << treasure
+      if canMakeTreasureVisible(treasure)
+        t = @hiddenTreasures.index(treasure)
+        @hiddenTreasures.delete_at(t)
+        @visibleTreasures << treasure
+      end
     end
 
     ##
@@ -246,14 +285,15 @@ module Model
             end
             
           elsif t.getType == TreasureKind::BOTHHANDS
-            allowed == false
+            allowed = false
           end
         
         end
         
       else
         for t in @visibleTreasures
-          if treasure.getType == t.getType
+          if treasure.getType == t.getType or (treasure.getType == TreasureKind::BOTHHANDS and 
+                                               t.getType == TreasureKind::ONEHAND)
             allowed = false
           end
         end
@@ -352,14 +392,32 @@ module Model
     end
 
     def initTreasures()
-
+      bringToLife
+      dice = Dice.instance
+      throw = dice.nextNumber
+      cardDealer = CardDealer.instance
+      if throw == 1
+        treasure = cardDealer.nextTreasure
+        @hiddenTreasures << treasure
+      elsif throw == 6
+        for i in (1..3)
+          treasure = cardDealer.nextTreasure
+          @hiddenTreasures << treasure
+        end
+      else
+        for i in (1..2)
+          treasure = cardDealer.nextTreasure
+          @hiddenTreasures << treasure
+        end
+      end
+      
     end
 
     def hasVisibleTreasures()
       return (@visibleTreasures.empty? == false)
     end
 
-    private :bringToLive, :incrementLevels, :decrementLevels
+    private :bringToLife, :incrementLevels, :decrementLevels
     private :die, :discardNecklaceIfVisible
     private :dieIfNoTreasures, :canIBuyLevels
     protected :computeGoldCoinsValue
@@ -372,6 +430,10 @@ module Model
     
     def setHiddenTreasureList(treasures)
       @hiddenTreasures = treasures
+    end
+    
+    def to_s()
+      return "Nombre: #{@name}, nivel: #{@level.to_i}"
     end
     #fin
   end

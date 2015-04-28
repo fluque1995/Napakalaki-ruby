@@ -86,10 +86,10 @@ module Model
     #
     def isEmpty()
 
-      return (@levels == 0 and @visibleTreasures == 0 and @hiddenTreasures == 0 and 
+      return (@visibleTreasures == 0 and @hiddenTreasures == 0 and 
           (@specificVisibleTreasures == nil or @specificVisibleTreasures.empty?) and 
           (@specificHiddenTreasures == nil or @specificHiddenTreasures.empty?) and 
-          @death == false)
+          @death == false) # @levels == 0 and 
 
     end
 

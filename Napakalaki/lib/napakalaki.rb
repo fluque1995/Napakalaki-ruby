@@ -149,7 +149,7 @@ module Model
     # Utiliza como apoyo el método Player#validState()
     #
     def nextTurnIsAllowed()
-      return @currentPlayer.validState;
+      return (@currentPlayer == nil or @currentPlayer.validState);
     end
 
     ##
@@ -159,7 +159,5 @@ module Model
     def endOfGame(result)
       return result == CombatResult::WINANDWINGAME
     end
-
-
   end
 end

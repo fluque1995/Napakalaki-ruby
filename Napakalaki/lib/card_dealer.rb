@@ -243,6 +243,7 @@ require 'singleton'
         @usedMonsters = Array.new
         shuffleMonsters
       end
+      return monster
     end
 
     ##
@@ -266,8 +267,10 @@ require 'singleton'
       
       initMonsterCardDeck
       shuffleMonsters
+      @usedMonsters = Array.new()
       initTreasureCardDeck
       shuffleTreasures
+      @usedTreasures = Array.new()
 
     end
     
