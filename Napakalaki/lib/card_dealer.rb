@@ -83,23 +83,7 @@ require 'singleton'
     # Inicializa el mazo de cartas de monstruos
     #
     def initMonsterCardDeck()
-
-      @unusedMonsters = Array.new();
-      prize = Prize.new(2,1)
-      badConsequence = BadConsequence.newSpecificTreasures("Pierdes tu armadura visible y otra oculta",
-                       0, [TreasureKind::ARMOR], [TreasureKind::ARMOR])
-      @unusedMonsters << Monster.new("3 Byakhees de bonanza", 8, prize, badConsequence)
-
-      prize = Prize.new(4,1)
-      badConsequence = BadConsequence.newSpecificTreasures("Te atrapan para llevarte de fiesta y te dejan " +
-                        "caer en mitad del vuelo. Descarta una mano visible y otra oculta",
-                        0, [TreasureKind::ONEHAND], [TreasureKind::ONEHAND])
-      @unusedMonsters << Monster.new("Ángeles de la noche ibicenca", 14, prize, badConsequence)
-
-      prize = Prize.new(3,1)
-      badConsequence = BadConsequence.newNumberOfTreasures("Pierdes todos tus tesoros visibles", 0, 5, 0)
-      @unusedMonsters << Monster.new("El gorrón en el umbral", 10, prize, badConsequence)
-
+      
       @unusedMonsters = Array.new
       prize = Prize.new(2,1)
       badConsequence = BadConsequence.newSpecificTreasures("Pierdes tu armadura visible y otra oculta",
@@ -287,5 +271,5 @@ require 'singleton'
     end
 
   end
-  
+
 end

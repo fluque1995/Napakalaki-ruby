@@ -310,7 +310,9 @@ module Model
       t = @visibleTreasures.find_index(treasure)
       if t != nil
         @visibleTreasures.delete_at(t)
-        @pendingBadConsequence.substractVisibleTreasure(treasure)
+        if @pendingBadConsequence != nil
+          @pendingBadConsequence.substractVisibleTreasure(treasure)
+        end
       end
       cardDealer = CardDealer.instance
       cardDealer.giveTreasureBack(treasure)
@@ -324,7 +326,9 @@ module Model
       t = @hiddenTreasures.find_index(treasure)
       if t != nil
         @hiddenTreasures.delete_at(t)
-        @pendingBadConsequence.substractHiddenTreasure(treasure)
+        if @pendingBadConsequence != nil
+          @pendingBadConsequence.substractHiddenTreasure(treasure)
+        end
       end
       cardDealer = CardDealer.instance
       cardDealer.giveTreasureBack(treasure)
