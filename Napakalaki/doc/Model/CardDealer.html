@@ -144,6 +144,8 @@
         
           <li><a href="../Model/Dice.html">Model::Dice</a></li>
         
+          <li><a href="../Model/EjemploMain.html">Model::EjemploMain</a></li>
+        
           <li><a href="../Model/Monster.html">Model::Monster</a></li>
         
           <li><a href="../Model/Napakalaki.html">Model::Napakalaki</a></li>
@@ -155,6 +157,14 @@
           <li><a href="../Model/Treasure.html">Model::Treasure</a></li>
         
           <li><a href="../Model/TreasureKind.html">Model::TreasureKind</a></li>
+        
+          <li><a href="../Test.html">Test</a></li>
+        
+          <li><a href="../Test/Command.html">Test::Command</a></li>
+        
+          <li><a href="../Test/Command/Option.html">Test::Command::Option</a></li>
+        
+          <li><a href="../Test/GameTester.html">Test::GameTester</a></li>
         
         </ul>
         <div id="no-class-search-results" style="display: none;">No matching classes.</div>
@@ -268,7 +278,7 @@ se manejan.</p>
             
             <div class="method-source-code" id="giveMonsterBack-source">
 <pre>
-<span class="ruby-comment"># File lib/card_dealer.rb, line 246</span>
+<span class="ruby-comment"># File lib/card_dealer.rb, line 242</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">giveMonsterBack</span>(<span class="ruby-identifier">monster</span>)
   <span class="ruby-ivar">@usedMonsters</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">monster</span>
 <span class="ruby-keyword">end</span></pre>
@@ -301,7 +311,7 @@ se manejan.</p>
             
             <div class="method-source-code" id="giveTreasureBack-source">
 <pre>
-<span class="ruby-comment"># File lib/card_dealer.rb, line 239</span>
+<span class="ruby-comment"># File lib/card_dealer.rb, line 235</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">giveTreasureBack</span>(<span class="ruby-identifier">treasure</span>)
   <span class="ruby-ivar">@usedTreasures</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">treasure</span>
 <span class="ruby-keyword">end</span></pre>
@@ -334,13 +344,15 @@ se manejan.</p>
             
             <div class="method-source-code" id="initCards-source">
 <pre>
-<span class="ruby-comment"># File lib/card_dealer.rb, line 253</span>
+<span class="ruby-comment"># File lib/card_dealer.rb, line 249</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">initCards</span>()
   
   <span class="ruby-identifier">initMonsterCardDeck</span>
   <span class="ruby-identifier">shuffleMonsters</span>
+  <span class="ruby-ivar">@usedMonsters</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>()
   <span class="ruby-identifier">initTreasureCardDeck</span>
   <span class="ruby-identifier">shuffleTreasures</span>
+  <span class="ruby-ivar">@usedTreasures</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>()
 
 <span class="ruby-keyword">end</span></pre>
             </div><!-- initCards-source -->
@@ -374,9 +386,15 @@ descartes de monstruos, se devuelve al mazo de monstruos y se baraja.</p>
             
             <div class="method-source-code" id="nextMonster-source">
 <pre>
-<span class="ruby-comment"># File lib/card_dealer.rb, line 232</span>
+<span class="ruby-comment"># File lib/card_dealer.rb, line 222</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">nextMonster</span>()
-
+  <span class="ruby-identifier">monster</span> = <span class="ruby-ivar">@unusedMonsters</span>.<span class="ruby-identifier">pop</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@unusedMonsters</span>.<span class="ruby-identifier">empty?</span>
+    <span class="ruby-ivar">@unusedMonsters</span> = <span class="ruby-ivar">@usedMonsters</span>
+    <span class="ruby-ivar">@usedMonsters</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
+    <span class="ruby-identifier">shuffleMonsters</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">monster</span>
 <span class="ruby-keyword">end</span></pre>
             </div><!-- nextMonster-source -->
             
@@ -409,9 +427,15 @@ de descartes de tesoros, se devuelve al mazo de tesoros y se baraja.</p>
             
             <div class="method-source-code" id="nextTreasure-source">
 <pre>
-<span class="ruby-comment"># File lib/card_dealer.rb, line 223</span>
+<span class="ruby-comment"># File lib/card_dealer.rb, line 207</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">nextTreasure</span>()
-
+  <span class="ruby-identifier">treasure</span> = <span class="ruby-ivar">@unusedTreasures</span>.<span class="ruby-identifier">pop</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@unusedTreasures</span>.<span class="ruby-identifier">empty?</span>
+    <span class="ruby-ivar">@unusedTreasures</span> = <span class="ruby-ivar">@usedTreasures</span>
+    <span class="ruby-ivar">@usedTreasures</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
+    <span class="ruby-identifier">shuffleTreasures</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">treasure</span>
 <span class="ruby-keyword">end</span></pre>
             </div><!-- nextTreasure-source -->
             
@@ -436,13 +460,14 @@ de descartes de tesoros, se devuelve al mazo de tesoros y se baraja.</p>
 
           <div class="method-description">
             
-            
+            <p>Método que imprime los monstruos que quedan en el mazo de cartas de
+monstruos sin usar. Se usa para trazar errores</p>
             
 
             
             <div class="method-source-code" id="printMonsters-source">
 <pre>
-<span class="ruby-comment"># File lib/card_dealer.rb, line 262</span>
+<span class="ruby-comment"># File lib/card_dealer.rb, line 264</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">printMonsters</span>()
   <span class="ruby-keyword">for</span> <span class="ruby-identifier">m</span> <span class="ruby-keyword">in</span> <span class="ruby-ivar">@unusedMonsters</span>
     <span class="ruby-identifier">puts</span> <span class="ruby-identifier">m</span>.<span class="ruby-identifier">to_s</span>
@@ -471,13 +496,14 @@ de descartes de tesoros, se devuelve al mazo de tesoros y se baraja.</p>
 
           <div class="method-description">
             
-            
+            <p>Método que imprime los tesoros que quedan en el mazo de cartas de tesoros
+sin usar. Se usa para trazar errores</p>
             
 
             
             <div class="method-source-code" id="printTreasures-source">
 <pre>
-<span class="ruby-comment"># File lib/card_dealer.rb, line 268</span>
+<span class="ruby-comment"># File lib/card_dealer.rb, line 274</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">printTreasures</span>()
   <span class="ruby-keyword">for</span> <span class="ruby-identifier">t</span> <span class="ruby-keyword">in</span> <span class="ruby-ivar">@unusedTreasures</span>
     <span class="ruby-identifier">puts</span> <span class="ruby-identifier">t</span>.<span class="ruby-identifier">to_s</span>

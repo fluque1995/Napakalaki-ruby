@@ -419,6 +419,9 @@ module Model
       
     end
 
+    ##
+    # Comprueba si el jugador actual tiene algún tesoro visible.
+    #
     def hasVisibleTreasures()
       return (@visibleTreasures.empty? == false)
     end

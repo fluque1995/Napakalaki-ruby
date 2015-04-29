@@ -67,6 +67,8 @@
           
           <li><a href="#method-c-new">::new</a></li>
           
+          <li><a href="#method-i-getLevel">#getLevel</a></li>
+          
           <li><a href="#method-i-to_s">#to_s</a></li>
           
         </ul>
@@ -120,6 +122,8 @@
         
           <li><a href="../Model/Dice.html">Model::Dice</a></li>
         
+          <li><a href="../Model/EjemploMain.html">Model::EjemploMain</a></li>
+        
           <li><a href="../Model/Monster.html">Model::Monster</a></li>
         
           <li><a href="../Model/Napakalaki.html">Model::Napakalaki</a></li>
@@ -131,6 +135,14 @@
           <li><a href="../Model/Treasure.html">Model::Treasure</a></li>
         
           <li><a href="../Model/TreasureKind.html">Model::TreasureKind</a></li>
+        
+          <li><a href="../Test.html">Test</a></li>
+        
+          <li><a href="../Test/Command.html">Test::Command</a></li>
+        
+          <li><a href="../Test/Command/Option.html">Test::Command::Option</a></li>
+        
+          <li><a href="../Test/GameTester.html">Test::GameTester</a></li>
         
         </ul>
         <div id="no-class-search-results" style="display: none;">No matching classes.</div>
@@ -291,6 +303,39 @@ juego.</p>
         <h3 class="section-header">Public Instance Methods</h3>
 
       
+        <div id="getLevel-method" class="method-detail ">
+          <a name="method-i-getLevel"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">getLevel</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Nivel de combate</p>
+            
+
+            
+            <div class="method-source-code" id="getLevel-source">
+<pre>
+<span class="ruby-comment"># File lib/monster.rb, line 33</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">getLevel</span>()
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@combatLevel</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- getLevel-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- getLevel-method -->
+
+      
         <div id="to_s-method" class="method-detail ">
           <a name="method-i-to_s"></a>
 
@@ -311,7 +356,7 @@ para detectar fallos.</p>
             
             <div class="method-source-code" id="to_s-source">
 <pre>
-<span class="ruby-comment"># File lib/monster.rb, line 42</span>
+<span class="ruby-comment"># File lib/monster.rb, line 48</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">to_s</span>()
   <span class="ruby-keyword">return</span> <span class="ruby-node">&quot;Nombre: #{@name}, nivel de combate: #{@combatLevel}\n\tPremio: #{@prize}\n&quot;</span> <span class="ruby-operator">+</span>
          <span class="ruby-node">&quot;\tMal rollo: #{@badConsequence.to_s}&quot;</span>

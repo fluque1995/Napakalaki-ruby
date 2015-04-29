@@ -42,9 +42,13 @@ module Model
       return @type
     end
     
-    #Tipo de tesoro
+    # Tipo de tesoro
     attr_reader :type
     
+    ##
+    # Devuelve en un string toda la información relativa al tesoro. Sirve para 
+    # trazar errores
+    #
     def to_s()
       return "Nombre: #{@name}, precio: #{@goldCoins}, bonus mínimo: #{@minBonus},
               bonus máximo: #{@maxBonus}, tipo: #{@type.to_s}" 

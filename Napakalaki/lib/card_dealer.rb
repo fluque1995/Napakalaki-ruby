@@ -10,6 +10,7 @@ require_relative "treasure.rb"
 module Model
 
 require 'singleton'
+  
   ##
   # Clase que permite mantener los dos tipos de mazos de cartas que hay en el juego.
   # 
@@ -23,7 +24,6 @@ require 'singleton'
   # Es una clase de tipo singleton, ya que no interesa tener más de una instancia 
   # de dicha clase en cada juego.
   #
-
   class CardDealer
     include Singleton
 
@@ -62,7 +62,6 @@ require 'singleton'
       @unusedTreasures << Treasure.new("Escopeta de tres cañones", 700, 4, 6, TreasureKind::BOTHHANDS)
       @unusedTreasures << Treasure.new("Garabato místico", 300, 2, 2, TreasureKind::ONEHAND)
       @unusedTreasures << Treasure.new("La fuerza de Mr. T", 1000, 0, 0, TreasureKind::NECKLACE)
-=begin
       @unusedTreasures << Treasure.new("La rebeca metálica", 400, 2, 3, TreasureKind::ARMOR)
       @unusedTreasures << Treasure.new("Mazo de los antiguos", 200, 3, 4, TreasureKind::ONEHAND)
       @unusedTreasures << Treasure.new("Necroplayboycon", 300, 3, 5, TreasureKind::ONEHAND)
@@ -77,7 +76,7 @@ require 'singleton'
       @unusedTreasures << Treasure.new("Zapato deja-amigos", 500, 0, 1, TreasureKind::SHOE)
       @unusedTreasures << Treasure.new("Shogulador", 600, 1, 1, TreasureKind::BOTHHANDS)
       @unusedTreasures << Treasure.new("Varita de atizamiento", 400, 3, 4, TreasureKind::ONEHAND)
-=end
+
     end
 
     ##
@@ -104,7 +103,7 @@ require 'singleton'
       prize = Prize.new(4,1)
       badConsequence = BadConsequence.newDeath("La familia te atrapa. Estás muerto")
       @unusedMonsters << Monster.new("Familia feliz", 1, prize, badConsequence)
-=begin
+      
       prize = Prize.new(4,1)
       badConsequence = BadConsequence.newSpecificTreasures("Te atrapan para llevarte de fiesta y te dejan " +
                         "caer en mitad del vuelo. Descarta una mano visible y otra oculta",
@@ -181,7 +180,7 @@ require 'singleton'
                         " cabeza. Pierdes 3 niveles y tus tesoros visibles de las manos",
                         3, [TreasureKind::ONEHAND, TreasureKind::ONEHAND, TreasureKind::BOTHHANDS],[])
       @unusedMonsters << Monster.new("Bicéfalo", 20, prize, badConsequence)
-=end
+
     end
 
     ##
@@ -259,12 +258,20 @@ require 'singleton'
 
     end
     
+    ##
+    # Método que imprime los monstruos que quedan en el mazo de cartas de monstruos
+    # sin usar. Se usa para trazar errores
+    #
     def printMonsters()
       for m in @unusedMonsters
         puts m.to_s
       end
     end
     
+    ##
+    # Método que imprime los tesoros que quedan en el mazo de cartas de tesoros
+    # sin usar. Se usa para trazar errores
+    #
     def printTreasures()
       for t in @unusedTreasures
         puts t.to_s

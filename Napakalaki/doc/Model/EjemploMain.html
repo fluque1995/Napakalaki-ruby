@@ -5,7 +5,7 @@
 <head>
   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
 
-  <title>Module: Model::CombatResult</title>
+  <title>Class: Model::EjemploMain</title>
 
   <link rel="stylesheet" href="../rdoc.css" type="text/css" media="screen" />
 
@@ -15,7 +15,7 @@
   <script src="../js/darkfish.js" type="text/javascript" charset="utf-8"></script>
 
 </head>
-<body id="top" class="module">
+<body id="top" class="class">
 
   <div id="metadata">
     <div id="home-metadata">
@@ -34,8 +34,8 @@
         <div class="section-body">
           <ul>
           
-            <li><a href="../lib/combat_result_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
-              class="thickbox" title="lib/combat_result.rb">lib/combat_result.rb</a></li>
+            <li><a href="../lib/EjemploMain_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/EjemploMain.rb">lib/EjemploMain.rb</a></li>
           
           </ul>
         </div>
@@ -46,11 +46,29 @@
 
     <div id="class-metadata">
       
-
+      <!-- Parent Class -->
+      <div id="parent-class-section" class="section">
+        <h3 class="section-header">Parent</h3>
+        
+        <p class="link">Object</p>
+        
+      </div>
       
 
       
 
+      
+
+      
+      <!-- Method Quickref -->
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+          <li><a href="#method-c-main">::main</a></li>
+          
+        </ul>
+      </div>
       
 
       
@@ -131,16 +149,10 @@
   </div>
 
   <div id="documentation">
-    <h1 class="module">Model::CombatResult</h1>
+    <h1 class="class">Model::EjemploMain</h1>
 
     <div id="description" class="description">
       
-<p>Módulo que controla los distintos resultados posibles dentro de un combate
-entre un jugador (Objeto de la clase <a href="Player.html">Player</a>) y un
-monstruo (Objeto de la clase <a href="Monster.html">Monster</a>).
-Dependiendo del resultado del combate, se han de ajustar distintos
-parámetros posteriormente.</p>
-
     </div><!-- description -->
 
     
@@ -152,44 +164,58 @@ parámetros posteriormente.</p>
       
 
       
-      <!-- Constants -->
-      <div id="constants-list" class="section">
-        <h3 class="section-header">Constants</h3>
-        <dl>
-        
-          <dt><a name="LOSE">LOSE</a></dt>
-          
-          <dd class="description"><p>El jugador pierde el combate y no consigue escapar</p></dd>
-          
-        
-          <dt><a name="LOSEANDDIE">LOSEANDDIE</a></dt>
-          
-          <dd class="description"><p>El jugador pierde el combate y el monstruo lo mata</p></dd>
-          
-        
-          <dt><a name="LOSEANDESCAPE">LOSEANDESCAPE</a></dt>
-          
-          <dd class="description"><p>El jugador pierde el combate pero escapa</p></dd>
-          
-        
-          <dt><a name="WIN">WIN</a></dt>
-          
-          <dd class="description"><p>El jugador gana el combate</p></dd>
-          
-        
-          <dt><a name="WINANDWINGAME">WINANDWINGAME</a></dt>
-          
-          <dd class="description"><p>El jugador gana el combate y la partida</p></dd>
-          
-        
-        </dl>
-      </div>
-      
 
       
 
       <!-- Methods -->
       
+      <div id="public-class-method-details" class="method-section section">
+        <h3 class="section-header">Public Class Methods</h3>
+
+      
+        <div id="main-method" class="method-detail ">
+          <a name="method-c-main"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">main</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="main-source">
+<pre>
+<span class="ruby-comment"># File lib/EjemploMain.rb, line 12</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">main</span>
+  
+ <span class="ruby-identifier">test</span> = <span class="ruby-constant">Test</span><span class="ruby-operator">::</span><span class="ruby-constant">GameTester</span>.<span class="ruby-identifier">instance</span>
+     
+ <span class="ruby-identifier">game</span> = <span class="ruby-constant">Napakalaki</span>.<span class="ruby-identifier">instance</span>
+   
+ <span class="ruby-comment">#Se prueba el juego con 2 jugadores</span>
+   
+ <span class="ruby-identifier">test</span>.<span class="ruby-identifier">play</span>(<span class="ruby-identifier">game</span>, <span class="ruby-value">2</span>);
+ 
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- main-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- main-method -->
+
+      
+      </div><!-- public-class-method-details -->
+    
     </div><!-- 5Buntitled-5D -->
   
 

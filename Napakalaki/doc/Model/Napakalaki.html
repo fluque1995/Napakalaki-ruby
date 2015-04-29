@@ -75,7 +75,7 @@
           
           <li><a href="#method-i-discardHiddenTreasures">#discardHiddenTreasures</a></li>
           
-          <li><a href="#method-i-discardVisibleTreasures">#discardVisibleTreasures</a></li>
+          <li><a href="#method-i-discardVisibleTreasure">#discardVisibleTreasure</a></li>
           
           <li><a href="#method-i-endOfGame">#endOfGame</a></li>
           
@@ -158,6 +158,8 @@
         
           <li><a href="../Model/Dice.html">Model::Dice</a></li>
         
+          <li><a href="../Model/EjemploMain.html">Model::EjemploMain</a></li>
+        
           <li><a href="../Model/Monster.html">Model::Monster</a></li>
         
           <li><a href="../Model/Napakalaki.html">Model::Napakalaki</a></li>
@@ -169,6 +171,14 @@
           <li><a href="../Model/Treasure.html">Model::Treasure</a></li>
         
           <li><a href="../Model/TreasureKind.html">Model::TreasureKind</a></li>
+        
+          <li><a href="../Test.html">Test</a></li>
+        
+          <li><a href="../Test/Command.html">Test::Command</a></li>
+        
+          <li><a href="../Test/Command/Option.html">Test::Command::Option</a></li>
+        
+          <li><a href="../Test/GameTester.html">Test::GameTester</a></li>
         
         </ul>
         <div id="no-class-search-results" style="display: none;">No matching classes.</div>
@@ -266,11 +276,11 @@ programa al mismo tiempo.</p>
             
             <div class="method-source-code" id="new-source">
 <pre>
-<span class="ruby-comment"># File lib/napakalaki.rb, line 22</span>
+<span class="ruby-comment"># File lib/napakalaki.rb, line 23</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>()
   <span class="ruby-ivar">@currentPlayer</span> = <span class="ruby-keyword">nil</span>
   <span class="ruby-ivar">@players</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
-  <span class="ruby-ivar">@currentMonster</span> = <span class="ruby-value">0</span>
+  <span class="ruby-ivar">@currentMonster</span> = <span class="ruby-keyword">nil</span>
   <span class="ruby-ivar">@currentPlayerIndex</span> = <span class="ruby-value">-1</span>
 <span class="ruby-keyword">end</span></pre>
             </div><!-- new-source -->
@@ -302,15 +312,15 @@ programa al mismo tiempo.</p>
 
           <div class="method-description">
             
-            
+            <p>Compra niveles del jugador actual (current<a href="Player.html">Player</a>)</p>
             
 
             
             <div class="method-source-code" id="buyLevels-source">
 <pre>
-<span class="ruby-comment"># File lib/napakalaki.rb, line 96</span>
+<span class="ruby-comment"># File lib/napakalaki.rb, line 116</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">buyLevels</span>(<span class="ruby-identifier">visible</span>, <span class="ruby-identifier">hidden</span>)
-
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@currentPlayer</span>.<span class="ruby-identifier">buyLevels</span>(<span class="ruby-identifier">visible</span>, <span class="ruby-identifier">hidden</span>)
 <span class="ruby-keyword">end</span></pre>
             </div><!-- buyLevels-source -->
             
@@ -328,22 +338,22 @@ programa al mismo tiempo.</p>
           
           <div class="method-heading">
             <span class="method-name">canMakeTreasureVisible</span><span
-              class="method-args">(t)</span>
+              class="method-args">(treasure)</span>
             <span class="method-click-advice">click to toggle source</span>
           </div>
           
 
           <div class="method-description">
             
-            
+            <p>Comprueba si el jugador actual puede hacer visible un determinado tesoro</p>
             
 
             
             <div class="method-source-code" id="canMakeTreasureVisible-source">
 <pre>
-<span class="ruby-comment"># File lib/napakalaki.rb, line 104</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">canMakeTreasureVisible</span>(<span class="ruby-identifier">t</span>)
-
+<span class="ruby-comment"># File lib/napakalaki.rb, line 134</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">canMakeTreasureVisible</span>(<span class="ruby-identifier">treasure</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@currentPlayer</span>.<span class="ruby-identifier">canMakeTreasureVisible</span>(<span class="ruby-identifier">treasure</span>)
 <span class="ruby-keyword">end</span></pre>
             </div><!-- canMakeTreasureVisible-source -->
             
@@ -376,9 +386,12 @@ href="Monster.html">Monster</a>), devolviendo el resultado de dicho combate</p>
             
             <div class="method-source-code" id="combat-source">
 <pre>
-<span class="ruby-comment"># File lib/napakalaki.rb, line 80</span>
+<span class="ruby-comment"># File lib/napakalaki.rb, line 81</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">combat</span>()
-
+  <span class="ruby-identifier">combatResult</span> = <span class="ruby-ivar">@currentPlayer</span>.<span class="ruby-identifier">combat</span>(<span class="ruby-ivar">@currentMonster</span>)
+  <span class="ruby-identifier">cardDealer</span> = <span class="ruby-constant">CardDealer</span>.<span class="ruby-identifier">instance</span>
+  <span class="ruby-identifier">cardDealer</span>.<span class="ruby-identifier">giveMonsterBack</span>(<span class="ruby-ivar">@currentMonster</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">combatResult</span>
 <span class="ruby-keyword">end</span></pre>
             </div><!-- combat-source -->
             
@@ -396,22 +409,23 @@ href="Monster.html">Monster</a>), devolviendo el resultado de dicho combate</p>
           
           <div class="method-heading">
             <span class="method-name">discardHiddenTreasures</span><span
-              class="method-args">(t)</span>
+              class="method-args">(treasure)</span>
             <span class="method-click-advice">click to toggle source</span>
           </div>
           
 
           <div class="method-description">
             
-            
+            <p>Descarta un tesoro oculto del jugador actual (current<a
+href="Player.html">Player</a>)</p>
             
 
             
             <div class="method-source-code" id="discardHiddenTreasures-source">
 <pre>
-<span class="ruby-comment"># File lib/napakalaki.rb, line 88</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">discardHiddenTreasures</span>(<span class="ruby-identifier">t</span>)
-
+<span class="ruby-comment"># File lib/napakalaki.rb, line 98</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">discardHiddenTreasures</span>(<span class="ruby-identifier">treasure</span>)
+  <span class="ruby-ivar">@currentPlayer</span>.<span class="ruby-identifier">discardHiddenTreasure</span>(<span class="ruby-identifier">treasure</span>)
 <span class="ruby-keyword">end</span></pre>
             </div><!-- discardHiddenTreasures-source -->
             
@@ -423,37 +437,38 @@ href="Monster.html">Monster</a>), devolviendo el resultado de dicho combate</p>
         </div><!-- discardHiddenTreasures-method -->
 
       
-        <div id="discardVisibleTreasures-method" class="method-detail ">
-          <a name="method-i-discardVisibleTreasures"></a>
+        <div id="discardVisibleTreasure-method" class="method-detail ">
+          <a name="method-i-discardVisibleTreasure"></a>
 
           
           <div class="method-heading">
-            <span class="method-name">discardVisibleTreasures</span><span
-              class="method-args">(t)</span>
+            <span class="method-name">discardVisibleTreasure</span><span
+              class="method-args">(treasure)</span>
             <span class="method-click-advice">click to toggle source</span>
           </div>
           
 
           <div class="method-description">
             
-            
+            <p>Descarta un tesoro visible del jugador actual (current<a
+href="Player.html">Player</a>)</p>
             
 
             
-            <div class="method-source-code" id="discardVisibleTreasures-source">
+            <div class="method-source-code" id="discardVisibleTreasure-source">
 <pre>
-<span class="ruby-comment"># File lib/napakalaki.rb, line 84</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">discardVisibleTreasures</span>(<span class="ruby-identifier">t</span>)
-
+<span class="ruby-comment"># File lib/napakalaki.rb, line 91</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">discardVisibleTreasure</span>(<span class="ruby-identifier">treasure</span>)
+    <span class="ruby-ivar">@currentPlayer</span>.<span class="ruby-identifier">discardVisibleTreasure</span>(<span class="ruby-identifier">treasure</span>)
 <span class="ruby-keyword">end</span></pre>
-            </div><!-- discardVisibleTreasures-source -->
+            </div><!-- discardVisibleTreasure-source -->
             
           </div>
 
           
 
           
-        </div><!-- discardVisibleTreasures-method -->
+        </div><!-- discardVisibleTreasure-method -->
 
       
         <div id="endOfGame-method" class="method-detail ">
@@ -469,15 +484,16 @@ href="Monster.html">Monster</a>), devolviendo el resultado de dicho combate</p>
 
           <div class="method-description">
             
-            
+            <p>Método que comprueba si el combate anterior ha provocado el fin del juego, 
+es decir, si el jugador gana la partida tras ganar el combate.</p>
             
 
             
             <div class="method-source-code" id="endOfGame-source">
 <pre>
-<span class="ruby-comment"># File lib/napakalaki.rb, line 129</span>
+<span class="ruby-comment"># File lib/napakalaki.rb, line 183</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">endOfGame</span>(<span class="ruby-identifier">result</span>)
-
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">result</span> <span class="ruby-operator">==</span> <span class="ruby-constant">CombatResult</span><span class="ruby-operator">::</span><span class="ruby-constant">WINANDWINGAME</span>
 <span class="ruby-keyword">end</span></pre>
             </div><!-- endOfGame-source -->
             
@@ -508,7 +524,7 @@ href="Monster.html">Monster</a>), devolviendo el resultado de dicho combate</p>
             
             <div class="method-source-code" id="getCurrentMonster-source">
 <pre>
-<span class="ruby-comment"># File lib/napakalaki.rb, line 72</span>
+<span class="ruby-comment"># File lib/napakalaki.rb, line 73</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">getCurrentMonster</span>()
   <span class="ruby-keyword">return</span> <span class="ruby-ivar">@currentMonster</span>
 <span class="ruby-keyword">end</span></pre>
@@ -541,7 +557,7 @@ href="Monster.html">Monster</a>), devolviendo el resultado de dicho combate</p>
             
             <div class="method-source-code" id="getCurrentPlayer-source">
 <pre>
-<span class="ruby-comment"># File lib/napakalaki.rb, line 65</span>
+<span class="ruby-comment"># File lib/napakalaki.rb, line 66</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">getCurrentPlayer</span>()
   <span class="ruby-keyword">return</span> <span class="ruby-ivar">@currentPlayer</span>
 <span class="ruby-keyword">end</span></pre>
@@ -568,15 +584,15 @@ href="Monster.html">Monster</a>), devolviendo el resultado de dicho combate</p>
 
           <div class="method-description">
             
-            
+            <p>Devuelve el array de tesoros ocultos del jugador actual</p>
             
 
             
             <div class="method-source-code" id="getHiddenTreasures-source">
 <pre>
-<span class="ruby-comment"># File lib/napakalaki.rb, line 112</span>
+<span class="ruby-comment"># File lib/napakalaki.rb, line 148</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">getHiddenTreasures</span>()
-
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@currentPlayer</span>.<span class="ruby-identifier">hiddenTreasures</span>
 <span class="ruby-keyword">end</span></pre>
             </div><!-- getHiddenTreasures-source -->
             
@@ -601,15 +617,15 @@ href="Monster.html">Monster</a>), devolviendo el resultado de dicho combate</p>
 
           <div class="method-description">
             
-            
+            <p>Devuelve el array de tesoros visibles del jugador actual</p>
             
 
             
             <div class="method-source-code" id="getVisibleTreasures-source">
 <pre>
-<span class="ruby-comment"># File lib/napakalaki.rb, line 108</span>
+<span class="ruby-comment"># File lib/napakalaki.rb, line 141</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">getVisibleTreasures</span>()
-
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@currentPlayer</span>.<span class="ruby-identifier">visibleTreasures</span>
 <span class="ruby-keyword">end</span></pre>
             </div><!-- getVisibleTreasures-source -->
             
@@ -634,15 +650,19 @@ href="Monster.html">Monster</a>), devolviendo el resultado de dicho combate</p>
 
           <div class="method-description">
             
-            
+            <p>Inicia el juego, inicializando a los jugadores que juegan, el <a
+href="CardDealer.html">CardDealer</a>,  y llamando al primer turno.</p>
             
 
             
             <div class="method-source-code" id="initGame-source">
 <pre>
-<span class="ruby-comment"># File lib/napakalaki.rb, line 100</span>
+<span class="ruby-comment"># File lib/napakalaki.rb, line 124</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">initGame</span>(<span class="ruby-identifier">players</span>)
-
+  <span class="ruby-identifier">cardDealer</span> = <span class="ruby-constant">CardDealer</span>.<span class="ruby-identifier">instance</span>
+  <span class="ruby-identifier">cardDealer</span>.<span class="ruby-identifier">initCards</span>
+  <span class="ruby-identifier">initPlayers</span>(<span class="ruby-identifier">players</span>)
+  <span class="ruby-identifier">nextTurn</span>
 <span class="ruby-keyword">end</span></pre>
             </div><!-- initGame-source -->
             
@@ -660,21 +680,25 @@ href="Monster.html">Monster</a>), devolviendo el resultado de dicho combate</p>
           
           <div class="method-heading">
             <span class="method-name">makeTreasureVisible</span><span
-              class="method-args">(t)</span>
+              class="method-args">(treasure)</span>
             <span class="method-click-advice">click to toggle source</span>
           </div>
           
 
           <div class="method-description">
             
-            
+            <p>Pasa un tesoro del jugador actual de oculto a visible (equipa dicho objeto)</p>
             
 
             
             <div class="method-source-code" id="makeTreasureVisible-source">
 <pre>
-<span class="ruby-comment"># File lib/napakalaki.rb, line 92</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">makeTreasureVisible</span>(<span class="ruby-identifier">t</span>)
+<span class="ruby-comment"># File lib/napakalaki.rb, line 105</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">makeTreasureVisible</span>(<span class="ruby-identifier">treasure</span>)
+  <span class="ruby-identifier">allowed</span> = <span class="ruby-ivar">@currentPlayer</span>.<span class="ruby-identifier">canMakeTreasureVisible</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">allowed</span>
+    <span class="ruby-ivar">@currentPlayer</span>.<span class="ruby-identifier">makeVisibleTreasure</span>(<span class="ruby-identifier">treasure</span>)
+  <span class="ruby-keyword">end</span>
 
 <span class="ruby-keyword">end</span></pre>
             </div><!-- makeTreasureVisible-source -->
@@ -700,15 +724,26 @@ href="Monster.html">Monster</a>), devolviendo el resultado de dicho combate</p>
 
           <div class="method-description">
             
-            
+            <p>Método que pasa al siguiente turno. Devuelve true si ha podido pasar al 
+siguiente turno satisfactoriamente y false en caso contrario</p>
             
 
             
             <div class="method-source-code" id="nextTurn-source">
 <pre>
-<span class="ruby-comment"># File lib/napakalaki.rb, line 116</span>
+<span class="ruby-comment"># File lib/napakalaki.rb, line 156</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">nextTurn</span>()
-
+  <span class="ruby-identifier">nextTurn</span> = <span class="ruby-keyword">false</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">nextTurnIsAllowed</span>
+    <span class="ruby-identifier">cardDealer</span> = <span class="ruby-constant">CardDealer</span>.<span class="ruby-identifier">instance</span>
+    <span class="ruby-ivar">@currentMonster</span> = <span class="ruby-identifier">cardDealer</span>.<span class="ruby-identifier">nextMonster</span>
+    <span class="ruby-identifier">nextPlayer</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">currentPlayer</span>.<span class="ruby-identifier">dead</span>
+      <span class="ruby-identifier">currentPlayer</span>.<span class="ruby-identifier">initTreasures</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">nextTurn</span> = <span class="ruby-keyword">true</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">nextTurn</span>
 <span class="ruby-keyword">end</span></pre>
             </div><!-- nextTurn-source -->
             
@@ -742,9 +777,9 @@ href="Player.html#method-i-validState">Player#validState()</a></p>
             
             <div class="method-source-code" id="nextTurnIsAllowed-source">
 <pre>
-<span class="ruby-comment"># File lib/napakalaki.rb, line 125</span>
+<span class="ruby-comment"># File lib/napakalaki.rb, line 175</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">nextTurnIsAllowed</span>()
-
+  <span class="ruby-keyword">return</span> (<span class="ruby-ivar">@currentPlayer</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">or</span> <span class="ruby-ivar">@currentPlayer</span>.<span class="ruby-identifier">validState</span>);
 <span class="ruby-keyword">end</span></pre>
             </div><!-- nextTurnIsAllowed-source -->
             

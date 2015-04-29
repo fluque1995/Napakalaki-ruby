@@ -86,14 +86,23 @@ module Model
       return combatResult
     end
 
+    ##
+    # Descarta un tesoro visible del jugador actual (currentPlayer)
+    #
     def discardVisibleTreasure(treasure)
         @currentPlayer.discardVisibleTreasure(treasure)
     end
 
+    ##
+    # Descarta un tesoro oculto del jugador actual (currentPlayer)
+    #
     def discardHiddenTreasures(treasure)
       @currentPlayer.discardHiddenTreasure(treasure)
     end
 
+    ##
+    # Pasa un tesoro del jugador actual de oculto a visible (equipa dicho objeto)
+    #
     def makeTreasureVisible(treasure)
       allowed = @currentPlayer.canMakeTreasureVisible
       if allowed
@@ -102,10 +111,17 @@ module Model
 
     end
 
+    ##
+    # Compra niveles del jugador actual (currentPlayer)
+    #
     def buyLevels(visible, hidden)
       return @currentPlayer.buyLevels(visible, hidden)
     end
 
+    ##
+    # Inicia el juego, inicializando a los jugadores que juegan, el CardDealer, 
+    # y llamando al primer turno.
+    #
     def initGame(players)
       cardDealer = CardDealer.instance
       cardDealer.initCards
@@ -113,14 +129,23 @@ module Model
       nextTurn
     end
 
+    ##
+    # Comprueba si el jugador actual puede hacer visible un determinado tesoro
+    #
     def canMakeTreasureVisible(treasure)
       return @currentPlayer.canMakeTreasureVisible(treasure)
     end
 
+    ##
+    # Devuelve el array de tesoros visibles del jugador actual
+    #
     def getVisibleTreasures()
       return @currentPlayer.visibleTreasures
     end
 
+    ##
+    # Devuelve el array de tesoros ocultos del jugador actual
+    #
     def getHiddenTreasures()
       return @currentPlayer.hiddenTreasures
     end

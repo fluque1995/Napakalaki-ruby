@@ -67,6 +67,8 @@
           
           <li><a href="#method-c-new">::new</a></li>
           
+          <li><a href="#method-i-getType">#getType</a></li>
+          
           <li><a href="#method-i-to_s">#to_s</a></li>
           
         </ul>
@@ -120,6 +122,8 @@
         
           <li><a href="../Model/Dice.html">Model::Dice</a></li>
         
+          <li><a href="../Model/EjemploMain.html">Model::EjemploMain</a></li>
+        
           <li><a href="../Model/Monster.html">Model::Monster</a></li>
         
           <li><a href="../Model/Napakalaki.html">Model::Napakalaki</a></li>
@@ -131,6 +135,14 @@
           <li><a href="../Model/Treasure.html">Model::Treasure</a></li>
         
           <li><a href="../Model/TreasureKind.html">Model::TreasureKind</a></li>
+        
+          <li><a href="../Test.html">Test</a></li>
+        
+          <li><a href="../Test/Command.html">Test::Command</a></li>
+        
+          <li><a href="../Test/Command/Option.html">Test::Command::Option</a></li>
+        
+          <li><a href="../Test/GameTester.html">Test::GameTester</a></li>
         
         </ul>
         <div id="no-class-search-results" style="display: none;">No matching classes.</div>
@@ -283,7 +295,7 @@ al vencer en  combate contra un monstruo.</p>
             
             <div class="method-source-code" id="new-source">
 <pre>
-<span class="ruby-comment"># File lib/treasure.rb, line 21</span>
+<span class="ruby-comment"># File lib/treasure.rb, line 22</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">goldCoins</span>, <span class="ruby-identifier">minBonus</span>, <span class="ruby-identifier">maxBonus</span>, <span class="ruby-identifier">type</span>)
   <span class="ruby-ivar">@name</span> = <span class="ruby-identifier">name</span>
   <span class="ruby-ivar">@goldCoins</span> = <span class="ruby-identifier">goldCoins</span>
@@ -307,6 +319,39 @@ al vencer en  combate contra un monstruo.</p>
         <h3 class="section-header">Public Instance Methods</h3>
 
       
+        <div id="getType-method" class="method-detail ">
+          <a name="method-i-getType"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">getType</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Tipo de tesoro</p>
+            
+
+            
+            <div class="method-source-code" id="getType-source">
+<pre>
+<span class="ruby-comment"># File lib/treasure.rb, line 40</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">getType</span>()
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@type</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- getType-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- getType-method -->
+
+      
         <div id="to_s-method" class="method-detail ">
           <a name="method-i-to_s"></a>
 
@@ -320,13 +365,14 @@ al vencer en  combate contra un monstruo.</p>
 
           <div class="method-description">
             
-            
+            <p>Devuelve en un string toda la información relativa al tesoro. Sirve para 
+trazar errores</p>
             
 
             
             <div class="method-source-code" id="to_s-source">
 <pre>
-<span class="ruby-comment"># File lib/treasure.rb, line 40</span>
+<span class="ruby-comment"># File lib/treasure.rb, line 51</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">to_s</span>()
   <span class="ruby-keyword">return</span> <span class="ruby-node">&quot;Nombre: #{@name}, precio: #{@goldCoins}, bonus mínimo: #{@minBonus},
           bonus máximo: #{@maxBonus}, tipo: #{@type.to_s}&quot;</span> 

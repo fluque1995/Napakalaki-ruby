@@ -5,6 +5,7 @@ module Model
   
   require_relative "treasure_kind.rb"
   require_relative "treasure.rb"
+
   ##
   # Clase que representa el mal rollo que te produce un monstruo cuando pierdes 
   # un combate contra él. Esta clase sirve de apoyo a la clase Monster.
@@ -89,7 +90,7 @@ module Model
       return (@visibleTreasures == 0 and @hiddenTreasures == 0 and 
           (@specificVisibleTreasures == nil or @specificVisibleTreasures.empty?) and 
           (@specificHiddenTreasures == nil or @specificHiddenTreasures.empty?) and 
-          @death == false) # @levels == 0 and 
+          @death == false)
 
     end
 
@@ -129,6 +130,13 @@ module Model
       end
     end
 
+    ##
+    # Ajusta un determinado mal rollo a un mal rollo que pueda ser cumplido por 
+    # un determinado jugador. Este método es necesario para que un jugador pueda
+    # cumplir un mal rollo que le aplica un monstruo. Crea el mal rollo más cercano
+    # al que el monstruo tiene y que puede ser cumplido por el jugador al que se
+    # le aplica.
+    #
     def adjustToFitTreasureLists(visibleTreasuresArray, hiddenTreasuresArray)
       
       badConsequence = self.copy()
@@ -206,6 +214,12 @@ module Model
       return printable_text
     end
     
+    ##
+    # Método que devuelve una copia exacta del mal rollo que llama a la función,
+    # pero con identidad distinta. Este método es necesario para evitar modificar
+    # el mal rollo asociado a los mostruos cuando estos se ajustan para ser cumplidos
+    # por un jugador en el método BadConsequence.adjustToFitTreasureLists
+    #
     def copy()
       if @death == true
         badConsequence = BadConsequence.newDeath(@name)
