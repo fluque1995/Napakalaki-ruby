@@ -62,6 +62,7 @@ require 'singleton'
       @unusedTreasures << Treasure.new("Escopeta de tres cañones", 700, 4, 6, TreasureKind::BOTHHANDS)
       @unusedTreasures << Treasure.new("Garabato místico", 300, 2, 2, TreasureKind::ONEHAND)
       @unusedTreasures << Treasure.new("La fuerza de Mr. T", 1000, 0, 0, TreasureKind::NECKLACE)
+=begin
       @unusedTreasures << Treasure.new("La rebeca metálica", 400, 2, 3, TreasureKind::ARMOR)
       @unusedTreasures << Treasure.new("Mazo de los antiguos", 200, 3, 4, TreasureKind::ONEHAND)
       @unusedTreasures << Treasure.new("Necroplayboycon", 300, 3, 5, TreasureKind::ONEHAND)
@@ -76,7 +77,7 @@ require 'singleton'
       @unusedTreasures << Treasure.new("Zapato deja-amigos", 500, 0, 1, TreasureKind::SHOE)
       @unusedTreasures << Treasure.new("Shogulador", 600, 1, 1, TreasureKind::BOTHHANDS)
       @unusedTreasures << Treasure.new("Varita de atizamiento", 400, 3, 4, TreasureKind::ONEHAND)
-
+=end
     end
 
     ##
@@ -100,6 +101,10 @@ require 'singleton'
                        "Pierdes el calzado visible", 0, [TreasureKind::SHOE], [])
       @unusedMonsters << Monster.new("El sopor de Dunwich", 2, prize, badConsequence)
 
+      prize = Prize.new(4,1)
+      badConsequence = BadConsequence.newDeath("La familia te atrapa. Estás muerto")
+      @unusedMonsters << Monster.new("Familia feliz", 1, prize, badConsequence)
+=begin
       prize = Prize.new(4,1)
       badConsequence = BadConsequence.newSpecificTreasures("Te atrapan para llevarte de fiesta y te dejan " +
                         "caer en mitad del vuelo. Descarta una mano visible y otra oculta",
@@ -155,10 +160,6 @@ require 'singleton'
                         " nombre, estás muerto")
       @unusedMonsters << Monster.new("Yskhtihyssg-Goth", 12, prize, badConsequence)
 
-      prize = Prize.new(4,1)
-      badConsequence = BadConsequence.newDeath("La familia te atrapa. Estás muerto")
-      @unusedMonsters << Monster.new("Familia feliz", 1, prize, badConsequence)
-
       prize = Prize.new(2,1)
       badConsequence = BadConsequence.newSpecificTreasures("La quinta directiva primaria " +
                        "te obliga a perder dos niveles y un tesoro de dos manos visible", 2,
@@ -180,7 +181,7 @@ require 'singleton'
                         " cabeza. Pierdes 3 niveles y tus tesoros visibles de las manos",
                         3, [TreasureKind::ONEHAND, TreasureKind::ONEHAND, TreasureKind::BOTHHANDS],[])
       @unusedMonsters << Monster.new("Bicéfalo", 20, prize, badConsequence)
-
+=end
     end
 
     ##
