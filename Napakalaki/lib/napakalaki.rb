@@ -176,7 +176,7 @@ module Model
     ##
     # Método que comprueba si el turno siguiente está permitido, es decir, si el
     # jugador actual cumple con las condiciones necesarias para terminar su turno.
-    # Utiliza como apoyo el método Player#validState()
+    # Utiliza como apoyo el método Player.validState()
     #
     def nextTurnIsAllowed()
       return (@currentPlayer == nil or @currentPlayer.validState);

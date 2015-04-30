@@ -31,10 +31,18 @@ module Model
       @levelChangeAgainstCultist = levelChange
     end
     
+    ##
+    # Constructor para los monstruos cuyo combate contra un jugador sectario
+    # no varía el nivel de combate del monstruo
+    #
     def self.newMonsterLevelStatic(name, combatLevel, prize, badConsequence)
       return new(name, combatLevel, prize, badConsequence, 0)
     end
     
+    ##
+    # Constructor para los monstruos cuyo combate contra un jugador sectario
+    # sí varía el nivel de combate del monstruo
+    #
     def self.newMonsterLevelDynamic(name, combatLevel, prize, badConsequence, levelChange)
       return new(name, combatLevel, prize, badConsequence, levelChange)
     end

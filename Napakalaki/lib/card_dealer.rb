@@ -226,6 +226,9 @@ require 'singleton'
       
     end
 
+    ##
+    # Inicializa el mazo de cartas de sectarios
+    #
     def initCultistCardDeck()
       
       @unusedCultists = Array.new()
@@ -253,6 +256,9 @@ require 'singleton'
       @unusedMonsters.shuffle!
     end
 
+    ##
+    # Baraja el mazo de cartas de sectarios
+    #
     def shuffleCultists()
       @unusedCultists.shuffle!
     end
@@ -290,9 +296,13 @@ require 'singleton'
       return monster
     end
 
+    ##
+    # Devuelve el siguiente sectario dentro del mazo de cartas de sectarios
+    #
     def nextCultist()
       return @unusedCultists.pop
     end
+    
     ##
     # Devuelve el tesoro que estaba en juego al mazo de descartes de tesoros.
     #

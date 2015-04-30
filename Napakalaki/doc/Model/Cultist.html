@@ -5,7 +5,7 @@
 <head>
   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
 
-  <title>Class: Model::Prize</title>
+  <title>Class: Model::Cultist</title>
 
   <link rel="stylesheet" href="../rdoc.css" type="text/css" media="screen" />
 
@@ -34,8 +34,8 @@
         <div class="section-body">
           <ul>
           
-            <li><a href="../lib/prize_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
-              class="thickbox" title="lib/prize.rb">lib/prize.rb</a></li>
+            <li><a href="../lib/cultist_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/cultist.rb">lib/cultist.rb</a></li>
           
           </ul>
         </div>
@@ -66,6 +66,10 @@
         <ul class="link-list">
           
           <li><a href="#method-c-new">::new</a></li>
+          
+          <li><a href="#method-i-getBasicValue">#getBasicValue</a></li>
+          
+          <li><a href="#method-i-getSpecialValue">#getSpecialValue</a></li>
           
           <li><a href="#method-i-to_s">#to_s</a></li>
           
@@ -157,15 +161,14 @@
   </div>
 
   <div id="documentation">
-    <h1 class="class">Model::Prize</h1>
+    <h1 class="class">Model::Cultist</h1>
 
     <div id="description" class="description">
       
-<p>Clase que representa los premios que se obtienen en el juego. Cuando un
-jugador (<a href="Player.html">Player</a>) vence en combate a un monstruo
-(<a href="Monster.html">Monster</a>), recibe un premio, consistente en una
-determinada subida de niveles y un robo de cartas de tesoro. Esta clase
-sirve de apoyo a la clase <a href="Monster.html">Monster</a>.</p>
+<p>Clase que representa una carta de sectario del juego. Cada objeto de esta 
+clase representa a una carta de sectario de las que hay en el juego. Estas
+cartas sirven para saber el comportamiento nuevo que tiene un jugador
+cuando se convierte en sectario de acuerdo con las reglas del juego.</p>
 
     </div><!-- description -->
 
@@ -185,32 +188,32 @@ sirve de apoyo a la clase <a href="Monster.html">Monster</a>.</p>
         <h3 class="section-header">Attributes</h3>
 
         
-        <div id="levels-attribute-method" class="method-detail">
-          <a name="levels"></a>
+        <div id="gainedLevels-attribute-method" class="method-detail">
+          <a name="gainedLevels"></a>
           
           <div class="method-heading attribute-method-heading">
-            <span class="method-name">levels</span><span
+            <span class="method-name">gainedLevels</span><span
               class="attribute-access-type">[R]</span>
           </div>
 
           <div class="method-description">
           
-          <p>Niveles aumentados</p>
+          
           
           </div>
         </div>
         
-        <div id="treasures-attribute-method" class="method-detail">
-          <a name="treasures"></a>
+        <div id="name-attribute-method" class="method-detail">
+          <a name="name"></a>
           
           <div class="method-heading attribute-method-heading">
-            <span class="method-name">treasures</span><span
+            <span class="method-name">name</span><span
               class="attribute-access-type">[R]</span>
           </div>
 
           <div class="method-description">
           
-          <p>Tesoros obtenidos</p>
+          
           
           </div>
         </div>
@@ -230,24 +233,23 @@ sirve de apoyo a la clase <a href="Monster.html">Monster</a>.</p>
           
           <div class="method-heading">
             <span class="method-name">new</span><span
-              class="method-args">(treasures, levels)</span>
+              class="method-args">(name, gainedLevels)</span>
             <span class="method-click-advice">click to toggle source</span>
           </div>
           
 
           <div class="method-description">
             
-            <p>Inicializa un premio, especificando el número de niveles que se aumentan y
-el número de tesoros que se obtienen.</p>
+            
             
 
             
             <div class="method-source-code" id="new-source">
 <pre>
-<span class="ruby-comment"># File lib/prize.rb, line 17</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">treasures</span>, <span class="ruby-identifier">levels</span>)
-  <span class="ruby-ivar">@treasures</span> = <span class="ruby-identifier">treasures</span>
-  <span class="ruby-ivar">@levels</span> = <span class="ruby-identifier">levels</span>
+<span class="ruby-comment"># File lib/cultist.rb, line 12</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">gainedLevels</span>)
+  <span class="ruby-ivar">@name</span> = <span class="ruby-identifier">name</span>
+  <span class="ruby-ivar">@gainedLevels</span> = <span class="ruby-identifier">gainedLevels</span>
 <span class="ruby-keyword">end</span></pre>
             </div><!-- new-source -->
             
@@ -265,6 +267,75 @@ el número de tesoros que se obtienen.</p>
         <h3 class="section-header">Public Instance Methods</h3>
 
       
+        <div id="getBasicValue-method" class="method-detail ">
+          <a name="method-i-getBasicValue"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">getBasicValue</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Devuelve los niveles que gana el jugador por convertirse en sectario</p>
+            
+
+            
+            <div class="method-source-code" id="getBasicValue-source">
+<pre>
+<span class="ruby-comment"># File lib/cultist.rb, line 23</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">getBasicValue</span>()
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@gainedLevels</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- getBasicValue-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- getBasicValue-method -->
+
+      
+        <div id="getSpecialValue-method" class="method-detail ">
+          <a name="method-i-getSpecialValue"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">getSpecialValue</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Devuelve el número de niveles que gana el jugador por ser sectario,
+multiplicado por el número de sectarios que hay en ese momento jugando.
+Este es el bonus real de niveles que recibe un jugador para el combate por
+ser sectario</p>
+            
+
+            
+            <div class="method-source-code" id="getSpecialValue-source">
+<pre>
+<span class="ruby-comment"># File lib/cultist.rb, line 32</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">getSpecialValue</span>()
+  <span class="ruby-keyword">return</span> (<span class="ruby-ivar">@gainedLevels</span>*<span class="ruby-constant">CultistPlayer</span>.<span class="ruby-identifier">getTotalCultistsPlayers</span>)
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- getSpecialValue-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- getSpecialValue-method -->
+
+      
         <div id="to_s-method" class="method-detail ">
           <a name="method-i-to_s"></a>
 
@@ -278,16 +349,16 @@ el número de tesoros que se obtienen.</p>
 
           <div class="method-description">
             
-            <p>Método que devuelve un string con toda la información relativa al premio.
-Sirve para trazar fallos.</p>
+            <p>Devuelve la información relativa al sectario en un string. Sirve para
+trazar errores</p>
             
 
             
             <div class="method-source-code" id="to_s-source">
 <pre>
-<span class="ruby-comment"># File lib/prize.rb, line 31</span>
+<span class="ruby-comment"># File lib/cultist.rb, line 40</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">to_s</span>()
-  <span class="ruby-keyword">return</span> <span class="ruby-node">&quot;Tesoros: #{@treasures}, niveles: #{@levels}&quot;</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-node">&quot;Nombre: #{@name}, niveles ganados: #{@gainedLevels.to_s}&quot;</span>
 <span class="ruby-keyword">end</span></pre>
             </div><!-- to_s-source -->
             

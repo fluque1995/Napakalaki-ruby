@@ -5,7 +5,7 @@
 <head>
   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
 
-  <title>Class: Model::Treasure</title>
+  <title>Class: Model::CultistPlayer</title>
 
   <link rel="stylesheet" href="../rdoc.css" type="text/css" media="screen" />
 
@@ -34,8 +34,8 @@
         <div class="section-body">
           <ul>
           
-            <li><a href="../lib/treasure_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
-              class="thickbox" title="lib/treasure.rb">lib/treasure.rb</a></li>
+            <li><a href="../lib/cultist_player_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/cultist_player.rb">lib/cultist_player.rb</a></li>
           
           </ul>
         </div>
@@ -50,7 +50,7 @@
       <div id="parent-class-section" class="section">
         <h3 class="section-header">Parent</h3>
         
-        <p class="link">Object</p>
+        <p class="link"><a href="Player.html">Model::Player</a></p>
         
       </div>
       
@@ -65,15 +65,17 @@
         <h3 class="section-header">Methods</h3>
         <ul class="link-list">
           
+          <li><a href="#method-c-getTotalCultistPlayers">::getTotalCultistPlayers</a></li>
+          
           <li><a href="#method-c-new">::new</a></li>
           
-          <li><a href="#method-i-getBasicValue">#getBasicValue</a></li>
+          <li><a href="#method-i-computeGoldCoinsValue">#computeGoldCoinsValue</a></li>
           
-          <li><a href="#method-i-getSpecialValue">#getSpecialValue</a></li>
+          <li><a href="#method-i-getCombatLevel">#getCombatLevel</a></li>
           
-          <li><a href="#method-i-getType">#getType</a></li>
+          <li><a href="#method-i-getOpponentLevel">#getOpponentLevel</a></li>
           
-          <li><a href="#method-i-to_s">#to_s</a></li>
+          <li><a href="#method-i-shouldConvert">#shouldConvert</a></li>
           
         </ul>
       </div>
@@ -163,14 +165,10 @@
   </div>
 
   <div id="documentation">
-    <h1 class="class">Model::Treasure</h1>
+    <h1 class="class">Model::CultistPlayer</h1>
 
     <div id="description" class="description">
       
-<p>Clase que representa una carta de tesoro del juego. Estas cartas se
-obtienen robando cartas del mazo de tesoros al principio de la partida, o
-al vencer en  combate contra un monstruo.</p>
-
     </div><!-- description -->
 
     
@@ -184,93 +182,45 @@ al vencer en  combate contra un monstruo.</p>
       
 
       
-      <!-- Attributes -->
-      <div id="attribute-method-details" class="method-section section">
-        <h3 class="section-header">Attributes</h3>
-
-        
-        <div id="goldCoins-attribute-method" class="method-detail">
-          <a name="goldCoins"></a>
-          
-          <div class="method-heading attribute-method-heading">
-            <span class="method-name">goldCoins</span><span
-              class="attribute-access-type">[R]</span>
-          </div>
-
-          <div class="method-description">
-          
-          <p>Precio en monedas de oro</p>
-          
-          </div>
-        </div>
-        
-        <div id="maxBonus-attribute-method" class="method-detail">
-          <a name="maxBonus"></a>
-          
-          <div class="method-heading attribute-method-heading">
-            <span class="method-name">maxBonus</span><span
-              class="attribute-access-type">[R]</span>
-          </div>
-
-          <div class="method-description">
-          
-          <p>Bonus máximo que otorga</p>
-          
-          </div>
-        </div>
-        
-        <div id="minBonus-attribute-method" class="method-detail">
-          <a name="minBonus"></a>
-          
-          <div class="method-heading attribute-method-heading">
-            <span class="method-name">minBonus</span><span
-              class="attribute-access-type">[R]</span>
-          </div>
-
-          <div class="method-description">
-          
-          <p>Bonus mínimo que otorga</p>
-          
-          </div>
-        </div>
-        
-        <div id="name-attribute-method" class="method-detail">
-          <a name="name"></a>
-          
-          <div class="method-heading attribute-method-heading">
-            <span class="method-name">name</span><span
-              class="attribute-access-type">[R]</span>
-          </div>
-
-          <div class="method-description">
-          
-          <p>Nombre del tesoro</p>
-          
-          </div>
-        </div>
-        
-        <div id="type-attribute-method" class="method-detail">
-          <a name="type"></a>
-          
-          <div class="method-heading attribute-method-heading">
-            <span class="method-name">type</span><span
-              class="attribute-access-type">[R]</span>
-          </div>
-
-          <div class="method-description">
-          
-          <p>Tipo de tesoro</p>
-          
-          </div>
-        </div>
-        
-      </div><!-- attribute-method-details -->
-      
 
       <!-- Methods -->
       
       <div id="public-class-method-details" class="method-section section">
         <h3 class="section-header">Public Class Methods</h3>
+
+      
+        <div id="getTotalCultistPlayers-method" class="method-detail ">
+          <a name="method-c-getTotalCultistPlayers"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">getTotalCultistPlayers</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Método que devuelve el número de jugadores sectarios que hay jugando en ese
+momento</p>
+            
+
+            
+            <div class="method-source-code" id="getTotalCultistPlayers-source">
+<pre>
+<span class="ruby-comment"># File lib/cultist_player.rb, line 63</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">getTotalCultistPlayers</span>()
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">@@totalCultistPlayers</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- getTotalCultistPlayers-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- getTotalCultistPlayers-method -->
 
       
         <div id="new-method" class="method-detail ">
@@ -279,39 +229,24 @@ al vencer en  combate contra un monstruo.</p>
           
           <div class="method-heading">
             <span class="method-name">new</span><span
-              class="method-args">(name, goldCoins, minBonus, maxBonus, type)</span>
+              class="method-args">(player, cultist)</span>
             <span class="method-click-advice">click to toggle source</span>
           </div>
           
 
           <div class="method-description">
             
-            <p>Inicializa una carta de tesoros, especificando los siguientes atributos:</p>
-<ul><li>
-<p>name: Nombre del tesoro</p>
-</li><li>
-<p>goldCoins: Monedas de oro que cuesta</p>
-</li><li>
-<p>minBonus: Bonus mínimo de niveles que otorga</p>
-</li><li>
-<p>maxBonux: Bonus máximo de niveles que otorga</p>
-</li><li>
-<p>type: Tipo de tesoro. Los tipos de tesoro posibles vienen especificados</p>
-</li></ul>
-
-<p>en el módulo <a href="TreasureKind.html">TreasureKind</a></p>
+            
             
 
             
             <div class="method-source-code" id="new-source">
 <pre>
-<span class="ruby-comment"># File lib/treasure.rb, line 22</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">goldCoins</span>, <span class="ruby-identifier">minBonus</span>, <span class="ruby-identifier">maxBonus</span>, <span class="ruby-identifier">type</span>)
-  <span class="ruby-ivar">@name</span> = <span class="ruby-identifier">name</span>
-  <span class="ruby-ivar">@goldCoins</span> = <span class="ruby-identifier">goldCoins</span>
-  <span class="ruby-ivar">@minBonus</span> = <span class="ruby-identifier">minBonus</span>
-  <span class="ruby-ivar">@maxBonus</span> = <span class="ruby-identifier">maxBonus</span>
-  <span class="ruby-ivar">@type</span> = <span class="ruby-identifier">type</span>
+<span class="ruby-comment"># File lib/cultist_player.rb, line 6</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">player</span>, <span class="ruby-identifier">cultist</span>)
+  <span class="ruby-keyword">super</span>(<span class="ruby-identifier">player</span>)
+  <span class="ruby-ivar">@myCultistCard</span> = <span class="ruby-identifier">cultist</span>
+  <span class="ruby-identifier">@@totalCultistPlayers</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
 <span class="ruby-keyword">end</span></pre>
             </div><!-- new-source -->
             
@@ -329,45 +264,55 @@ al vencer en  combate contra un monstruo.</p>
         <h3 class="section-header">Public Instance Methods</h3>
 
       
-        <div id="getBasicValue-method" class="method-detail ">
-          <a name="method-i-getBasicValue"></a>
+        <div id="computeGoldCoinsValue-method" class="method-detail ">
+          <a name="method-i-computeGoldCoinsValue"></a>
 
           
           <div class="method-heading">
-            <span class="method-name">getBasicValue</span><span
-              class="method-args">()</span>
+            <span class="method-name">computeGoldCoinsValue</span><span
+              class="method-args">(treasures)</span>
             <span class="method-click-advice">click to toggle source</span>
           </div>
           
 
           <div class="method-description">
             
-            <p>Devuelve el bonus mínimo que otorga el premio</p>
+            <p>Método que calcula el número de niveles que vale una determinada lista de 
+tesoros. Este método redefine el método <a
+href="Player.html#method-i-computeGoldCoinsValue">Player.computeGoldCoinsValue</a>,
+ya que para los jugadores sectarios, el valor en oro de sus objetos vale
+doble</p>
             
 
             
-            <div class="method-source-code" id="getBasicValue-source">
+            <div class="method-source-code" id="computeGoldCoinsValue-source">
 <pre>
-<span class="ruby-comment"># File lib/treasure.rb, line 42</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">getBasicValue</span>()
-  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@minBonus</span>
+<span class="ruby-comment"># File lib/cultist_player.rb, line 49</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">computeGoldCoinsValue</span>(<span class="ruby-identifier">treasures</span>)
+  
+  <span class="ruby-identifier">value</span> = <span class="ruby-value">0.0</span>
+  <span class="ruby-keyword">for</span> <span class="ruby-identifier">t</span> <span class="ruby-keyword">in</span> <span class="ruby-identifier">treasures</span>
+    <span class="ruby-identifier">value</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">t</span>.<span class="ruby-identifier">goldCoins</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> (<span class="ruby-identifier">value</span><span class="ruby-operator">/</span><span class="ruby-value">500.0</span>)
+  
 <span class="ruby-keyword">end</span></pre>
-            </div><!-- getBasicValue-source -->
+            </div><!-- computeGoldCoinsValue-source -->
             
           </div>
 
           
 
           
-        </div><!-- getBasicValue-method -->
+        </div><!-- computeGoldCoinsValue-method -->
 
       
-        <div id="getSpecialValue-method" class="method-detail ">
-          <a name="method-i-getSpecialValue"></a>
+        <div id="getCombatLevel-method" class="method-detail ">
+          <a name="method-i-getCombatLevel"></a>
 
           
           <div class="method-heading">
-            <span class="method-name">getSpecialValue</span><span
+            <span class="method-name">getCombatLevel</span><span
               class="method-args">()</span>
             <span class="method-click-advice">click to toggle source</span>
           </div>
@@ -375,65 +320,72 @@ al vencer en  combate contra un monstruo.</p>
 
           <div class="method-description">
             
-            <p>Devuelve el bonus máximo que otorga el premio</p>
+            <p>Método que devuelve el nivel de combate de un jugador sectario. Un jugador
+sectario tiene como nivel de combate el nivel de combate que le corresponde
+como jugador más el bonus que obtiene por ser sectario, que depende del
+número de sectarios que haya jugando.</p>
             
 
             
-            <div class="method-source-code" id="getSpecialValue-source">
+            <div class="method-source-code" id="getCombatLevel-source">
 <pre>
-<span class="ruby-comment"># File lib/treasure.rb, line 49</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">getSpecialValue</span>()
-  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@maxBonus</span>
+<span class="ruby-comment"># File lib/cultist_player.rb, line 20</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">getCombatLevel</span>()
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">super</span>.<span class="ruby-identifier">getCombatLevel</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@myCultistCard</span>.<span class="ruby-identifier">getSpecialValue</span>
 <span class="ruby-keyword">end</span></pre>
-            </div><!-- getSpecialValue-source -->
+            </div><!-- getCombatLevel-source -->
             
           </div>
 
           
 
           
-        </div><!-- getSpecialValue-method -->
+        </div><!-- getCombatLevel-method -->
 
       
-        <div id="getType-method" class="method-detail ">
-          <a name="method-i-getType"></a>
+        <div id="getOpponentLevel-method" class="method-detail ">
+          <a name="method-i-getOpponentLevel"></a>
 
           
           <div class="method-heading">
-            <span class="method-name">getType</span><span
-              class="method-args">()</span>
+            <span class="method-name">getOpponentLevel</span><span
+              class="method-args">(monster)</span>
             <span class="method-click-advice">click to toggle source</span>
           </div>
           
 
           <div class="method-description">
             
-            <p>Tipo de tesoro</p>
+            <p>Método que obtiene el nivel de combate del monstruo oponente al luchar
+contra un jugador sectario. Este método redefine el método <a
+href="Player.html#method-i-getOpponentLevel">Player.getOpponentLevel</a>
+porque el nivel de algunos monstruos varía dependiendo del tipo de jugador 
+al que se enfrenten</p>
             
 
             
-            <div class="method-source-code" id="getType-source">
+            <div class="method-source-code" id="getOpponentLevel-source">
 <pre>
-<span class="ruby-comment"># File lib/treasure.rb, line 54</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">getType</span>()
-  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@type</span>
+<span class="ruby-comment"># File lib/cultist_player.rb, line 40</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">getOpponentLevel</span>(<span class="ruby-identifier">monster</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">monster</span>.<span class="ruby-identifier">getSpecialValue</span>
 <span class="ruby-keyword">end</span></pre>
-            </div><!-- getType-source -->
+            </div><!-- getOpponentLevel-source -->
             
           </div>
 
           
 
           
-        </div><!-- getType-method -->
+        </div><!-- getOpponentLevel-method -->
 
       
-        <div id="to_s-method" class="method-detail ">
-          <a name="method-i-to_s"></a>
+        <div id="shouldConvert-method" class="method-detail ">
+          <a name="method-i-shouldConvert"></a>
 
           
           <div class="method-heading">
-            <span class="method-name">to_s</span><span
+            <span class="method-name">shouldConvert</span><span
               class="method-args">()</span>
             <span class="method-click-advice">click to toggle source</span>
           </div>
@@ -441,26 +393,29 @@ al vencer en  combate contra un monstruo.</p>
 
           <div class="method-description">
             
-            <p>Devuelve en un string toda la información relativa al tesoro. Sirve para 
-trazar errores</p>
+            <p>Redefinición del método <a
+href="Player.html#method-i-shouldConvert">Player.shouldConvert</a>. En este
+caso se devuelve siempre false porque el sectario no debe volverse a
+convertir, ya que una vez convertido en sectario un jugador no puede dejar
+de serlo, y por tanto, no debe volver a convertirse en sectario por segunda
+vez</p>
             
 
             
-            <div class="method-source-code" id="to_s-source">
+            <div class="method-source-code" id="shouldConvert-source">
 <pre>
-<span class="ruby-comment"># File lib/treasure.rb, line 65</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">to_s</span>()
-  <span class="ruby-keyword">return</span> <span class="ruby-node">&quot;Nombre: #{@name}, precio: #{@goldCoins}, bonus mínimo: #{@minBonus},
-          bonus máximo: #{@maxBonus}, tipo: #{@type.to_s}&quot;</span> 
+<span class="ruby-comment"># File lib/cultist_player.rb, line 30</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">shouldConvert</span>()
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
 <span class="ruby-keyword">end</span></pre>
-            </div><!-- to_s-source -->
+            </div><!-- shouldConvert-source -->
             
           </div>
 
           
 
           
-        </div><!-- to_s-method -->
+        </div><!-- shouldConvert-method -->
 
       
       </div><!-- public-instance-method-details -->

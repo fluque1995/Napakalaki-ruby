@@ -1,9 +1,14 @@
-# To change this license header, choose License Headers in Project Properties.
-# To change this template file, choose Tools | Templates
-# and open the template in the editor.
+#encoding: utf-8
+# Main module of the Napakalaki project
 
 module Model
 
+  ##
+  # Clase que representa una carta de sectario del juego. Cada objeto de esta 
+  # clase representa a una carta de sectario de las que hay en el juego. Estas
+  # cartas sirven para saber el comportamiento nuevo que tiene un jugador cuando
+  # se convierte en sectario de acuerdo con las reglas del juego. 
+  #
   class Cultist
     def initialize(name, gainedLevels)
       @name = name
@@ -21,7 +26,9 @@ module Model
     end
     
     ##
-    #
+    # Devuelve el número de niveles que gana el jugador por ser sectario, multiplicado
+    # por el número de sectarios que hay en ese momento jugando. Este es el bonus
+    # real de niveles que recibe un jugador para el combate por ser sectario
     #
     def getSpecialValue()
       return (@gainedLevels*CultistPlayer.getTotalCultistsPlayers)

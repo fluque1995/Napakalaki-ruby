@@ -93,6 +93,8 @@
           
           <li><a href="#method-i-getName">#getName</a></li>
           
+          <li><a href="#method-i-getOpponentLevel">#getOpponentLevel</a></li>
+          
           <li><a href="#method-i-getVisibleTreasures">#getVisibleTreasures</a></li>
           
           <li><a href="#method-i-hasVisibleTreasures">#hasVisibleTreasures</a></li>
@@ -106,6 +108,8 @@
           <li><a href="#method-i-setPendingBadConsequence">#setPendingBadConsequence</a></li>
           
           <li><a href="#method-i-setVisibleTreasureList">#setVisibleTreasureList</a></li>
+          
+          <li><a href="#method-i-shouldConvert">#shouldConvert</a></li>
           
           <li><a href="#method-i-to_s">#to_s</a></li>
           
@@ -160,6 +164,10 @@
         
           <li><a href="../Model/CombatResult.html">Model::CombatResult</a></li>
         
+          <li><a href="../Model/Cultist.html">Model::Cultist</a></li>
+        
+          <li><a href="../Model/CultistPlayer.html">Model::CultistPlayer</a></li>
+        
           <li><a href="../Model/Dice.html">Model::Dice</a></li>
         
           <li><a href="../Model/EjemploMain.html">Model::EjemploMain</a></li>
@@ -183,6 +191,8 @@
           <li><a href="../Test/Command/Option.html">Test::Command::Option</a></li>
         
           <li><a href="../Test/GameTester.html">Test::GameTester</a></li>
+        
+          <li><a href="../CardInterface.html">CardInterface</a></li>
         
         </ul>
         <div id="no-class-search-results" style="display: none;">No matching classes.</div>
@@ -356,7 +366,7 @@ estado consistente</p>
             
             <div class="method-source-code" id="applyBadConsequence-source">
 <pre>
-<span class="ruby-comment"># File lib/player.rb, line 249</span>
+<span class="ruby-comment"># File lib/player.rb, line 253</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">applyBadConsequence</span>(<span class="ruby-identifier">badConsequence</span>)
   <span class="ruby-identifier">nLevels</span> = <span class="ruby-identifier">badConsequence</span>.<span class="ruby-identifier">levels</span>
   <span class="ruby-identifier">decrementLevels</span>(<span class="ruby-identifier">nLevels</span>)
@@ -438,7 +448,7 @@ que haya utilizado para la compra</p>
             
             <div class="method-source-code" id="buyLevels-source">
 <pre>
-<span class="ruby-comment"># File lib/player.rb, line 343</span>
+<span class="ruby-comment"># File lib/player.rb, line 347</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">buyLevels</span>(<span class="ruby-identifier">visibleTreasures</span>, <span class="ruby-identifier">hiddenTreasures</span>)
   <span class="ruby-identifier">levels</span> = <span class="ruby-identifier">computeGoldCoinsValue</span>(<span class="ruby-identifier">visibleTreasures</span>)
   <span class="ruby-identifier">levels</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">computeGoldCoinsValue</span>(<span class="ruby-identifier">hiddenTreasures</span>)
@@ -487,7 +497,7 @@ visible</p>
             
             <div class="method-source-code" id="canMakeTreasureVisible-source">
 <pre>
-<span class="ruby-comment"># File lib/player.rb, line 273</span>
+<span class="ruby-comment"># File lib/player.rb, line 277</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">canMakeTreasureVisible</span>(<span class="ruby-identifier">treasure</span>)
   <span class="ruby-identifier">allowed</span> = <span class="ruby-keyword">true</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">treasure</span>.<span class="ruby-identifier">getType</span> <span class="ruby-operator">==</span> <span class="ruby-constant">TreasureKind</span><span class="ruby-operator">::</span><span class="ruby-constant">ONEHAND</span>
@@ -551,7 +561,7 @@ visible</p>
 <span class="ruby-comment"># File lib/player.rb, line 205</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">combat</span>(<span class="ruby-identifier">monster</span>)
   <span class="ruby-identifier">myLevel</span> = <span class="ruby-identifier">getCombatLevel</span>
-  <span class="ruby-identifier">monsterLevel</span> = <span class="ruby-identifier">monster</span>.<span class="ruby-identifier">getLevel</span>
+  <span class="ruby-identifier">monsterLevel</span> = <span class="ruby-identifier">getOpponentLevel</span>(<span class="ruby-identifier">monster</span>)
 
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">myLevel</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">monsterLevel</span>
 
@@ -577,7 +587,11 @@ visible</p>
         <span class="ruby-identifier">combatResult</span> = <span class="ruby-constant">CombatResult</span><span class="ruby-operator">::</span><span class="ruby-constant">LOSEANDDIE</span>
       <span class="ruby-keyword">else</span>
         <span class="ruby-identifier">applyBadConsequence</span>(<span class="ruby-identifier">bc</span>)
-        <span class="ruby-identifier">combatResult</span> = <span class="ruby-constant">CombatResult</span><span class="ruby-operator">::</span><span class="ruby-constant">LOSE</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">shouldConvert</span>
+          <span class="ruby-identifier">combatResult</span> = <span class="ruby-constant">COmbatResult</span><span class="ruby-operator">::</span><span class="ruby-constant">LOSEANDCONVERT</span>
+        <span class="ruby-keyword">else</span>
+          <span class="ruby-identifier">combatResult</span> = <span class="ruby-constant">CombatResult</span><span class="ruby-operator">::</span><span class="ruby-constant">LOSE</span>
+        <span class="ruby-keyword">end</span>
       <span class="ruby-keyword">end</span>
     <span class="ruby-keyword">else</span>
       <span class="ruby-identifier">combatResult</span> = <span class="ruby-constant">CombatResult</span><span class="ruby-operator">::</span><span class="ruby-constant">LOSEANDESCAPE</span>
@@ -617,7 +631,7 @@ visible</p>
             
             <div class="method-source-code" id="discardHiddenTreasure-source">
 <pre>
-<span class="ruby-comment"># File lib/player.rb, line 324</span>
+<span class="ruby-comment"># File lib/player.rb, line 328</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">discardHiddenTreasure</span>(<span class="ruby-identifier">treasure</span>)
   <span class="ruby-identifier">t</span> = <span class="ruby-ivar">@hiddenTreasures</span>.<span class="ruby-identifier">find_index</span>(<span class="ruby-identifier">treasure</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">t</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
@@ -659,7 +673,7 @@ visible</p>
             
             <div class="method-source-code" id="discardVisibleTreasure-source">
 <pre>
-<span class="ruby-comment"># File lib/player.rb, line 308</span>
+<span class="ruby-comment"># File lib/player.rb, line 312</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">discardVisibleTreasure</span>(<span class="ruby-identifier">treasure</span>)
   <span class="ruby-identifier">t</span> = <span class="ruby-ivar">@visibleTreasures</span>.<span class="ruby-identifier">find_index</span>(<span class="ruby-identifier">treasure</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">t</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
@@ -703,7 +717,7 @@ que posea</p>
             
             <div class="method-source-code" id="getCombatLevel-source">
 <pre>
-<span class="ruby-comment"># File lib/player.rb, line 366</span>
+<span class="ruby-comment"># File lib/player.rb, line 370</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">getCombatLevel</span>()
   <span class="ruby-identifier">combatLevel</span> = <span class="ruby-ivar">@level</span>
   <span class="ruby-identifier">hasNecklace</span> = <span class="ruby-keyword">false</span>
@@ -920,7 +934,7 @@ que posea</p>
             
             <div class="method-source-code" id="hasVisibleTreasures-source">
 <pre>
-<span class="ruby-comment"># File lib/player.rb, line 424</span>
+<span class="ruby-comment"># File lib/player.rb, line 428</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">hasVisibleTreasures</span>()
   <span class="ruby-keyword">return</span> (<span class="ruby-ivar">@visibleTreasures</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -953,7 +967,7 @@ que posea</p>
             
             <div class="method-source-code" id="initTreasures-source">
 <pre>
-<span class="ruby-comment"># File lib/player.rb, line 399</span>
+<span class="ruby-comment"># File lib/player.rb, line 403</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">initTreasures</span>()
   <span class="ruby-identifier">bringToLife</span>
   <span class="ruby-identifier">dice</span> = <span class="ruby-constant">Dice</span>.<span class="ruby-identifier">instance</span>
@@ -1005,7 +1019,7 @@ actualizando su mano</p>
             
             <div class="method-source-code" id="makeTreasureVisible-source">
 <pre>
-<span class="ruby-comment"># File lib/player.rb, line 261</span>
+<span class="ruby-comment"># File lib/player.rb, line 265</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">makeTreasureVisible</span>(<span class="ruby-identifier">treasure</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">canMakeTreasureVisible</span>(<span class="ruby-identifier">treasure</span>)
     <span class="ruby-identifier">t</span> = <span class="ruby-ivar">@hiddenTreasures</span>.<span class="ruby-identifier">index</span>(<span class="ruby-identifier">treasure</span>)
@@ -1042,7 +1056,7 @@ actualizando su mano</p>
             
             <div class="method-source-code" id="setHiddenTreasureList-source">
 <pre>
-<span class="ruby-comment"># File lib/player.rb, line 439</span>
+<span class="ruby-comment"># File lib/player.rb, line 463</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">setHiddenTreasureList</span>(<span class="ruby-identifier">treasures</span>)
   <span class="ruby-ivar">@hiddenTreasures</span> = <span class="ruby-identifier">treasures</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1109,7 +1123,7 @@ actualizando su mano</p>
             
             <div class="method-source-code" id="setVisibleTreasureList-source">
 <pre>
-<span class="ruby-comment"># File lib/player.rb, line 435</span>
+<span class="ruby-comment"># File lib/player.rb, line 459</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">setVisibleTreasureList</span>(<span class="ruby-identifier">treasures</span>)
   <span class="ruby-ivar">@visibleTreasures</span> = <span class="ruby-identifier">treasures</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1142,7 +1156,7 @@ actualizando su mano</p>
             
             <div class="method-source-code" id="to_s-source">
 <pre>
-<span class="ruby-comment"># File lib/player.rb, line 443</span>
+<span class="ruby-comment"># File lib/player.rb, line 467</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">to_s</span>()
   <span class="ruby-keyword">return</span> <span class="ruby-node">&quot;Nombre: #{@name}, nivel: #{@level.to_i}&quot;</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1177,7 +1191,7 @@ y si ha cumplido el mal rollo que tiene asignado</p>
             
             <div class="method-source-code" id="validState-source">
 <pre>
-<span class="ruby-comment"># File lib/player.rb, line 394</span>
+<span class="ruby-comment"># File lib/player.rb, line 398</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">validState</span>()
   <span class="ruby-keyword">return</span> (<span class="ruby-ivar">@hiddenTreasures</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-identifier">@@MAXHIDDENTREASURES</span> <span class="ruby-keyword">and</span> (<span class="ruby-ivar">@pendingBadConsequence</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">or</span> 
                                                            <span class="ruby-ivar">@pendingBadConsequence</span>.<span class="ruby-identifier">isEmpty</span>))
@@ -1237,6 +1251,77 @@ niveles.</p>
 
           
         </div><!-- computeGoldCoinsValue-method -->
+
+      
+        <div id="getOpponentLevel-method" class="method-detail ">
+          <a name="method-i-getOpponentLevel"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">getOpponentLevel</span><span
+              class="method-args">(monster)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Método que obtiene el nivel de combate del monstruo oponente</p>
+            
+
+            
+            <div class="method-source-code" id="getOpponentLevel-source">
+<pre>
+<span class="ruby-comment"># File lib/player.rb, line 440</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">getOpponentLevel</span>(<span class="ruby-identifier">monster</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">monster</span>.<span class="ruby-identifier">getBasicValue</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- getOpponentLevel-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- getOpponentLevel-method -->
+
+      
+        <div id="shouldConvert-method" class="method-detail ">
+          <a name="method-i-shouldConvert"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">shouldConvert</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Método que lanza el dado para ver si el jugador debe convertirse en
+sectario o no después de perder un combate. Devolverá true en caso de que
+salga un 6 en el dado, y false en caso contrario.</p>
+            
+
+            
+            <div class="method-source-code" id="shouldConvert-source">
+<pre>
+<span class="ruby-comment"># File lib/player.rb, line 449</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">shouldConvert</span>()
+  <span class="ruby-identifier">dice</span> = <span class="ruby-constant">Dice</span>.<span class="ruby-identifier">instance</span>
+  <span class="ruby-identifier">number</span> = <span class="ruby-identifier">dice</span>.<span class="ruby-identifier">nextNumber</span>
+  
+  <span class="ruby-keyword">return</span> (<span class="ruby-identifier">number</span> <span class="ruby-operator">==</span> <span class="ruby-value">6</span>)
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- shouldConvert-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- shouldConvert-method -->
 
       
       </div><!-- protected-instance-method-details -->

@@ -5,7 +5,7 @@
 <head>
   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
 
-  <title>Module: Test</title>
+  <title>Module: CardInterface</title>
 
   <link rel="stylesheet" href="./rdoc.css" type="text/css" media="screen" />
 
@@ -34,11 +34,8 @@
         <div class="section-body">
           <ul>
           
-            <li><a href="./lib/Command_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
-              class="thickbox" title="lib/Command.rb">lib/Command.rb</a></li>
-          
-            <li><a href="./lib/GameTester_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
-              class="thickbox" title="lib/GameTester.rb">lib/GameTester.rb</a></li>
+            <li><a href="./lib/card_interface_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/card_interface.rb">lib/card_interface.rb</a></li>
           
           </ul>
         </div>
@@ -53,19 +50,19 @@
       
 
       
-      <!-- Namespace Contents -->
-      <div id="namespace-list-section" class="section">
-        <h3 class="section-header">Namespace</h3>
+
+      
+      <!-- Method Quickref -->
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
         <ul class="link-list">
           
-          <li><span class="type">MODULE</span> <a href="Test/Command.html">Test::Command</a></li>
+          <li><a href="#method-i-getBasicValue">#getBasicValue</a></li>
           
-          <li><span class="type">CLASS</span> <a href="Test/GameTester.html">Test::GameTester</a></li>
+          <li><a href="#method-i-getSpecialValue">#getSpecialValue</a></li>
           
         </ul>
       </div>
-      
-
       
 
       
@@ -152,10 +149,12 @@
   </div>
 
   <div id="documentation">
-    <h1 class="module">Test</h1>
+    <h1 class="module">CardInterface</h1>
 
     <div id="description" class="description">
       
+<p>Module used to simulate an interface for cards</p>
+
     </div><!-- description -->
 
     
@@ -172,6 +171,78 @@
 
       <!-- Methods -->
       
+      <div id="public-instance-method-details" class="method-section section">
+        <h3 class="section-header">Public Instance Methods</h3>
+
+      
+        <div id="getBasicValue-method" class="method-detail ">
+          <a name="method-i-getBasicValue"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">getBasicValue</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Método que devuelve el valor básico de la carta.</p>
+            
+
+            
+            <div class="method-source-code" id="getBasicValue-source">
+<pre>
+<span class="ruby-comment"># File lib/card_interface.rb, line 8</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">getBasicValue</span>()
+  <span class="ruby-identifier">raise</span> <span class="ruby-constant">NotImplementedError</span>.<span class="ruby-identifier">new</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- getBasicValue-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- getBasicValue-method -->
+
+      
+        <div id="getSpecialValue-method" class="method-detail ">
+          <a name="method-i-getSpecialValue"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">getSpecialValue</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Método que devuelve el valor especial de la carta.</p>
+            
+
+            
+            <div class="method-source-code" id="getSpecialValue-source">
+<pre>
+<span class="ruby-comment"># File lib/card_interface.rb, line 15</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">getSpecialValue</span>()
+  <span class="ruby-identifier">raise</span> <span class="ruby-constant">NotImplementedError</span>.<span class="ruby-identifier">new</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- getSpecialValue-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- getSpecialValue-method -->
+
+      
+      </div><!-- public-instance-method-details -->
+    
     </div><!-- 5Buntitled-5D -->
   
 

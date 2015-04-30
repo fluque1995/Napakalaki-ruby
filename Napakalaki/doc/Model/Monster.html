@@ -65,9 +65,17 @@
         <h3 class="section-header">Methods</h3>
         <ul class="link-list">
           
-          <li><a href="#method-c-new">::new</a></li>
+          <li><a href="#method-c-newMonsterLevelDynamic">::newMonsterLevelDynamic</a></li>
+          
+          <li><a href="#method-c-newMonsterLevelStatic">::newMonsterLevelStatic</a></li>
+          
+          <li><a href="#method-i-getBasicValue">#getBasicValue</a></li>
           
           <li><a href="#method-i-getLevel">#getLevel</a></li>
+          
+          <li><a href="#method-i-getSpecialValue">#getSpecialValue</a></li>
+          
+          <li><a href="#method-i-levelChangeAgainstCultistPlayer">#levelChangeAgainstCultistPlayer</a></li>
           
           <li><a href="#method-i-to_s">#to_s</a></li>
           
@@ -75,6 +83,18 @@
       </div>
       
 
+      
+      <!-- Included Modules -->
+      <div id="includes-section" class="section">
+        <h3 class="section-header">Included Modules</h3>
+        <ul class="link-list">
+        
+        
+          <li><a class="include" href="../CardInterface.html">CardInterface</a></li>
+        
+        
+        </ul>
+      </div>
       
     </div>
 
@@ -120,6 +140,10 @@
         
           <li><a href="../Model/CombatResult.html">Model::CombatResult</a></li>
         
+          <li><a href="../Model/Cultist.html">Model::Cultist</a></li>
+        
+          <li><a href="../Model/CultistPlayer.html">Model::CultistPlayer</a></li>
+        
           <li><a href="../Model/Dice.html">Model::Dice</a></li>
         
           <li><a href="../Model/EjemploMain.html">Model::EjemploMain</a></li>
@@ -143,6 +167,8 @@
           <li><a href="../Test/Command/Option.html">Test::Command::Option</a></li>
         
           <li><a href="../Test/GameTester.html">Test::GameTester</a></li>
+        
+          <li><a href="../CardInterface.html">CardInterface</a></li>
         
         </ul>
         <div id="no-class-search-results" style="display: none;">No matching classes.</div>
@@ -248,12 +274,46 @@ juego.</p>
         <h3 class="section-header">Public Class Methods</h3>
 
       
-        <div id="new-method" class="method-detail ">
-          <a name="method-c-new"></a>
+        <div id="newMonsterLevelDynamic-method" class="method-detail ">
+          <a name="method-c-newMonsterLevelDynamic"></a>
 
           
           <div class="method-heading">
-            <span class="method-name">new</span><span
+            <span class="method-name">newMonsterLevelDynamic</span><span
+              class="method-args">(name, combatLevel, prize, badConsequence, levelChange)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Constructor para los monstruos cuyo combate contra un jugador sectario sí
+varía el nivel de combate del monstruo</p>
+            
+
+            
+            <div class="method-source-code" id="newMonsterLevelDynamic-source">
+<pre>
+<span class="ruby-comment"># File lib/monster.rb, line 45</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">newMonsterLevelDynamic</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">combatLevel</span>, <span class="ruby-identifier">prize</span>, <span class="ruby-identifier">badConsequence</span>, <span class="ruby-identifier">levelChange</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">new</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">combatLevel</span>, <span class="ruby-identifier">prize</span>, <span class="ruby-identifier">badConsequence</span>, <span class="ruby-identifier">levelChange</span>)
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- newMonsterLevelDynamic-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- newMonsterLevelDynamic-method -->
+
+      
+        <div id="newMonsterLevelStatic-method" class="method-detail ">
+          <a name="method-c-newMonsterLevelStatic"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">newMonsterLevelStatic</span><span
               class="method-args">(name, combatLevel, prize, badConsequence)</span>
             <span class="method-click-advice">click to toggle source</span>
           </div>
@@ -261,46 +321,64 @@ juego.</p>
 
           <div class="method-description">
             
-            <p>Inicializa a un nuevo monstruo. Atributos:</p>
-<ul><li>
-<p>name: Nombre del monstruo</p>
-</li><li>
-<p>combatLevel: Nivel de combate</p>
-</li><li>
-<p>prize: Premio que se gana si se derrota al monstruo en combate</p>
-</li><li>
-<p>badConsequence: Mal rollo que se aplica al jugador si es derrotado por</p>
-</li></ul>
-
-<p>el monstruo</p>
+            <p>Constructor para los monstruos cuyo combate contra un jugador sectario no
+varía el nivel de combate del monstruo</p>
             
 
             
-            <div class="method-source-code" id="new-source">
+            <div class="method-source-code" id="newMonsterLevelStatic-source">
 <pre>
-<span class="ruby-comment"># File lib/monster.rb, line 20</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span> (<span class="ruby-identifier">name</span>, <span class="ruby-identifier">combatLevel</span>, <span class="ruby-identifier">prize</span>, <span class="ruby-identifier">badConsequence</span>)
-
-  <span class="ruby-ivar">@name</span> = <span class="ruby-identifier">name</span>
-  <span class="ruby-ivar">@combatLevel</span> = <span class="ruby-identifier">combatLevel</span>
-  <span class="ruby-ivar">@prize</span> = <span class="ruby-identifier">prize</span>
-  <span class="ruby-ivar">@badConsequence</span> = <span class="ruby-identifier">badConsequence</span>
-
+<span class="ruby-comment"># File lib/monster.rb, line 37</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">newMonsterLevelStatic</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">combatLevel</span>, <span class="ruby-identifier">prize</span>, <span class="ruby-identifier">badConsequence</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">new</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">combatLevel</span>, <span class="ruby-identifier">prize</span>, <span class="ruby-identifier">badConsequence</span>, <span class="ruby-value">0</span>)
 <span class="ruby-keyword">end</span></pre>
-            </div><!-- new-source -->
+            </div><!-- newMonsterLevelStatic-source -->
             
           </div>
 
           
 
           
-        </div><!-- new-method -->
+        </div><!-- newMonsterLevelStatic-method -->
 
       
       </div><!-- public-class-method-details -->
     
       <div id="public-instance-method-details" class="method-section section">
         <h3 class="section-header">Public Instance Methods</h3>
+
+      
+        <div id="getBasicValue-method" class="method-detail ">
+          <a name="method-i-getBasicValue"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">getBasicValue</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Devuelve el nivel del monstruo cuando pelea contra un jugador normal</p>
+            
+
+            
+            <div class="method-source-code" id="getBasicValue-source">
+<pre>
+<span class="ruby-comment"># File lib/monster.rb, line 69</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">getBasicValue</span>()
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@level</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- getBasicValue-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- getBasicValue-method -->
 
       
         <div id="getLevel-method" class="method-detail ">
@@ -322,7 +400,7 @@ juego.</p>
             
             <div class="method-source-code" id="getLevel-source">
 <pre>
-<span class="ruby-comment"># File lib/monster.rb, line 33</span>
+<span class="ruby-comment"># File lib/monster.rb, line 55</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">getLevel</span>()
   <span class="ruby-keyword">return</span> <span class="ruby-ivar">@combatLevel</span>
 <span class="ruby-keyword">end</span></pre>
@@ -334,6 +412,73 @@ juego.</p>
 
           
         </div><!-- getLevel-method -->
+
+      
+        <div id="getSpecialValue-method" class="method-detail ">
+          <a name="method-i-getSpecialValue"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">getSpecialValue</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Devuelve el nivel del monstruo cuando pelea contra un jugador sectario</p>
+            
+
+            
+            <div class="method-source-code" id="getSpecialValue-source">
+<pre>
+<span class="ruby-comment"># File lib/monster.rb, line 76</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">getSpecialValue</span>()
+  <span class="ruby-keyword">return</span> (<span class="ruby-ivar">@level</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@levelChangeAgainstCultistPlayer</span>)
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- getSpecialValue-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- getSpecialValue-method -->
+
+      
+        <div id="levelChangeAgainstCultistPlayer-method" class="method-detail ">
+          <a name="method-i-levelChangeAgainstCultistPlayer"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">levelChangeAgainstCultistPlayer</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Devuelve el valor de cambio de los niveles del monstruo cuando pelea contra
+un jugador sectario</p>
+            
+
+            
+            <div class="method-source-code" id="levelChangeAgainstCultistPlayer-source">
+<pre>
+<span class="ruby-comment"># File lib/monster.rb, line 84</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">levelChangeAgainstCultistPlayer</span>()
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@levelChangeAgainstCultist</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- levelChangeAgainstCultistPlayer-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- levelChangeAgainstCultistPlayer-method -->
 
       
         <div id="to_s-method" class="method-detail ">
@@ -356,10 +501,15 @@ para detectar fallos.</p>
             
             <div class="method-source-code" id="to_s-source">
 <pre>
-<span class="ruby-comment"># File lib/monster.rb, line 48</span>
+<span class="ruby-comment"># File lib/monster.rb, line 92</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">to_s</span>()
-  <span class="ruby-keyword">return</span> <span class="ruby-node">&quot;Nombre: #{@name}, nivel de combate: #{@combatLevel}\n\tPremio: #{@prize}\n&quot;</span> <span class="ruby-operator">+</span>
-         <span class="ruby-node">&quot;\tMal rollo: #{@badConsequence.to_s}&quot;</span>
+  <span class="ruby-identifier">text</span> = <span class="ruby-node">&quot;Nombre: #{@name}, nivel de combate: #{@combatLevel}&quot;</span>
+  
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@levelChangeAgainstCultist</span> <span class="ruby-operator">!=</span> <span class="ruby-value">0</span>
+    <span class="ruby-identifier">text</span> <span class="ruby-operator">+=</span> <span class="ruby-node">&quot;, modificación de nivel contra sectarios: #{@levelChangeAgainstCultist}&quot;</span>
+  <span class="ruby-keyword">end</span>
+  
+  <span class="ruby-identifier">text</span> <span class="ruby-operator">+=</span> <span class="ruby-node">&quot;\n\tPremio: #{@prize}\n\tMal rollo: #{@badConsequence.to_s}&quot;</span>
 <span class="ruby-keyword">end</span></pre>
             </div><!-- to_s-source -->
             
