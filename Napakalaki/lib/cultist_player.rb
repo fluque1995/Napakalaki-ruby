@@ -33,11 +33,22 @@ module Model
       return false
     end
     
+    ##
+    # Método que obtiene el nivel de combate del monstruo oponente al luchar contra
+    # un jugador sectario. Este método redefine el método Player.getOpponentLevel
+    # porque el nivel de algunos monstruos varía dependiendo del tipo de jugador 
+    # al que se enfrenten
+    #
     def getOpponentLevel(monster)
       return monster.getSpecialValue
     end
     
-    def computeGoldCoinsValue()
+    ##
+    # Método que calcula el número de niveles que vale una determinada lista de 
+    # tesoros. Este método redefine el método Player.computeGoldCoinsValue, ya que
+    # para los jugadores sectarios, el valor en oro de sus objetos vale doble
+    #
+    def computeGoldCoinsValue(treasures)
       
       value = 0.0
       for t in treasures
@@ -47,6 +58,10 @@ module Model
       
     end
     
+    ##
+    # Método que devuelve el número de jugadores sectarios que hay jugando en ese
+    # momento
+    #
     def self.getTotalCultistPlayers()
       return @@totalCultistPlayers
     end
