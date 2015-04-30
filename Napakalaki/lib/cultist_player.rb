@@ -13,12 +13,24 @@ module Model
     
     @@totalCultistPlayers = 0
     
+    ##
+    # Método que devuelve el nivel de combate de un jugador sectario. Un jugador
+    # sectario tiene como nivel de combate el nivel de combate que le corresponde
+    # como jugador más el bonus que obtiene por ser sectario, que depende del número
+    # de sectarios que haya jugando.
+    #
     def getCombatLevel()
       return super.getCombatLevel + @myCultistCard.getSpecialValue
     end
     
+    ##
+    # Redefinición del método Player.shouldConvert. En este caso se devuelve siempre
+    # false porque el sectario no debe volverse a convertir, ya que una vez convertido
+    # en sectario un jugador no puede dejar de serlo, y por tanto, no debe volver
+    # a convertirse en sectario por segunda vez
+    #
     def shouldConvert()
-      return super
+      return false
     end
     
     def getOpponentLevel()

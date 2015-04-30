@@ -231,7 +231,11 @@ module Model
             combatResult = CombatResult::LOSEANDDIE
           else
             applyBadConsequence(bc)
-            combatResult = CombatResult::LOSE
+            if shouldConvert
+              combatResult = COmbatResult::LOSEANDCONVERT
+            else
+              combatResult = CombatResult::LOSE
+            end
           end
         else
           combatResult = CombatResult::LOSEANDESCAPE
@@ -435,8 +439,16 @@ module Model
       
     end
 
+    ##
+    # Método que lanza el dado para ver si el jugador debe convertirse en sectario
+    # o no después de perder un combate. Devolverá true en caso de que salga un 6
+    # en el dado, y false en caso contrario.
+    #
     def shouldConvert()
+      dice = Dice.instance
+      number = dice.nextNumber
       
+      return (number == 6)
     end
     
     protected :getOpponentLevel, :shouldConvert
