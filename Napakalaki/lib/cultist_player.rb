@@ -33,11 +33,17 @@ module Model
       return false
     end
     
-    def getOpponentLevel()
-      
+    def getOpponentLevel(monster)
+      return monster.getSpecialValue
     end
     
     def computeGoldCoinsValue()
+      
+      value = 0.0
+      for t in treasures
+        value += t.goldCoins
+      end
+      return (value/500.0)
       
     end
     

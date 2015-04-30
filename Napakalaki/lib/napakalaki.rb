@@ -83,6 +83,11 @@ module Model
       combatResult = @currentPlayer.combat(@currentMonster)
       cardDealer = CardDealer.instance
       cardDealer.giveMonsterBack(@currentMonster)
+      if combatResult == CombatResult::LOSEANDCONVERT
+        currentCultistCard = cardDealer.nextCultist
+        newCultistPlayer = CultistPlayer.new(@currentPlayer, currentCultistCard)
+        @players[@currentPlayerIndex] = newCultistPlayer
+      end
       return combatResult
     end
 

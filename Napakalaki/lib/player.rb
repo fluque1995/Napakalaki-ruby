@@ -205,7 +205,7 @@ module Model
     #
     def combat(monster)
       myLevel = getCombatLevel
-      monsterLevel = monster.getLevel
+      monsterLevel = getOpponentLevel(monster)
     
       if myLevel > monsterLevel
     
@@ -435,8 +435,11 @@ module Model
     private :dieIfNoTreasures, :canIBuyLevels
     protected :computeGoldCoinsValue
     
+    ##
+    # Método que obtiene el nivel de combate del monstruo oponente
+    #
     def getOpponentLevel(monster)
-      
+      return monster.getBasicValue
     end
 
     ##
