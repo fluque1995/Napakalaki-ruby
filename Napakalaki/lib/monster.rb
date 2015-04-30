@@ -18,14 +18,24 @@ module Model
     # - badConsequence: Mal rollo que se aplica al jugador si es derrotado por
     # el monstruo
     #
-    def initialize (name, combatLevel, prize, badConsequence)
+    def initialize (name, combatLevel, prize, badConsequence, levelChange)
 
       @name = name
       @combatLevel = combatLevel
       @prize = prize
       @badConsequence = badConsequence
-
+      @levelChangeAgainstCultist = levelChange
     end
+    
+    def self.newMonsterLevelStatic(name, combatLevel, prize, badConsequence)
+      return new(name, combatLevel, prize, badConsequence, 0)
+    end
+    
+    def self.newMonsterLevelDynamic(name, combatLevel, prize, badConsequence, levelChange)
+      return new(name, combatLevel, prize, badConsequence, levelChange)
+    end
+    
+    private_class_method :new
 
     # Nombre del monstruo
     attr_reader :name
@@ -42,13 +52,22 @@ module Model
     # Mal rollo que se aplica si se pierde el combate contra él
     attr_reader :badConsequence
 
+    def levelChangeAgainstCultistPlayer()
+      return @levelChangeAgainstCultist
+    end
+    
     ##
     # Método que devuelve el estado completo del monstruo en un string. Sirve
     # para detectar fallos.
     #
     def to_s()
-      return "Nombre: #{@name}, nivel de combate: #{@combatLevel}\n\tPremio: #{@prize}\n" +
-             "\tMal rollo: #{@badConsequence.to_s}"
+      text = "Nombre: #{@name}, nivel de combate: #{@combatLevel}"
+      
+      if @levelChangeAgainstCultist != 0
+        text += ", modificación de nivel contra sectarios: #{@levelChangeAgainstCultist}"
+      end
+      
+      text += "\n\tPremio: #{@prize}\n\tMal rollo: #{@badConsequence.to_s}"
     end
   end
 end

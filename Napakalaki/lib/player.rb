@@ -431,6 +431,15 @@ module Model
     private :dieIfNoTreasures, :canIBuyLevels
     protected :computeGoldCoinsValue
     
+    def getOpponentLevel(monster)
+      
+    end
+
+    def shouldConvert()
+      
+    end
+    
+    protected :getOpponentLevel, :shouldConvert
     
     #Examen
     def setVisibleTreasureList(treasures)
