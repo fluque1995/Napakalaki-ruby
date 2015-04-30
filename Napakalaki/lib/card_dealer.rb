@@ -290,6 +290,9 @@ require 'singleton'
       return monster
     end
 
+    def nextCultist()
+      return @unusedCultists.pop
+    end
     ##
     # Devuelve el tesoro que estaba en juego al mazo de descartes de tesoros.
     #
@@ -349,8 +352,5 @@ require 'singleton'
       end
     end
   end
-
-  cardDealer = CardDealer.instance
-  cardDealer.printCultists
   
 end

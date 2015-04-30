@@ -13,6 +13,24 @@ module Model
     attr_reader :name
     attr_reader :gainedLevels
     
+    ##
+    # Devuelve los niveles que gana el jugador por convertirse en sectario
+    #
+    def getBasicValue()
+      return @gainedLevels
+    end
+    
+    ##
+    #
+    #
+    def getSpecialValue()
+      return (@gainedLevels*CultistPlayer.getTotalCultistsPlayers)
+    end
+    
+    ##
+    # Devuelve la información relativa al sectario en un string. Sirve para trazar
+    # errores
+    #
     def to_s()
       return "Nombre: #{@name}, niveles ganados: #{@gainedLevels.to_s}"
     end

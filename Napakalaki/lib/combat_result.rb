@@ -21,5 +21,8 @@ module Model
     LOSEANDESCAPE= :LOSEANDESCAPE
     # El jugador pierde el combate y el monstruo lo mata
     LOSEANDDIE= :LOSEANDDIE
+    # El jugador pierde el combate, se le aplica el mal rollo pero se convierte 
+    # en sectario
+    LOSEANDCONVERT= :LOSEANDCONVERT
   end
 end

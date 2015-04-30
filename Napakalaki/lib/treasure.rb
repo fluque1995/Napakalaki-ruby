@@ -37,6 +37,20 @@ module Model
     # Bonus máximo que otorga
     attr_reader :maxBonus
     
+    ##
+    # Devuelve el bonus mínimo que otorga el premio
+    #
+    def getBasicValue()
+      return @minBonus
+    end
+    
+    ##
+    # Devuelve el bonus máximo que otorga el premio
+    #
+    def getSpecialValue()
+      return @maxBonus
+    end
+    
     # Tipo de tesoro
     def getType()
       return @type

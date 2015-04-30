@@ -14,7 +14,7 @@ module Model
     @@totalCultistPlayers = 0
     
     def getCombatLevel()
-      return super.getCombatLevel + @@totalCultistPlayers*@myCultistCard.gainedLevels
+      return super.getCombatLevel + @myCultistCard.getSpecialValue
     end
     
     def shouldConvert()

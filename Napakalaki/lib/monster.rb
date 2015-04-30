@@ -1,6 +1,8 @@
 # encoding: UTF-8
 # Main module of the Napakalaki project
 
+require_relative "card_interface"
+
 module Model
 
   ##
@@ -9,6 +11,8 @@ module Model
   # juego. 
   #
   class Monster
+    
+    include CardInterface
     
     ##
     # Inicializa a un nuevo monstruo. Atributos:
@@ -52,6 +56,24 @@ module Model
     # Mal rollo que se aplica si se pierde el combate contra él
     attr_reader :badConsequence
 
+    ##
+    # Devuelve el nivel del monstruo cuando pelea contra un jugador normal
+    #
+    def getBasicValue()
+      return @level
+    end
+    
+    ##
+    # Devuelve el nivel del monstruo cuando pelea contra un jugador sectario
+    #
+    def getSpecialValue()
+      return (@level + @levelChangeAgainstCultistPlayer)
+    end
+    
+    ##
+    # Devuelve el valor de cambio de los niveles del monstruo cuando pelea contra
+    # un jugador sectario
+    #
     def levelChangeAgainstCultistPlayer()
       return @levelChangeAgainstCultist
     end
@@ -70,4 +92,5 @@ module Model
       text += "\n\tPremio: #{@prize}\n\tMal rollo: #{@badConsequence.to_s}"
     end
   end
+  
 end
