@@ -1,8 +1,11 @@
 #encoding: utf-8
 # Main module of the Napakalaki project
 
+require_relative "card_interface.rb"
+
 module Model
 
+  include CardInterface
   ##
   # Clase que representa una carta de sectario del juego. Cada objeto de esta 
   # clase representa a una carta de sectario de las que hay en el juego. Estas

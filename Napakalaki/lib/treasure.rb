@@ -4,6 +4,7 @@
 module Model
   
   require_relative "treasure_kind.rb"
+  require_relative "card_interface.rb"
   ##
   # Clase que representa una carta de tesoro del juego. Estas cartas se obtienen
   # robando cartas del mazo de tesoros al principio de la partida, o al vencer en 
@@ -11,6 +12,7 @@ module Model
   #
   class Treasure
     
+    include CardInterface
     ##
     # Inicializa una carta de tesoros, especificando los siguientes atributos:
     # - name: Nombre del tesoro

@@ -158,14 +158,14 @@ module Model
             for treasure in supportVisibles
               if treasure.type == t and not found
                found = true
-               index = supportVisibles.find_index(treasure)
+               treasure_index = supportVisibles.find_index(treasure)
               end
             end
             if not found
               index = badConsequence.specificVisibleTreasures.find_index(t)
               badConsequence.specificVisibleTreasures.delete_at(index)
             end
-            supportVisibles.delete_at(index)
+            supportVisibles.delete_at(treasure_index)
           end
           
           supportHiddens = hiddenTreasuresArray.dup
@@ -174,14 +174,14 @@ module Model
             for treasure in supportHiddens
               if treasure.type == t
                 found = true
-                index = supportHiddens.find_index(treasure)
+                treasure_index = supportHiddens.find_index(treasure)
               end
             end
             if not found
               index = badConsequence.specificHiddenTreasures.find_index(t)
               badConsequence.specificHiddenTreasures.delete_at(index)
             end
-            supportHiddens.delete_at(index)
+            supportHiddens.delete_at(treasure_index)
           end  
         end
       end

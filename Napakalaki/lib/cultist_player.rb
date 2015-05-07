@@ -8,7 +8,7 @@ module Model
     # Constructor de un jugador sectario
     #
     def initialize(player, cultist)
-      super(player)
+      super(player.getName)
       @myCultistCard = cultist
       @@totalCultistPlayers += 1
     end

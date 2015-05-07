@@ -133,7 +133,7 @@ module Model
       end
 
       @hiddenTreasures.clear
-      @levels = 1
+      @level = 1
       @dead = true
     end
     
