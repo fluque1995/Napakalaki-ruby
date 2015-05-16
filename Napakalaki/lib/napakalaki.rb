@@ -7,7 +7,7 @@ module Model
   require_relative "player.rb"
   require_relative "monster.rb"
   require_relative "card_dealer.rb"
-  
+  require_relative "cultist_player.rb"
   ##
   # Clase principal del juego Napakalaki. Controla toda la información relativa
   # al desarrollo de una partida. Controla la información de los jugadores, el 

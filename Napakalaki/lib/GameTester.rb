@@ -51,6 +51,8 @@ class GameTester
               puts "\n\n Perdiste el combate pero has logrado escapar"
             when Model::CombatResult::LOSEANDDIE then
               puts "\n\n Perdiste el combate y ademas estas muerto"
+            when Model::CombatResult::LOSEANDCONVERT then
+              puts "\n\n Perdiste el combate, pero te has convertido en sectario"
            end #case
            if (combatResult != Model::CombatResult::WINANDWINGAME) then
             begin #Hasta que se avance de turno 

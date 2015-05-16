@@ -38,48 +38,6 @@ module Model
     attr_accessor :specificHiddenTreasures
 
     private_class_method :new
-    
-    ##
-    # Constructor para el tipo de mal rollo que implica la pérdida de  un número
-    # de niveles y tesoros.
-    # 
-    # Atributos:
-    # - aText: Texto que representa el mal rollo
-    # - someLevels: Niveles que se pierden
-    # - someVisibleTreasures: Tesoros visibles que se pierden
-    # - someHiddenTreasures: Tesoros ocultos que se pierden
-    #
-    def self.newNumberOfTreasures(aText, someLevels, someVisibleTreasures, 
-                                            someHiddenTreasures)
-      return new(aText, someLevels, someVisibleTreasures,
-                       someHiddenTreasures, [], [], false)
-    end
-
-    ##
-    # Constructor para el tipo de mal rollo que implica la pérdida de tesoros 
-    # específicos.
-    # 
-    # Atributos:
-    # - aText: Texto que representa el mal rollo
-    # - someLevels Niveles que se pierden
-    # - someSpecificVisibleTreasures: Tesoros visibles específicos que se pierden
-    # - someSpecificHiddenTreasures: Tesoros ocultos específicos que se pierden
-    #
-    def self.newSpecificTreasures(aText, someLevels, someSpecificVisibleTreasures, 
-                             someSpecificHiddenTreasures)
-      return new(aText, someLevels, 0, 0, someSpecificVisibleTreasures,
-                         someSpecificHiddenTreasures, false)
-    end
-
-    ##
-    # Constructor para el tipo de mal rollo que implica la muerte del jugador
-    # 
-    # Atributos:
-    # - aText: Texto que representa el mal rollo
-    #
-    def self.newDeath(aText)
-      return new(aText, 0, 0, 0, [], [], true)
-    end
 
     ##
     # Método que comprueba si el mal rollo está vacío, es decir, si no tiene nada
@@ -164,8 +122,9 @@ module Model
             if not found
               index = badConsequence.specificVisibleTreasures.find_index(t)
               badConsequence.specificVisibleTreasures.delete_at(index)
+            else
+              supportVisibles.delete_at(treasure_index)
             end
-            supportVisibles.delete_at(treasure_index)
           end
           
           supportHiddens = hiddenTreasuresArray.dup
@@ -180,8 +139,9 @@ module Model
             if not found
               index = badConsequence.specificHiddenTreasures.find_index(t)
               badConsequence.specificHiddenTreasures.delete_at(index)
+            else
+              supportHiddens.delete_at(treasure_index)
             end
-            supportHiddens.delete_at(treasure_index)
           end  
         end
       end

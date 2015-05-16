@@ -34,7 +34,7 @@ module Model
     # real de niveles que recibe un jugador para el combate por ser sectario
     #
     def getSpecialValue()
-      return (@gainedLevels*CultistPlayer.getTotalCultistsPlayers)
+      return (@gainedLevels*CultistPlayer.getTotalCultistPlayers)
     end
     
     ##

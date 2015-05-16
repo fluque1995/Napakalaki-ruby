@@ -17,7 +17,7 @@ module Model
    
        #Se prueba el juego con 2 jugadores
    
-       test.play(game, 2);
+       test.play(game, 1);
        
       end
       

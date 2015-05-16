@@ -68,14 +68,15 @@ module Model
     # Devuelve el nivel del monstruo cuando pelea contra un jugador normal
     #
     def getBasicValue()
-      return @level
+      return @combatLevel
     end
     
     ##
     # Devuelve el nivel del monstruo cuando pelea contra un jugador sectario
     #
     def getSpecialValue()
-      return (@level + @levelChangeAgainstCultistPlayer)
+      level = @combatLevel + @levelChangeAgainstCultist
+      return level
     end
     
     ##

@@ -23,7 +23,7 @@ module Model
     # de sectarios que haya jugando.
     #
     def getCombatLevel()
-      return super.getCombatLevel + @myCultistCard.getSpecialValue
+      return super + @myCultistCard.getSpecialValue
     end
     
     ##

@@ -207,7 +207,7 @@ module Model
       myLevel = getCombatLevel
       monsterLevel = getOpponentLevel(monster)
     
-      if myLevel > monsterLevel
+      if monsterLevel < myLevel
     
         myPrize = monster.prize
         applyPrize(myPrize)
@@ -221,7 +221,7 @@ module Model
         dice = Dice.instance
         escape = dice.nextNumber
         
-        if escape < 5
+        if escape < 8
           
           bc = monster.badConsequence
           amIDead = bc.kills
@@ -232,7 +232,7 @@ module Model
           else
             applyBadConsequence(bc)
             if shouldConvert
-              combatResult = COmbatResult::LOSEANDCONVERT
+              combatResult = CombatResult::LOSEANDCONVERT
             else
               combatResult = CombatResult::LOSE
             end
@@ -451,7 +451,9 @@ module Model
       dice = Dice.instance
       number = dice.nextNumber
       
-      return (number == 6)
+      #return (number == 6)
+    
+      return true
     end
     
     protected :getOpponentLevel, :shouldConvert
@@ -466,7 +468,7 @@ module Model
     end
     
     def to_s()
-      return "Nombre: #{@name}, nivel: #{@level.to_i}"
+      return "Nombre: #{@name}, nivel: #{@level.to_i}\n\tNivel de combate: #{getCombatLevel}"
     end
     #fin
   end
