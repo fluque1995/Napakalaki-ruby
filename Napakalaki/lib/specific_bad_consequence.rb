@@ -6,6 +6,8 @@ module Model
   class SpecificBadConsequence < BadConsequence
     def initialize(aText, someLevels, someSpecificVisibleTreasures, 
                    someSpecificHiddenTreasures)
+      super(aText, someLevels, 0, 0, someSpecificVisibleTreasures, someSpecificHiddenTreasures, false)
+=begin  
       @text = aText
       @levels = someLevels
       @visibleTreasures = 0
@@ -13,6 +15,8 @@ module Model
       @specificVisibleTreasures = someSpecificVisibleTreasures
       @specificHiddenTreasures = someSpecificHiddenTreasures
       @death = false
+    
+=end
     end
     
     public_class_method :new

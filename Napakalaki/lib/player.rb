@@ -221,7 +221,7 @@ module Model
         dice = Dice.instance
         escape = dice.nextNumber
         
-        if escape < 8
+        if escape < 5
           
           bc = monster.badConsequence
           amIDead = bc.kills
@@ -451,9 +451,8 @@ module Model
       dice = Dice.instance
       number = dice.nextNumber
       
-      #return (number == 6)
+      return (number == 6)
     
-      return true
     end
     
     protected :getOpponentLevel, :shouldConvert

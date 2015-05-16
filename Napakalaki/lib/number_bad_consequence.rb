@@ -5,6 +5,9 @@
 module Model
   class NumberBadConsequence < BadConsequence
     def initialize(aText, someLevels, someVisibleTreasures, someHiddenTreasures)
+      
+      super(aText, someLevels, someVisibleTreasures, someHiddenTreasures, [], [], false)
+=begin
       @text = aText
       @levels = someLevels
       @visibleTreasures = someVisibleTreasures
@@ -12,6 +15,8 @@ module Model
       @specificVisibleTreasures = []
       @specificHiddenTreasures = []
       @death = false
+    
+=end
     end
     
     public_class_method :new
