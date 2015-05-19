@@ -8,11 +8,14 @@ module Model
     # Constructor de un jugador sectario
     #
     def initialize(player, cultist)
-      super(player.getName)
+      super(player.getName, player.getLevel, player.getDead, 
+            player.getHiddenTreasures, player.getVisibleTreasures, 
+            player.getPendingBadConsequence)
       @myCultistCard = cultist
       @@totalCultistPlayers += 1
     end
     
+    public_class_method :new
     # Número de jugadores sectarios en juego
     @@totalCultistPlayers = 0
     
@@ -67,6 +70,12 @@ module Model
     #
     def self.getTotalCultistPlayers()
       return @@totalCultistPlayers
+    end
+    
+    def to_s
+      text = super
+      text += "\tEste jugador es sectario\n"
+      return text
     end
   end
 end

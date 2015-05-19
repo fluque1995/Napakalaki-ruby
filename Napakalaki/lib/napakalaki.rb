@@ -40,7 +40,7 @@ module Model
     def initPlayers(names)
       
       for name in names
-        @players << Player.new(name)
+        @players << Player.newPlayer(name)
       end
       
     end

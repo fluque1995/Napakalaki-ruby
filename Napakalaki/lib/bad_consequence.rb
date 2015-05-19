@@ -78,6 +78,7 @@ module Model
     # Quita al jugador un determinado tesoro oculto si éste lo posee
     #
     def substractHiddenTreasure(treasure)
+      
       if @hiddenTreasures > 0
         @hiddenTreasures -= 1
       else
@@ -86,6 +87,7 @@ module Model
           @specificHiddenTreasures.delete_at(t)
         end
       end
+
     end
 
     ##
@@ -154,6 +156,7 @@ module Model
     # para trazar errores.
     #
     def to_s()
+=begin
       printable_text = "Texto: #{@text}\n\t\tNiveles: #{@levels}, tesoros visibles: #{@visibleTreasures}," +
              " tesoros ocultos: #{@hiddenTreasures}"
 
@@ -172,6 +175,8 @@ module Model
       end
 
       return printable_text
+=end
+      return "Esto es un mal rollo con las siguientes consecuencias:\n"
     end
     
     ##
@@ -181,17 +186,7 @@ module Model
     # por un jugador en el método BadConsequence.adjustToFitTreasureLists
     #
     def copy()
-      if @death == true
-        badConsequence = BadConsequence.newDeath(@name)
-      elsif @visibleTreasures > 0 or @hiddenTreasures > 0
-        badConsequence = BadConsequence.newNumberOfTreasures(@name, @levels, @visibleTreasures,
-                                                             @hiddenTreasures)
-      else
-        badConsequence = BadConsequence.newSpecificTreasures(@name, @levels, @specificVisibleTreasures.dup,
-                                                             @specificHiddenTreasures.dup)
-      end
       
-      return badConsequence
     end
     
     protected :copy

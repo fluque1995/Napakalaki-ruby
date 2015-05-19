@@ -21,13 +21,19 @@ module Model
     # Inicializa un nuevo jugador. Atributos:
     # - name: Nombre del jugador.
     #
-    def initialize(name)
+    def initialize(name, level, dead, hiddenTreasures, visibleTreasures, pendingBC)
       @name = name
-      @dead = true
-      @level = 1
-      @hiddenTreasures = Array.new
-      @visibleTreasures = Array.new
-      @pendingBadConsequence = nil
+      @level = level
+      @dead = dead
+      @hiddenTreasures = hiddenTreasures
+      @visibleTreasures = visibleTreasures
+      @pendingBadConsequence = pendingBC
+    end
+    
+    private_class_method :new
+    
+    def self.newPlayer(name)
+      new(name, 1, true, [], [], nil)
     end
     
     ##
@@ -77,6 +83,9 @@ module Model
       return @name
     end
     
+    def getPendingBadConsequence()
+      return @pendingBadConsequence
+    end
     # Número máximo de tesoros ocultos que puede poseer un jugador
     @@MAXHIDDENTREASURES = 4
 
@@ -221,7 +230,7 @@ module Model
         dice = Dice.instance
         escape = dice.nextNumber
         
-        if escape < 5
+        if escape < 8
           
           bc = monster.badConsequence
           amIDead = bc.kills
@@ -452,7 +461,7 @@ module Model
       number = dice.nextNumber
       
       return (number == 6)
-    
+      #return true
     end
     
     protected :getOpponentLevel, :shouldConvert
@@ -467,7 +476,7 @@ module Model
     end
     
     def to_s()
-      return "Nombre: #{@name}, nivel: #{@level.to_i}\n\tNivel de combate: #{getCombatLevel}"
+      return "Nombre: #{@name}, nivel: #{@level.to_i}\n\tNivel de combate: #{getCombatLevel}\n"
     end
     #fin
   end
