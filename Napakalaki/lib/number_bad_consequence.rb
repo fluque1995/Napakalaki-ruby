@@ -18,11 +18,15 @@ module Model
     end
     
     def substractVisibleTreasure(treasure)
-      @visibleTreasures -= 1
+      if @visibleTreasures > 0
+        @visibleTreasures -= 1
+      end
     end
     
     def substractHiddenTreasure(treasure)
-      @hiddenTreasures -= 1
+      if @hiddenTreasures > 0
+        @hiddenTreasures -= 1
+      end
     end
     
     def adjustToFitTreasureLists(visibleTreasuresArray, hiddenTreasuresArray)
