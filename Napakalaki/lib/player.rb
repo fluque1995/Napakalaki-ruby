@@ -476,7 +476,21 @@ module Model
     end
     
     def to_s()
-      return "Nombre: #{@name}, nivel: #{@level.to_i}\n\tNivel de combate: #{getCombatLevel}\n"
+      text = "Nombre: #{@name}, nivel: #{@level.to_i}\n\tNivel de combate: #{getCombatLevel}\n"
+      text += "\tTesoros visibles:\n"
+      
+      for treasure in @visibleTreasures
+        text += "\t #{treasure.to_s}"
+      end
+      
+      text += "\tTesoros ocultos:\n"
+      
+      for treasure in @hiddenTreasures
+        text += "\t #{treasure.to_s}"
+      end
+      
+      text += "\tMal rollo pendiente:\n\t\t#{@pendingBadConsequence.to_s}"
+      
     end
     #fin
   end

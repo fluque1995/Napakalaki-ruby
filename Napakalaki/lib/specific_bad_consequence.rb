@@ -7,21 +7,18 @@ module Model
   class SpecificBadConsequence < BadConsequence
     def initialize(aText, someLevels, someSpecificVisibleTreasures, 
                    someSpecificHiddenTreasures)
+
       super(aText, someLevels, 0, 0, someSpecificVisibleTreasures, someSpecificHiddenTreasures, false)
-=begin  
-      @text = aText
-      @levels = someLevels
-      @visibleTreasures = 0
-      @hiddenTreasures = 0
-      @specificVisibleTreasures = someSpecificVisibleTreasures
-      @specificHiddenTreasures = someSpecificHiddenTreasures
-      @death = false
-    
-=end
+
     end
     
     public_class_method :new
-    
+
+    def isEmpty()
+      return ((@specificVisibleTreasures == nil or @specificVisibleTreasures.empty?) and 
+             (@specificHiddenTreasures == nil or @specificHiddenTreasures.empty?))
+    end
+
     def substractVisibleTreasure(treasure)
       t = @specificVisibleTreasures.find_index(treasure.type)
       if t != nil
@@ -37,44 +34,59 @@ module Model
     end
     
     def adjustToFitTreasureLists(visibleTreasuresArray, hiddenTreasuresArray)
-
-      badConsequence = self.copy
       
       supportVisibles = visibleTreasuresArray.dup
-      for t in badConsequence.specificVisibleTreasures
-        found = false
+      visibleTreasuresToKeep = Array.new
+      
+      for treasureKind in @specificVisibleTreasures
+        
+        treasureToRemove = nil
+        
         for treasure in supportVisibles
-          if treasure.type == t and not found
-           found = true
-           treasure_index = supportVisibles.find_index(treasure)
+        
+          if treasure.type == treasureKind
+            
+           treasureToRemove = treasure
+           
           end
+        
         end
-        if not found
-          index = badConsequence.specificVisibleTreasures.find_index(t)
-          badConsequence.specificVisibleTreasures.delete_at(index)
-        else
-          supportVisibles.delete_at(treasure_index)
+        
+        if treasureToRemove != nil
+        
+          supportVisibles.delete(treasureToRemove)
+          visibleTreasuresToKeep << treasureKind
+        
         end
+      
       end
 
       supportHiddens = hiddenTreasuresArray.dup
-      for t in badConsequence.specificHiddenTreasures
-        found = false
+      hiddenTreasuresToKeep = Array.new
+      
+      for treasureKind in @specificHiddenTreasures
+        
+        treasureToRemove = nil
+        
         for treasure in supportHiddens
-          if treasure.type == t
-            found = true
-            treasure_index = supportHiddens.find_index(treasure)
+      
+          if treasure.type == treasureKind
+          
+            treasureToRemove = treasure
+          
           end
+        
         end
-        if not found
-          index = badConsequence.specificHiddenTreasures.find_index(t)
-          badConsequence.specificHiddenTreasures.delete_at(index)
-        else
-          supportHiddens.delete_at(treasure_index)
+        
+        if treasureToRemove != nil
+          
+          supportHiddens.delete(treasureToRemove)
+          hiddenTreasuresToKeep << treasureKind
+          
         end
       end
       
-      return badConsequence
+      return SpecificBadConsequence.new(@text, @levels, visibleTreasuresToKeep, hiddenTreasuresToKeep)
     end
     ##
     # Método que devuelve una copia exacta del mal rollo que llama a la función,

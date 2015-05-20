@@ -6,20 +6,16 @@
 module Model
   class KillingBadConsequence < BadConsequence
     def initialize(aText)
+
       super(aText, 0, 0, 0, Array.new, Array.new, true)
-=begin
-      @text = aText
-      @levels = 0
-      @visibleTreasures = 0
-      @hiddenTreasures = 0
-      @specificVisibleTreasures = []
-      @specificHiddenTreasures = []
-      @death = true
-=end
+
     end
 
     public_class_method :new
     
+    def isEmpty
+      return true
+    end
     def adjustToFitTreasureLists()
       
       badConsequence = self.copy()

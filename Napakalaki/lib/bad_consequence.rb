@@ -45,11 +45,6 @@ module Model
     #
     def isEmpty()
 
-      return (@visibleTreasures == 0 and @hiddenTreasures == 0 and 
-          (@specificVisibleTreasures == nil or @specificVisibleTreasures.empty?) and 
-          (@specificHiddenTreasures == nil or @specificHiddenTreasures.empty?) and 
-          @death == false)
-
     end
 
     ##
@@ -64,29 +59,13 @@ module Model
     # Quita al jugador un determinado tesoro visible si éste lo posee
     #
     def substractVisibleTreasure(treasure)
-      if @visibleTreasures > 0
-        @visibleTreasures -= 1
-      else
-        t = @specificVisibleTreasures.find_index(treasure.type)
-        if t != nil
-          @specificVisibleTreasures.delete_at(t)
-        end
-      end
+
     end
 
     ##
     # Quita al jugador un determinado tesoro oculto si éste lo posee
     #
     def substractHiddenTreasure(treasure)
-      
-      if @hiddenTreasures > 0
-        @hiddenTreasures -= 1
-      else
-        t = @specificHiddenTreasures.find_index(treasure.type)
-        if t != nil
-          @specificHiddenTreasures.delete_at(t)
-        end
-      end
 
     end
 
@@ -97,86 +76,19 @@ module Model
     # al que el monstruo tiene y que puede ser cumplido por el jugador al que se
     # le aplica.
     #
+
     def adjustToFitTreasureLists(visibleTreasuresArray, hiddenTreasuresArray)
-      
-      badConsequence = self.copy()
-      
-      if not badConsequence.kills
-        
-        if badConsequence.visibleTreasures > 0 or badConsequence.hiddenTreasures > 0
-          
-          badConsequence.visibleTreasures = badConsequence.visibleTreasures < visibleTreasuresArray.size ?
-                                            badConsequence.visibleTreasures : visibleTreasuresArray.size
-          badConsequence.hiddenTreasures = badConsequence.hiddenTreasures < hiddenTreasuresArray.size ?
-                                           badConsequence.hiddenTreasures : hiddenTreasuresArray.size
-        
-        else
-          
-          supportVisibles = visibleTreasuresArray.dup
-          for t in badConsequence.specificVisibleTreasures
-            found = false
-            for treasure in supportVisibles
-              if treasure.type == t and not found
-               found = true
-               treasure_index = supportVisibles.find_index(treasure)
-              end
-            end
-            if not found
-              index = badConsequence.specificVisibleTreasures.find_index(t)
-              badConsequence.specificVisibleTreasures.delete_at(index)
-            else
-              supportVisibles.delete_at(treasure_index)
-            end
-          end
-          
-          supportHiddens = hiddenTreasuresArray.dup
-          for t in badConsequence.specificHiddenTreasures
-            found = false
-            for treasure in supportHiddens
-              if treasure.type == t
-                found = true
-                treasure_index = supportHiddens.find_index(treasure)
-              end
-            end
-            if not found
-              index = badConsequence.specificHiddenTreasures.find_index(t)
-              badConsequence.specificHiddenTreasures.delete_at(index)
-            else
-              supportHiddens.delete_at(treasure_index)
-            end
-          end  
-        end
-      end
-      
-      return badConsequence
+
     end
-    
+   
     ##
     # Método que devuelve en un string la información completa del monstruo. Sirve
     # para trazar errores.
     #
     def to_s()
-=begin
-      printable_text = "Texto: #{@text}\n\t\tNiveles: #{@levels}, tesoros visibles: #{@visibleTreasures}," +
-             " tesoros ocultos: #{@hiddenTreasures}"
 
-      if (specificVisibleTreasures.empty? == false)
-        printable_text += "\n\t\tTesoros visibles específicos: "
-        for treasure in specificVisibleTreasures
-          printable_text += treasure.to_s + ", "
-        end
-      end
+      return "Esto es un mal rollo con las siguientes consecuencias:\n\t"
 
-      if (specificHiddenTreasures.empty? == false)
-        printable_text += "\n\t\tTesoros ocultos específicos: "
-        for treasure in specificHiddenTreasures
-          printable_text += treasure.to_s + ", "  
-        end
-      end
-
-      return printable_text
-=end
-      return "Esto es un mal rollo con las siguientes consecuencias:\n"
     end
     
     ##

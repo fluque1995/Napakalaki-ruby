@@ -8,19 +8,14 @@ module Model
     def initialize(aText, someLevels, someVisibleTreasures, someHiddenTreasures)
       
       super(aText, someLevels, someVisibleTreasures, someHiddenTreasures, Array.new, Array.new, false)
-=begin
-      @text = aText
-      @levels = someLevels
-      @visibleTreasures = someVisibleTreasures
-      @hiddenTreasures = someHiddenTreasures
-      @specificVisibleTreasures = []
-      @specificHiddenTreasures = []
-      @death = false
-    
-=end
+
     end
     
     public_class_method :new
+
+    def isEmpty()
+      return (@hiddenTreasures == 0 and @visibleTreasures == 0)
+    end
     
     def substractVisibleTreasure(treasure)
       @visibleTreasures -= 1

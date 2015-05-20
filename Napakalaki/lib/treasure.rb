@@ -67,7 +67,7 @@ module Model
     #
     def to_s()
       return "Nombre: #{@name}, precio: #{@goldCoins}, bonus mínimo: #{@minBonus},
-              bonus máximo: #{@maxBonus}, tipo: #{@type.to_s}" 
+              bonus máximo: #{@maxBonus}, tipo: #{@type.to_s}\n" 
     end
 
   end

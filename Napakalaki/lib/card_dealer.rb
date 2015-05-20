@@ -1,18 +1,18 @@
 # encoding: UTF-8
 # Main module of the Napakalaki project
 
-require_relative "prize.rb"
-require_relative "monster.rb"
-require_relative "killing_bad_consequence.rb"
-require_relative "number_bad_consequence.rb"
-require_relative "specific_bad_consequence.rb"
-require_relative "treasure_kind.rb"
-require_relative "treasure.rb"
-require_relative "cultist.rb"
 
 module Model
 
-require 'singleton'
+  require_relative "prize.rb"
+  require_relative "monster.rb"
+  require_relative "killing_bad_consequence.rb"
+  require_relative "number_bad_consequence.rb"
+  require_relative "specific_bad_consequence.rb"
+  require_relative "treasure_kind.rb"
+  require_relative "treasure.rb"
+  require_relative "cultist.rb"
+  require 'singleton'
   
   ##
   # Clase que permite mantener los dos tipos de mazos de cartas que hay en el juego.
