@@ -16,8 +16,7 @@ module Model
        game = Napakalaki.instance
    
        #Se prueba el juego con 2 jugadores
-   
-       test.play(game, 1);
+       test.play(game, 1)
        
       end
       

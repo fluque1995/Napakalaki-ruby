@@ -489,7 +489,13 @@ module Model
         text += "\t #{treasure.to_s}"
       end
       
-      text += "\tMal rollo pendiente:\n\t\t#{@pendingBadConsequence.to_s}"
+      if (@pendingBadConsequence == nil or @pendingBadConsequence.isEmpty)
+        text += "\tNo tienes mal rollo pendiente\n"
+      else
+        text += "\tMal rollo pendiente:\n\t\t#{@pendingBadConsequence.to_s}"
+      end
+      
+      return text
       
     end
     #fin

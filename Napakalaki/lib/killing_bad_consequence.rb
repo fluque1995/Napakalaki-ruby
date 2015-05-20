@@ -3,8 +3,12 @@
 # To change this template file, choose Tools | Templates
 # and open the template in the editor.
 
+require_relative "bad_consequence.rb"
+
 module Model
+  
   class KillingBadConsequence < BadConsequence
+  
     def initialize(aText)
 
       super(aText, 0, 0, 0, Array.new, Array.new, true)
@@ -13,9 +17,10 @@ module Model
 
     public_class_method :new
     
-    def isEmpty
+    def isEmpty()
       return true
     end
+    
     def adjustToFitTreasureLists()
       
       badConsequence = self.copy()
