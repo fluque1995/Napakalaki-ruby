@@ -36,7 +36,7 @@ module Model
     #
     def copy()
       
-      badConsequence = KillingBadConsequence.new(@name)
+      badConsequence = KillingBadConsequence.new(@text)
       return badConsequence
     
     end

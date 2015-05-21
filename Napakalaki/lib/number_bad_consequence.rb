@@ -49,7 +49,7 @@ module Model
     #
     def copy()
       
-      badConsequence = NumberBadConsequence.new(@name, @levels, @visibleTreasures,
+      badConsequence = NumberBadConsequence.new(@text, @levels, @visibleTreasures,
                                                              @hiddenTreasures)
       return badConsequence
     end

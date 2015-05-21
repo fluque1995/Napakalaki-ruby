@@ -96,7 +96,7 @@ module Model
     #
     def copy()
       
-      badConsequence = SpecificBadConsequence.new(@name, @levels, @specificVisibleTreasures.dup,
+      badConsequence = SpecificBadConsequence.new(@text, @levels, @specificVisibleTreasures.dup,
                                                              @specificHiddenTreasures.dup)
       
       return badConsequence
